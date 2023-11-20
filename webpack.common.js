@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -14,7 +15,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.css$/,
         use: [
           {
             loader: 'style-loader',
@@ -23,7 +24,7 @@ module.exports = {
             loader: 'css-loader',
           },
           {
-            loader: 'sass-loader',
+            loader: 'postcss-loader',
           },
         ],
       },
@@ -42,5 +43,6 @@ module.exports = {
         },
       ],
     }),
+    new CleanWebpackPlugin(),
   ],
 };
