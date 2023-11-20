@@ -1,2 +1,2 @@
-import 'flowbite';
-import '../styles/index.css';
+import "flowbite";
+import "../styles/index.css";
