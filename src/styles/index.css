@@ -2,3 +2,29 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 @import "flowbite";
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-fade-out {
+  animation: fadeOut 2s ease-in-out;
+}
+
+.active {
+  @apply bg-blue-500 text-sky-950 font-bold; /* Aturan khusus untuk elemen yang aktif */
+}
