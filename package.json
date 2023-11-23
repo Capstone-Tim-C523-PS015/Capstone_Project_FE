@@ -5,7 +5,8 @@
   "main": "webpack.common.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js ",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "lint": "eslint ./src"
   },
   "author": "",
   "license": "ISC",
@@ -17,7 +18,10 @@
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
-    "eslint": "^8.17.0",
+    "eslint": "^8.54.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "favicons-webpack-plugin": "^6.0.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "jasmine-ajax": "^4.0.0",
