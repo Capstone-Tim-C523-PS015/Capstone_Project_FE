@@ -4,7 +4,7 @@ const Home = {
     <div class="pb-32 animate-fade-in transition duration-1000 ease-in-out md:mt-5 mt-8">
       <div class="lg:h-[750px] h-[650px]">
         <div class="flex justify-end lg:mt-3"><img class="lg:w-36 lg:h-20 w-22 h-10" src="./images/awan.png" alt="" /></div>
-        <div class="flex lg:justify-around lg:flex-wrap flex-wrap-reverse lg:items-center mt-4">
+        <div class="flex lg:justify-around flex-wrap-reverse lg:items-center mt-4">
           <div>
             <h1 class="font-black text-xl md:text-4xl" style="letter-spacing: 2px;">Selamat datang di PlanPlan!</h1>
             <p class="max-w-xs text-sky-900 my-4 text-xs md:text-">Tempat untuk merencanakan dan mengelola aktivitas atau tugas dalam kehidupan sehari-hari. Bergabunglah sekarang dan jadikan setiap langkah Anda menuju kesuksesan yang lebih teratur dan menyenangkan.</p>
