@@ -23,7 +23,7 @@ const About = {
                 <h1 class=" text-sky-900 text-2xl md:text-4xl font-bold">TIM PENGEMBANG</h1>
               </div>
 
-              <div class="flex flex-wrap gap-4 justify-center relative h-[1700px] md:h-[1000px] lg:h-[] mt-40">
+              <div class="flex flex-wrap gap-4 justify-center relative h-[1700px] md:h-[1000px] lg:h-[680px] mt-40">
                 <div class="flex flex-col justify-center items-center">
                   <div class="w-56 h-64 bg-white absolute mb-64 outline-1 outline outline-sky-900 rounded-xl">
                     <div class="object-cover"><img src="./images/ketua.png" alt="Logo Plan Plan" class="h-48 rounded-t-xl w-full" /></div>
