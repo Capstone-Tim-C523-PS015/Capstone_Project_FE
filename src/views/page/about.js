@@ -1,7 +1,7 @@
 const About = {
   async render() {
     return `
-          <div id="content" class="mx-auto animate-fade-in transition duration-1000 ease-in-out pb-32 mt-6 md:mt-0 ">
+          <div id="content" class="mx-auto animate-fade-in transition duration-1000 ease-in-out pb-32 mt-12 ">
             <div class="flex flex-col items-center justify-center pb-40">
               <div class="flex gap-2">
                 <img class=" md:w-32 w-24" src="./images/logo2.png" alt="Logo Plan Plan" class="" />
@@ -23,7 +23,7 @@ const About = {
                 <h1 class=" text-sky-900 text-2xl md:text-4xl font-bold">TIM PENGEMBANG</h1>
               </div>
 
-              <div class="flex flex-wrap gap-4 justify-center relative h-[1700px] md:h-[1000px] lg:h-[680px] mt-40">
+              <div class="flex flex-wrap gap-4 justify-center relative h-[1700px] md:h-[1000px] lg:h-[] mt-40">
                 <div class="flex flex-col justify-center items-center">
                   <div class="w-56 h-64 bg-white absolute mb-64 outline-1 outline outline-sky-900 rounded-xl">
                     <div class="object-cover"><img src="./images/ketua.png" alt="Logo Plan Plan" class="h-48 rounded-t-xl w-full" /></div>
