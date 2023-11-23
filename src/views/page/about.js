@@ -1,7 +1,7 @@
 const About = {
   async render() {
     return `
-          <div id="content" class="mx-auto animate-fade-in transition duration-1000 ease-in-out pb-32 mt-12 ">
+          <div id="content" class="mx-auto animate-fade-in transition duration-1000 ease-in-out mt-12 ">
             <div class="flex flex-col items-center justify-center pb-40">
               <div class="flex gap-2">
                 <img class=" md:w-32 w-24" src="./images/logo2.png" alt="Logo Plan Plan" class="" />
