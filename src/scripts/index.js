@@ -13,6 +13,18 @@ window.addEventListener("load", () => {
   app.renderPage();
 });
 
+const dashboard = new App({
+  content: document.querySelector(".contentDashboard"),
+});
+
+window.addEventListener("hashchange", () => {
+  dashboard.renderPage();
+});
+
+window.addEventListener("load", () => {
+  dashboard.renderPage();
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   // Ambil semua elemen dengan kelas 'menu-item'
   var menuItems = document.querySelectorAll(".menu-item");

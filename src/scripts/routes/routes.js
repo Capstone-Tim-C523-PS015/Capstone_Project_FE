@@ -1,11 +1,13 @@
 import About from "../../views/page/about";
 import Home from "../../views/page/home";
-import Dashboard from "../../views/page/dashboard";
+import Kalendar from "../../views/page/dashboard/calendar";
+import TodoList from "../../views/page/dashboard/todoList";
 const routes = {
   "/": Home,
   "/home": Home,
   "/about": About,
-  "/dashboard": Dashboard,
+  "/calendar": Kalendar,
+  "/todolist": TodoList,
 };
 
 export default routes;
