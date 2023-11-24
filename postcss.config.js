@@ -1,6 +1,9 @@
 module.exports = {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
-    },
-}  
+  theme: {
+    mainColor: "#BAE6FD",
+  },
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
