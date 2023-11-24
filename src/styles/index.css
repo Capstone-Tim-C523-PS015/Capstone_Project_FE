@@ -1,4 +1,74 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-@import 'flowbite';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "flowbite";
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.animate-fade-out {
+  transition: 2s ease-in-out;
+}
+
+.active {
+  @apply bg-blue-500 text-sky-950 font-bold;
+}
+
+#calendar {
+  width: 100%;
+}
+
+@media screen and (min-width: 600px) {
+  #calendar {
+    width: 90%;
+  }
+  #calendar .fc-toolbar-title,
+  #calendar .fc-button {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #calendar {
+    width: 100%;
+  }
+
+  #calendar .fc-toolbar-title,
+  #calendar .fc-button {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #calendar {
+    width: 100%;
+  }
+
+  #calendar .fc-toolbar-title,
+  #calendar .fc-button {
+    font-size: 10px;
+  }
+}
+
+.rotasi {
+  transform: rotate(180deg);
+}
+
+.rotasiP {
+  transform: translateY(-100%);
+}

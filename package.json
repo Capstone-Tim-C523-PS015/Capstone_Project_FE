@@ -34,7 +34,12 @@
     "whatwg-fetch": "^3.6.2"
   },
   "dependencies": {
+    "@fullcalendar/core": "^6.1.9",
+    "@fullcalendar/daygrid": "^6.1.9",
+    "@fullcalendar/interaction": "^6.1.9",
+    "@fullcalendar/timegrid": "^6.1.9",
     "flowbite": "^2.1.1",
+    "fullcalendar": "^6.1.9",
     "postcss-loader": "^7.3.3",
     "regenerator-runtime": "^0.13.9"
   }
