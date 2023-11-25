@@ -1,4 +1,3 @@
-<!-- Register -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,12 +18,40 @@
   </head>
 
   <body class="bg-sky-50 h-screen">
-    <div
-      class="flex flex-row h-full animate-fade-in transition duration-1000 ease-in-out"
-    >
+    <div class="flex flex-row h-full animate-fade-in transition duration-1000 ease-in-out">
+      <div
+        class="flex flex-col grow justify-center bg-gradient-to-r from-neutral-200 from-10% to-sky-300 to-90% shadow-lg"
+      >
+        <div class="flex justify-start items-start">
+          <img src="./svg/cloud.svg" alt="Cloud" class="xl:w-56 sm:w-52 w-14" />
+        </div>
+        <div class="flex gap-2 items-center justify-center">
+          <img
+            class="xl:w-96 md:w-72 sm:w-56 w-40"
+            src="./svg/calendar-register.svg"
+            alt="Calendar Register Logo"
+          />
+        </div>
+        <div class="flex justify-center items-center flex-col text-center">
+          <p
+            class="text-sky-950 font-bold text-[10px ] md:text-base lg:max-w-6xl text-center px-2"
+          >
+            Selamat Datang di Plan Plan
+          </p>
+          <p
+            class="text-sky-950 font-bold text-[10px] md:text-base mt-8 text-center max-w-xs md:max-w-3xl"
+          >
+            Sebuah Langkah Menuju Kesuksesan
+          </p>
+        </div>
+        <div class="flex justify-end">
+          <img src="./svg/cloud.svg" alt="Cloud" class="xl:w-56 md:w-52 sm:w-48 w-24"/>
+        </div>
+      </div>
+
       <!-- Form -->
       <div
-        class="flex flex-col grow items-center justify-center content-center shadow-lg"
+        class="flex flex-col grow items-center justify-center content-center"
       >
         <img
           class="md:w-32 w-24"
@@ -32,14 +59,42 @@
           alt="Logo Plan Plan"
           class=""
         />
-        <p class="text-xl text-sky-950 font-bold text-center px-2 mb-2">
-          Login ke akun kamu
-        </p>
-        <p class="text-sm text-sky-950 font-normal text-center px-2 mb-2">
-          Selamat Datang Kembali!
+        <p
+          class="text-xl text-sky-950 font-bold text-center px-2 mb-2"
+        >
+          Silahkan untuk membuat akun!
         </p>
 
         <form class="w-2/3 mx-auto">
+          <label
+            for="username"
+            class="block mb-2 mt-2 text-sm font-bold text-sky-950"
+            >Nama Pengguna</label
+          >
+          <div class="relative">
+            <div
+              class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+            >
+              <svg
+                class="w-4 h-4 text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 14 18"
+              >
+                <path
+                  d="M7 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm2 1H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"
+                />
+              </svg>
+            </div>
+            <input
+              type="text"
+              id="username"
+              class="bg-gray-50 border border-gray-300 font-semibold text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
+              placeholder="Nama Pengguna"
+            />
+          </div>
+
           <label
             for="email-address-icon"
             class="block mb-2 mt-2 text-sm font-bold text-sky-950"
@@ -100,57 +155,19 @@
               placeholder="Kata Sandi"
             />
           </div>
-          <p class="text-sm text-sky-950 font-bold text-right px-2 mb-2 mt-2">
-          <a href="#">
-            Lupa Kata Sandi?
-          </a>
-          </p>
+
           <button
             type="submit"
-            class="w-full text-white bg-purple-600 hover:bg-sky-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-2"
+            class="w-full text-white bg-purple-600 hover:bg-sky-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-6"
           >
             Daftar
           </button>
           <p
-            class="text-sky-950 font-normal text-[10px] md:text-base lg:max-w-6xl text-center px-2 mt-2"
+            class="text-sky-950 font-normal text-[10px] md:text-base lg:max-w-6xl text-center px-2 mt-4"
           >
-            Belum memiliki akun? <a href="#" class="text-blue-600"> Daftar</a>
+            Sudah memiliki akun? <a href="#" class="text-blue-600"> Masuk!</a>
           </p>
         </form>
-      </div>
-
-      <div
-        class="flex flex-col grow justify-center bg-gradient-to-r from-neutral-200 from-10% to-sky-300 to-90% shadow-lg"
-      >
-        <div class="flex justify-end">
-          <img src="./svg/cloud.svg" alt="Cloud" class="xl:w-56 sm:w-52 w-14" />
-        </div>
-        <div class="flex gap-2 items-center justify-center">
-          <img
-            class="xl:w-56 md:w-52 sm:w-48 w-24"
-            src="./svg/calendar-login.svg"
-            alt="Calendar Login  Logo"
-          />
-        </div>
-        <div class="flex justify-center items-center flex-col text-center">
-          <p
-            class="text-sky-950 font-bold text-[10px ] md:text-base mt-4 text-center"
-          >
-            Selamat Datang di Plan Plan
-          </p>
-          <p
-            class="text-sky-950 font-bold text-[10px] md:text-base mt-2 text-center"
-          >
-            Sebuah Langkah Menuju Kesuksesan
-          </p>
-        </div>
-        <div class="flex justify-start">
-          <img
-            src="./svg/cloud.svg"
-            alt="Cloud"
-            class="xl:w-56 md:w-52 sm:w-48 w-24"
-          />
-        </div>
       </div>
     </div>
   </body>
