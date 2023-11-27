@@ -83,15 +83,19 @@
   box-sizing: border-box; /* Untuk memastikan padding tidak mempengaruhi ukuran total */
 }
 #kalendar .fc-day-header {
-  border: 1px solid #000;
+  border: 1px solid #082f49;
 }
+
 @media screen and (min-width: 600px) {
   #kalendar {
     width: 90%;
   }
-  #kalendar .fc-toolbar-title,
   #kalendar .fc-button {
-    font-size: 16px;
+    font-size: 14px;
+  }
+  #kalendar .fc-toolbar-title {
+    font-size: 24px;
+    font: bold;
   }
 }
 
@@ -100,20 +104,26 @@
     width: 100%;
   }
 
-  #kalendar .fc-toolbar-title,
+  #kalendar .fc-toolbar-title {
+    font-size: 24px;
+    font: bold;
+  }
+
   #kalendar .fc-button {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 460px) {
   #kalendar {
     width: 100%;
   }
-
-  #kalendar .fc-toolbar-title,
+  #kalendar .fc-toolbar-title {
+    font-size: 12px;
+    font: bold;
+  }
   #kalendar .fc-button {
-    font-size: 10px;
+    font-size: 9px;
   }
 }
 
@@ -123,4 +133,19 @@
 
 .rotasiP {
   transform: translateY(-100%);
+}
+
+/* Css untuk Checkbok Notofikasi */
+.on {
+  @apply bg-sky-900;
+}
+
+.blacked-out {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* 0.5 adalah nilai opasitas, sesuaikan sesuai keinginan Anda */
+  transition: background-color 0.3s ease-in-out;
 }
