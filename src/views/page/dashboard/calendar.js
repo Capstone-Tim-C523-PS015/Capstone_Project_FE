@@ -19,7 +19,7 @@ const Kalendar = {
                     <form action="" class="gap-2 w-full flex flex-col lg:gap-8">
                       <div class="flex gap-2 flex-col lg:gap-2">
                         <label for="" class="text-sm text-sky-900 font-bold">Judul Aktivitas</label>
-                        <input type="text" class="w-full rounded-lg" placeholder="Meeting Project">
+                        <input id="judul" type="text" class="w-full rounded-lg" placeholder="Meeting Project">
                       </div>
                       <div class="flex flex-col gap-2">
                         <label for="" class="text-sm text-sky-900 font-bold">Kategori</label>
@@ -79,7 +79,7 @@ const Kalendar = {
                   <h5 class="modal-title text-sky-900 text-lg font-bold border-black border-b-2 px-4" id="dateModalLabel">Detail Acara</h5>
                   <div class="flex justify-between py-2 items-center">
                     <div>
-                      <button><span class="material-symbols-outlined">edit_square</span></button>
+                      <button id="editEvent"><span class="material-symbols-outlined">edit_square</span></button>
                       <button id="deleteEvent"><span class="material-symbols-outlined">delete</span></button>
                     </div>
                     <h5 id="titleEvent" class="text-sky-900 text-xl font-bold"></h5>
@@ -189,24 +189,26 @@ const Kalendar = {
       },
 
       eventClick: function (info) {
-        const modal = document.getElementById("modalEvent");
+        const modal = document.getElementById("dateModal");
+        const modalEvent = document.getElementById("modalEvent");
         const dahboard = document.getElementById("dashboard");
         const btnclose = document.getElementById("closeEvent");
         const iconDelete = document.getElementById("deleteEvent");
+        const editEvent = document.getElementById("editEvent");
         const todate = document.getElementById("todate");
         const verifikasiDelete = document.getElementById("verifikasiDelete");
         const titleEvent = document.getElementById("titleEvent");
         const setatus = document.getElementById("btnstatus");
         const modalBackdrop = document.getElementById("modalBackdrop");
         const batalDelete = document.getElementById("batalDelete");
-        if (modal) {
-          modal.classList.toggle("hidden");
+        if (modalEvent) {
+          modalEvent.classList.toggle("hidden");
           dahboard.classList.add("blacked-out");
           modalBackdrop.classList.remove("hidden");
         }
 
         btnclose.addEventListener("click", () => {
-          modal.classList.add("hidden");
+          modalEvent.classList.add("hidden");
           dahboard.classList.remove("blacked-out");
           modalBackdrop.classList.add("hidden");
         });
@@ -216,6 +218,17 @@ const Kalendar = {
         });
         batalDelete.addEventListener("click", () => {
           verifikasiDelete.classList.add("hidden");
+        });
+        editEvent.addEventListener("click", () => {
+          function editEvent(event) {
+            document.getElementById("judul").value = event.title;
+          }
+          editEvent(info.event);
+          modal.classList.remove("hidden");
+          dahboard.classList.add("blacked-out");
+          modalEvent.classList.add("hidden");
+          modalBackdrop.classList.add("hidden");
+          titleEvent.innerHTML = info.event.title;
         });
 
         titleEvent.innerHTML = info.event.title;
@@ -232,6 +245,9 @@ const Kalendar = {
         todate.innerHTML = info.event.start.toLocaleString();
       },
     });
+    function editEvent(event) {
+      document.getElementById("judul").value = event.title;
+    }
     calendar.render();
     // End API Calendar
 
