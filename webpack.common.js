@@ -39,6 +39,10 @@ module.exports = {
       filename: "dashboard.html",
       template: path.resolve(__dirname, "src/views/dashboard.html"),
     }),
+    new HtmlWebpackPlugin({
+      filename: "profil.html",
+      template: path.resolve(__dirname, "src/views/profil.html"),
+    }),
     new CopyWebpackPlugin({
       patterns: [
         {

@@ -146,109 +146,138 @@ const Kalendar = {
     // End Custome Date
 
     // API Calendar
-    const calendar = new Calendar(calendarEl, {
-      selectable: true,
-      initialView: "dayGridMonth",
-      headerToolbar: {
-        left: "prev,next today",
-        center: "title",
-        right: "dayGridMonth,timeGridWeek,timeGridDay",
-      },
-      eventRender: function (event, element) {
-        // Tambahkan ikon lonceng di sini
-        element.find(".fc-content").prepend('<i class="fas fa-bell"></i>');
-      },
-      events: [
-        {
-          title: "19:00 [Zoom] Cap...",
-          start: "2023-11-25",
-          end: "2023-11-26",
-          status: "Penting",
+    function initializeCalendar() {
+      const calendar = new Calendar(calendarEl, {
+        selectable: true,
+        initialView: "dayGridMonth",
+        headerToolbar: {
+          left: "prev,next today",
+          center: "title",
+          right: "dayGridMonth,timeGridWeek,timeGridDay",
         },
-        {
-          title: "Capstone Desain",
-          start: "2023-11-01",
-          end: "2023-11-02",
-          status: "Dikerjakan",
-          description: "",
+        eventRender: function (event, element) {
+          // Tambahkan ikon lonceng di sini
+          element.find(".fc-content").prepend('<i class="fas fa-bell"></i>');
         },
-      ],
-      aspectRatio: 2,
-      dateClick: function (info) {
-        const modal = document.getElementById("dateModal");
-        const dahboard = document.getElementById("dashboard");
-        const btnclose = document.getElementById("close");
-        if (modal) {
-          modal.classList.toggle("hidden");
-          dahboard.classList.toggle("blacked-out");
-        }
-        btnclose.addEventListener("click", () => {
-          modal.classList.add("hidden");
-          dahboard.classList.remove("blacked-out");
-        });
-      },
+        events: [
+          {
+            title: "19:00 [Zoom] Cap...",
+            start: "2023-11-25",
+            end: "2023-11-26",
+            status: "Penting",
+          },
+          {
+            title: "Capstone Desain",
+            start: "2023-11-01",
+            end: "2023-11-02",
+            status: "Dikerjakan",
+            description: "",
+          },
+        ],
+        aspectRatio: 2,
+        dateClick: handleDateClick,
+        eventClick: handleEventClick,
+      });
 
-      eventClick: function (info) {
-        const modal = document.getElementById("dateModal");
-        const modalEvent = document.getElementById("modalEvent");
-        const dahboard = document.getElementById("dashboard");
-        const btnclose = document.getElementById("closeEvent");
-        const iconDelete = document.getElementById("deleteEvent");
-        const editEvent = document.getElementById("editEvent");
-        const todate = document.getElementById("todate");
-        const verifikasiDelete = document.getElementById("verifikasiDelete");
-        const titleEvent = document.getElementById("titleEvent");
-        const setatus = document.getElementById("btnstatus");
-        const modalBackdrop = document.getElementById("modalBackdrop");
-        const batalDelete = document.getElementById("batalDelete");
-        if (modalEvent) {
-          modalEvent.classList.toggle("hidden");
-          dahboard.classList.add("blacked-out");
-          modalBackdrop.classList.remove("hidden");
-        }
-
-        btnclose.addEventListener("click", () => {
-          modalEvent.classList.add("hidden");
-          dahboard.classList.remove("blacked-out");
-          modalBackdrop.classList.add("hidden");
-        });
-
-        iconDelete.addEventListener("click", () => {
-          verifikasiDelete.classList.toggle("hidden");
-        });
-        batalDelete.addEventListener("click", () => {
-          verifikasiDelete.classList.add("hidden");
-        });
-        editEvent.addEventListener("click", () => {
-          function editEvent(event) {
-            document.getElementById("judul").value = event.title;
-          }
-          editEvent(info.event);
-          modal.classList.remove("hidden");
-          dahboard.classList.add("blacked-out");
-          modalEvent.classList.add("hidden");
-          modalBackdrop.classList.add("hidden");
-          titleEvent.innerHTML = info.event.title;
-        });
-
-        titleEvent.innerHTML = info.event.title;
-        setatus.innerHTML = info.event.extendedProps.status;
-        if (info.event.extendedProps.status === "Penting") {
-          setatus.style.backgroundColor = "red";
-          setatus.style.color = "white";
-        } else if (info.event.extendedProps.status === "Dikerjakan") {
-          setatus.style.backgroundColor = "#7DD3FC";
-          setatus.style.color = "#0C4A6E";
-        } else {
-          setatus.style.backgroundColor = "";
-        }
-        todate.innerHTML = info.event.start.toLocaleString();
-      },
-    });
-    function editEvent(event) {
-      document.getElementById("judul").value = event.title;
+      calendar.render();
     }
-    calendar.render();
+
+    function handleDateClick(info) {
+      const modal = document.getElementById("dateModal");
+      const dahboard = document.getElementById("dashboard");
+      const btnclose = document.getElementById("close");
+
+      if (modal) {
+        modal.classList.toggle("hidden");
+        dahboard.classList.toggle("blacked-out");
+      }
+
+      btnclose.addEventListener("click", () => {
+        modal.classList.add("hidden");
+        dahboard.classList.remove("blacked-out");
+      });
+    }
+
+    function handleEventClick(info) {
+      const modal = document.getElementById("dateModal");
+      const modalEvent = document.getElementById("modalEvent");
+      const dahboard = document.getElementById("dashboard");
+      const btnclose = document.getElementById("closeEvent");
+      const iconDelete = document.getElementById("deleteEvent");
+      const editEventBtn = document.getElementById("editEvent");
+      const todate = document.getElementById("todate");
+      const verifikasiDelete = document.getElementById("verifikasiDelete");
+      const titleEvent = document.getElementById("titleEvent");
+      const setatus = document.getElementById("btnstatus");
+      const modalBackdrop = document.getElementById("modalBackdrop");
+      const batalDelete = document.getElementById("batalDelete");
+
+      if (modalEvent) {
+        modalEvent.classList.toggle("hidden");
+        dahboard.classList.add("blacked-out");
+        modalBackdrop.classList.remove("hidden");
+      }
+
+      btnclose.addEventListener("click", () => {
+        modalEvent.classList.add("hidden");
+        dahboard.classList.remove("blacked-out");
+        modalBackdrop.classList.add("hidden");
+      });
+
+      iconDelete.addEventListener("click", () => {
+        verifikasiDelete.classList.toggle("hidden");
+      });
+
+      batalDelete.addEventListener("click", () => {
+        verifikasiDelete.classList.add("hidden");
+      });
+
+      editEventBtn.addEventListener("click", () => {
+        handleEditEvent(info);
+      });
+
+      titleEvent.innerHTML = info.event.title;
+      setatus.innerHTML = info.event.extendedProps.status;
+
+      if (info.event.extendedProps.status === "Penting") {
+        setatus.style.backgroundColor = "red";
+        setatus.style.color = "white";
+      } else if (info.event.extendedProps.status === "Dikerjakan") {
+        setatus.style.backgroundColor = "#7DD3FC";
+        setatus.style.color = "#0C4A6E";
+      } else {
+        setatus.style.backgroundColor = "";
+      }
+
+      todate.innerHTML = info.event.start.toLocaleString();
+    }
+
+    function handleEditEvent(info) {
+      function editEvent(event) {
+        document.getElementById("judul").value = event.title;
+      }
+
+      editEvent(info.event);
+
+      const modal = document.getElementById("dateModal");
+      const modalEvent = document.getElementById("modalEvent");
+      const modalBackdrop = document.getElementById("modalBackdrop");
+      const dahboard = document.getElementById("dashboard");
+      const btnclose = document.getElementById("close");
+
+      modal.classList.remove("hidden");
+      modalEvent.classList.add("hidden");
+      modalBackdrop.classList.add("hidden");
+
+      btnclose.addEventListener("click", function () {
+        modal.classList.add("hidden");
+        dahboard.classList.remove("blacked-out");
+      });
+    }
+
+    // Inisialisasi kalender
+    initializeCalendar();
+
     // End API Calendar
 
     // Event Toggle Notifikasi Btn
