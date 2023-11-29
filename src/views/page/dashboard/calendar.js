@@ -165,6 +165,7 @@ const Kalendar = {
             start: "2023-11-25",
             end: "2023-11-26",
             status: "Penting",
+            description: "",
           },
           {
             title: "Capstone Desain",
