@@ -1,37 +1,6 @@
 const About = {
   async render() {
     return `
-      <header>
-        <nav class="border-blue-200 shadow-lg bg-sky-200">
-          <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
-            <div class="flex items-center space-x-3 rtl:space-x-reverse">
-              <img src="./images/logo.jpg" alt="Logo Plan Plan" class="w-14" />
-              <span class="self-center text-2xl font-semibold whitespace-nowrap text-sky-900">Plan Plan</span>
-            </div>
-            <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm rounded-lg text-sky-900 md:hidden hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-200">
-              <span class="sr-only">Open main menu</span>
-              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
-              </svg>
-            </button>
-            <div class="hidden w-full md:block md:w-auto lg:flex lg:gap-8 lg:items-center" id="navbar-default">
-              <ul class="flex flex-col items-center p-4 mt-4 font-medium border rounded-lg md:p-0 border-sky-800 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
-                <li>
-                  <a href="#/home" class="block px-3 py-2 font-medium rounded menu-item text-sky-900 focus:font-bold hover:font-bold md:bg-transparent md:p-0 ">Beranda</a>
-                </li>
-                <li>
-                  <a id="home" href="#/about" class="block px-3 py-2 font-medium rounded menu-item text-sky-900 hover:font-bold focus:font-bold md:bg-transparent md:p-0 ">Tentang Kami</a>
-                </li>
-                <div class="items-center px-2 py-2 text-center">
-                    <a class="" href=""><button class="px-3 py-2 font-bold rounded-lg bg-sky-900 text-sky-50 hover:bg-sky-800">Masuk</button></a>
-                </div>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
-
-      <main class="flex max-w-screen-xl p-4 mx-auto">
         <div id="content" class="mx-auto animate-fade-in transition duration-1000 ease-in-out mt-12 ">
             <div class="flex flex-col items-center justify-center pb-40">
               <div class="flex gap-2">
@@ -179,22 +148,6 @@ const About = {
               </div>
             </div>
           </div>
-        </main>
-
-        <footer class="bottom-0 w-full shadow bg-sky-200">
-          <div class="w-[95%] border border-t border-t-sky-900 border-sky-200 mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-            <span class="text-sm text-sky-900">© 2023 <a class="hover:underline">PlanPlan™</a>. All Rights Reserved.</span>
-            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 sm:mt-0">
-              <li>
-                <a href="#/about" class="hover:underline me-4 md:me-6 text-sky-900">Tentang Kami</a>
-              </li>
-              <li>
-                <a href="#/about" class="hover:underline text-sky-900">Kontak</a>
-              </li>
-            </ul>
-          </div>
-        </footer>  
-          
         `;
   },
 
