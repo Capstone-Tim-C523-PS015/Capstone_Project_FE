@@ -24,5 +24,6 @@ module.exports = {
   rules: {
     'no-underscore-dangle': 'off',
     'no-useless-escape': 'off',
+    'no-console': 'off',
   },
 };

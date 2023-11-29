@@ -1,4 +1,5 @@
-/* eslint-disable no-empty-function */
+import Api from '../../scripts/global/api';
+
 const daftar = {
   async render() {
     return `
@@ -25,7 +26,7 @@ const daftar = {
             <img class="w-24 md:w-32" src="./images/logo2.png" alt="Logo Plan Plan" />
             <p class="px-2 mb-2 text-xl font-bold text-center text-sky-900">Silahkan untuk membuat akun!</p>
       
-            <form class="w-2/3 mx-auto">
+            <form id="Regis-form" class="w-2/3 mx-auto">
               <label for="username" class="block mt-2 mb-2 text-sm font-bold text-sky-900">Nama Pengguna</label>
               <div class="relative">
                 <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
@@ -78,6 +79,49 @@ const daftar = {
       contentElement.classList.remove('animate-fade-in');
       contentElement.classList.add('animate-fade-out');
     });
+
+    const regisForm = document.getElementById('Regis-form');
+
+    if (regisForm) {
+      regisForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const name = document.getElementById('username').value;
+        const email = document.getElementById('email-address-icon').value;
+        const password = document.getElementById('password').value;
+
+        const regisData = {
+          name,
+          email,
+          password,
+        };
+
+        try {
+          const options = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(regisData),
+            mode: 'no-cors',
+          };
+
+          // Ganti dengan endpoint yang benar dari Api
+          const response = await fetch(`${Api.RegisUrl}`, options);
+          // Cek status kode respons
+          if (response.ok) {
+            console.log('Daftar Sukses');
+
+            // masuk ke halaman landing-page with login
+            window.location.href = 'dashboard.html';
+          } else {
+            console.error('Daftar Gagal');
+          }
+        } catch (error) {
+          console.error('Error during registration:', error);
+        }
+      });
+    }
   },
 };
 

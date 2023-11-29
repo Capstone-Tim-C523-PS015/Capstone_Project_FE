@@ -1,17 +1,19 @@
-/* eslint-disable no-empty-function */
+/* eslint-disable  */
+import Api from '../../scripts/global/api';
+
 const masuk = {
   async render() {
     return `
-        <main class="h-screen bg-sky-50">
-            <div class="flex flex-row h-full transition duration-1000 ease-in-out animate-fade-in">
-            <!-- Form -->
-            <div class="flex flex-col items-center content-center justify-center shadow-lg grow">
-                <img class="w-24 md:w-32" src="./images/logo2.png" alt="Logo Plan Plan" />
-                <p class="px-2 mb-2 text-xl font-bold text-center text-sky-900">Login ke akun kamu</p>
-                <p class="px-2 mb-2 text-sm font-normal text-center text-sky-900">Selamat Datang Kembali!</p>
-        
-                <form class="w-2/3 mx-auto">
-                <label for="email-address-icon" class="block mt-2 mb-2 text-sm font-bold text-sky-900">Email</label>
+      <main class="h-screen bg-sky-50">
+        <div class="flex flex-row h-full transition duration-1000 ease-in-out animate-fade-in">
+          <!-- Form -->
+          <div class="flex flex-col items-center content-center justify-center shadow-lg grow">
+            <img class="w-24 md:w-32" src="./images/logo2.png" alt="Logo Plan Plan" />
+            <p class="px-2 mb-2 text-xl font-bold text-center text-sky-900">Login ke akun kamu</p>
+            <p class="px-2 mb-2 text-sm font-normal text-center text-sky-900">Selamat Datang Kembali!</p>
+
+            <form id="login-form" class="w-2/3 mx-auto">
+              <label for="email-address-icon" class="block mt-2 mb-2 text-sm font-bold text-sky-900">Email</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                     <svg class="w-4 h-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
@@ -34,17 +36,17 @@ const masuk = {
                 <p class="px-2 mt-2 mb-2 text-sm font-semibold text-right text-sky-600 hover:underline">
                     <a href="#">Lupa Kata Sandi?</a>
                 </p>
-                <button type="submit" class="w-full text-white bg-sky-900 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-2">
-                    Daftar
-                </button>
-                <p class="text-sky-900 font-normal text-[10px] md:text-base lg:max-w-6xl text-center px-2 mt-2">
-                    Belum memiliki akun? <a href="#/daftar" class="text-sky-600 hover:underline">Daftar</a>
-                </p>
-                </form>
+              <button type="submit" id="masuk-btn" class="w-full text-white bg-sky-900 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-2">
+                Masuk
+              </button>
+              <p class="text-sky-900 font-normal text-[10px] md:text-base lg:max-w-6xl text-center px-2 mt-2">
+                Belum memiliki akun? <a href="#/daftar" class="text-sky-600 hover:underline">Daftar</a>
+              </p>
+            </form>
             </div>
-        
-            <div class="flex-col justify-center hidden shadow-lg md:flex grow bg-gradient-to-bl from-sky-200 via-sky-500 to-sky-200">
-                <div class="flex justify-end">
+
+          <div class="flex-col justify-center hidden shadow-lg md:flex grow bg-gradient-to-bl from-sky-200 via-sky-500 to-sky-200">
+            <div class="flex justify-end">
                 <img src="./svg/awan.svg" alt="Cloud" class="xl:w-56 sm:w-52 w-14" />
                 </div>
                 <div class="flex items-center justify-center gap-2">
@@ -57,11 +59,9 @@ const masuk = {
                 <div class="flex justify-start">
                 <img src="./svg/awan.svg" alt="Cloud" class="w-24 xl:w-56 md:w-52 sm:w-48" />
                 </div>
-            </div>
-            </div>
-        </main>
-  
-      `;
+          </div>
+        </div>
+      </main>`;
   },
 
   async afterRender() {
@@ -71,6 +71,45 @@ const masuk = {
       contentElement.classList.remove('animate-fade-in');
       contentElement.classList.add('animate-fade-out');
     });
+    const loginForm = document.getElementById('login-form');
+
+    if (loginForm) {
+      loginForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const email = document.getElementById('email-address-icon').value;
+        const password = document.getElementById('password').value;
+
+        const loginData = {
+          email,
+          password,
+        };
+
+        try {
+          const options = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(loginData),
+            mode: 'no-cors',
+          };
+
+          const response = await fetch(`${Api.LoginUrl}`, options);
+          // Cek status kode respons
+          if (response.status === 200) {
+            console.log('Login successful');
+
+            // masuk ke halaman landing-page with login
+            window.location.href = 'dashboard.html';
+          } else {
+            console.error('Login failed');
+          }
+        } catch (error) {
+          console.error('Error during login:', error);
+        }
+      });
+    }
   },
 };
 
