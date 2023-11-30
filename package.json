@@ -43,8 +43,8 @@
     "whatwg-fetch": "^3.6.2"
   },
   "dependencies": {
-    "favicons": "^7.1.4",
     "flowbite": "^2.1.1",
+    "fullcalendar": "^6.1.9",
     "postcss-loader": "^7.3.3",
     "regenerator-runtime": "^0.13.9",
     "sharp": "^0.33.0"

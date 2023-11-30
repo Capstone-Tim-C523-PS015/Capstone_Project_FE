@@ -6,7 +6,7 @@ const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, 'src/scripts/index.js'),
+    app: path.resolve(__dirname, "src/scripts/index.js"),
   },
   output: {
     filename: "[name].bundle.js",
@@ -19,13 +19,13 @@ module.exports = {
         test: /\.css$/,
         use: [
           {
-            loader: 'style-loader',
+            loader: "style-loader",
           },
           {
-            loader: 'css-loader',
+            loader: "css-loader",
           },
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
           },
         ],
       },
@@ -36,8 +36,16 @@ module.exports = {
       logo: './src/public/icons/logo.png',
     }),
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: path.resolve(__dirname, 'src/views/index.html'),
+      filename: "index.html",
+      template: path.resolve(__dirname, "src/views/index.html"),
+    }),
+    new HtmlWebpackPlugin({
+      filename: "dashboard.html",
+      template: path.resolve(__dirname, "src/views/dashboard.html"),
+    }),
+    new HtmlWebpackPlugin({
+      filename: "profil.html",
+      template: path.resolve(__dirname, "src/views/profil.html"),
     }),
     new HtmlWebpackPlugin({
       filename: 'login.html',
@@ -54,8 +62,8 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, 'src/public/'),
-          to: path.resolve(__dirname, 'dist/'),
+          from: path.resolve(__dirname, "src/public/"),
+          to: path.resolve(__dirname, "dist/"),
         },
       ],
     }),

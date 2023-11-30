@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Icot -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha384-H8R4b6PMtUwnNl/b6M7OCjL8aWMIj1hASMAQjDdq23a1VYjTGaK6hJVRbBzKkqI2"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      .fc-daygrid-day {
+        border: 1px solid #ddd;
+      }
+    </style>
+    <!--  -->
+
+    <title>Dashboard</title>
+  </head>
+  <body class="bg-sky-50">
+    <header class="">
+      <nav
+        class="bg-sky-50 w-full flex justify-center items-center relative pt-4"
+      >
+        <div class="left-[2%] top-[5%] absolute">
+          <a href="index.html">
+            <img src="../Vector.svg" alt="" class="w-12" />
+          </a>
+        </div>
+        <div class="flex gap-2">
+          <img
+            class="md:w-32 w-24"
+            src="../logo2.png"
+            alt="Logo Plan Plan"
+            class=""
+          />
+          <span
+            class="hidden sm:block self-center font-bold text-xl md:text-3xl whitespace-nowrap text-sky-900"
+            >Plan Plan</span
+          >
+        </div>
+      </nav>
+    </header>
+
+    <main id="" class="p-6 pb-36">
+      <section class="pb-8">
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <div class="flex justify-start items-end">
+            <img
+              src="../awan.png"
+              alt=""
+              class="w-32 sm:w-36 lg:w-44 sm:h-[50%]"
+            />
+          </div>
+          <div>
+            <div class="flex flex-col items-center justify-center gap-2">
+              <img
+                src="../ketua.png"
+                alt=""
+                class="w-32 h-32 md:w-48 md:h-48 rounded-full p-2 shadow-xl"
+              />
+              <button
+                class="flex gap-2 items-center justify-center border bg-sky-900 px-3 py-2 rounded-lg text-white font-bold"
+              >
+                <label
+                  for="addfile"
+                  class="flex w-full items-center justify-center cursor-pointer"
+                >
+                  <span class="material-symbols-outlined"> upload </span
+                  >UploadFoto Kamu
+                </label>
+
+                <input type="file" name="" id="addfile" class="hidden" />
+              </button>
+            </div>
+          </div>
+          <div class="flex justify-end items-start">
+            <img
+              src="../awan.png"
+              alt=""
+              class="w-32 sm:w-36 lg:w-44 sm:h-[50%]"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="pt-6 pb-6 shadow-lg bg-sky-100 rounded-lg p-4"
+        style="box-shadow: 4px 4px 6px -6px #999"
+      >
+        <div
+          class="flex flex-col justify-center md:flex-row mx-auto gap-36 sm:w-[80%] lg:w-[70%]"
+        >
+          <form class="w-full md:w-[50%]">
+            <div class="mb-5">
+              <label
+                for="nama"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Nama Pengguna *</label
+              >
+              <input
+                type="text"
+                id="nama"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                placeholder="name@flowbite.com"
+                required
+              />
+            </div>
+            <div class="mb-5">
+              <label
+                for="email"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Email Pengguna *</label
+              >
+              <input
+                type="email"
+                id="email"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                required
+              />
+            </div>
+            <div class="mb-5">
+              <label
+                for="repeat-password"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Ubah Password *</label
+              >
+              <input
+                type="password"
+                id="repeat-password"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="text-white bg-green-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Simpan password
+            </button>
+          </form>
+
+          <form class="w-full md:w-[50%] flex flex-col gap-4">
+            <div>
+              <label
+                for="message"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Tentang Saya</label
+              >
+              <textarea
+                id="message"
+                rows="4"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Leave a comment..."
+              ></textarea>
+            </div>
+            <div class="flex justify-end">
+              <button
+                type="submit"
+                class="text-white bg-green-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Simpan Profil
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-sky-200 shadow fixed bottom-0 w-full z-50">
+      <div
+        class="w-[98%] border border-t-black mx-auto max-w-screen-xl p-4 flex flex-col justify-center items-center sm:flex sm:flex-row sm:items-center sm:justify-between"
+      >
+        <span class="text-sm text-sky-900"
+          >© 2023
+          <a href="https://flowbite.com/" class="hover:underline">PlanPlan™</a>.
+          All Rights Reserved.
+        </span>
+        <ul
+          class="flex flex-wrap gap-3 items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0 border"
+        >
+          <li>
+            <a href="#/about" class="text-sky-900">Tentang Kami</a>
+          </li>
+          <li>
+            <a href="" class="text-sky-900">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
