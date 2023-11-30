@@ -43,6 +43,10 @@
     "whatwg-fetch": "^3.6.2"
   },
   "dependencies": {
+    "@fullcalendar/core": "^6.1.9",
+    "@fullcalendar/daygrid": "^6.1.9",
+    "@fullcalendar/interaction": "^6.1.9",
+    "@fullcalendar/timegrid": "^6.1.9",
     "favicons": "^7.1.4",
     "flowbite": "^2.1.1",
     "postcss-loader": "^7.3.3",

@@ -50,4 +50,4 @@ const nama = document.getElementById("nama");
 profil.addEventListener("click", function () {
   spanrofil.classList.toggle("rotasi");
   nama.classList.toggle("hidden");
-});
+
