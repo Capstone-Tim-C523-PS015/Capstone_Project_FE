@@ -5,7 +5,9 @@
   "main": "webpack.common.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js ",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "server": "nodemon ./src/public/auth/server.js",
+    "lint": "eslint ./src"
   },
   "author": "",
   "license": "ISC",
@@ -17,30 +19,34 @@
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
-    "eslint": "^8.17.0",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.54.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "favicons-webpack-plugin": "^6.0.1",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "jasmine-ajax": "^4.0.0",
     "jasmine-core": "^4.2.0",
     "node-sass": "^9.0.0",
+    "nodemon": "^3.0.1",
     "postcss": "^8.4.31",
     "sass": "^1.68.0",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.1",
     "tailwindcss": "^3.3.5",
-    "webpack": "^5.88.2",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.89.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.2",
     "webpack-merge": "^5.8.0",
     "whatwg-fetch": "^3.6.2"
   },
   "dependencies": {
-    "@fullcalendar/core": "^6.1.9",
-    "@fullcalendar/daygrid": "^6.1.9",
-    "@fullcalendar/interaction": "^6.1.9",
-    "@fullcalendar/timegrid": "^6.1.9",
     "flowbite": "^2.1.1",
     "fullcalendar": "^6.1.9",
     "postcss-loader": "^7.3.3",
-    "regenerator-runtime": "^0.13.9"
+    "regenerator-runtime": "^0.13.9",
+    "sharp": "^0.33.0"
   }
 }

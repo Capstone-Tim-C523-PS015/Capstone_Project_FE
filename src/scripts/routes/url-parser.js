@@ -9,9 +9,6 @@ const UrlParser = {
     const url = window.location.hash.slice(1).toLowerCase();
     return this._urlSplitter(url);
   },
-
-  _urlSplitter(url) {
-    const urlsSplits = url.split("/");
     return {
       resource: urlsSplits[1] || null,
       id: urlsSplits[2] || null,
@@ -20,10 +17,6 @@ const UrlParser = {
   },
 
   _urlCombiner(splitedUrl) {
-    return (
-      (splitedUrl.resource ? `/${splitedUrl.resource}` : "/") +
-      (splitedUrl.id ? "/:id" : "") +
-      (splitedUrl.verb ? `/${splitedUrl.verb}` : "")
     );
   },
 };

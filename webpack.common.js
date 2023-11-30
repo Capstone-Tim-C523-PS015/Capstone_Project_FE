@@ -32,6 +32,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new FaviconsWebpackPlugin({
+      logo: './src/public/icons/logo.png',
+    }),
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: path.resolve(__dirname, "src/views/index.html"),
@@ -43,6 +46,18 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: "profil.html",
       template: path.resolve(__dirname, "src/views/profil.html"),
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'login.html',
+      template: path.resolve(__dirname, 'src/views/login.html'),
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'dashboard.html',
+      template: path.resolve(__dirname, 'src/views/dashboard.html'),
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'daftar.html',
+      template: path.resolve(__dirname, 'src/views/daftar.html'),
     }),
     new CopyWebpackPlugin({
       patterns: [
