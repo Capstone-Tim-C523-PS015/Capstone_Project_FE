@@ -33,31 +33,31 @@ module.exports = {
   },
   plugins: [
     new FaviconsWebpackPlugin({
-      logo: './src/public/icons/logo.png',
+      logo: './src/public/icons/icon.jpg',
     }),
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: path.resolve(__dirname, "src/views/index.html"),
     }),
     new HtmlWebpackPlugin({
-      filename: "dashboard.html",
-      template: path.resolve(__dirname, "src/views/dashboard.html"),
-    }),
-    new HtmlWebpackPlugin({
       filename: "profil.html",
-      template: path.resolve(__dirname, "src/views/profil.html"),
+      template: path.resolve(__dirname, "src/views/admin/profil.html"),
     }),
     new HtmlWebpackPlugin({
       filename: 'login.html',
-      template: path.resolve(__dirname, 'src/views/login.html'),
+      template: path.resolve(__dirname, 'src/views/admin/login.html'),
     }),
     new HtmlWebpackPlugin({
       filename: 'dashboard.html',
-      template: path.resolve(__dirname, 'src/views/dashboard.html'),
+      template: path.resolve(__dirname, 'src/views/page/dashboard/dashboard.html'),
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'indexdash.html',
+      template: path.resolve(__dirname, 'src/views/page/dashboard/indexdash.html'),
     }),
     new HtmlWebpackPlugin({
       filename: 'daftar.html',
-      template: path.resolve(__dirname, 'src/views/daftar.html'),
+      template: path.resolve(__dirname, 'src/views/admin/daftar.html'),
     }),
     new CopyWebpackPlugin({
       patterns: [

@@ -4,9 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-H8R4b6PMtUwnNl/b6M7OCjL8aWMIj1hASMAQjDdq23a1VYjTGaK6hJVRbBzKkqI2" crossorigin="anonymous"/>
-    <title>PlanPlan</title>
+    <title>Masuk||PlanPlan</title>
 </head>
 <body>
     <main class="h-screen bg-sky-50">
@@ -69,6 +72,8 @@
       </main>
 
       <script>
+        import '../../styles/index.css';
+        
         window.addEventListener('beforeunload', () => {
             // Tambahkan kelas animasi saat meninggalkan halaman
             const contentElement = document.getElementById('content');
@@ -106,7 +111,7 @@
                         console.log('Login successful');
 
                         // masuk ke halaman landing-page with login
-                        window.location.href = './dashboard.html';
+                        window.location.replace = './dashboard.html';
                     } else {
                         console.error('Login failed');
                     }

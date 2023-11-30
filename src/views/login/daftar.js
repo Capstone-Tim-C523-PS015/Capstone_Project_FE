@@ -103,7 +103,6 @@ const daftar = {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(regisData),
-            mode: 'no-cors',
           };
 
           // Ganti dengan endpoint yang benar dari Api

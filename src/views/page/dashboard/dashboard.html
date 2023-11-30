@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Icot -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
@@ -26,12 +25,12 @@
   </head>
   <body class="bg-sky-50">
     <header class="">
-      <nav class="bg-sky-200 border-gray-200 relative w-full dark:bg-gray-900">
+      <nav class="relative w-full border-gray-200 bg-sky-200 dark:bg-gray-900">
         <div
-          class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+          class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto"
         >
           <a
-            href="#home"
+            href="./indexdash.html#/dashboard"
             class="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <img src="../logo.jpg" alt="Logo Plan Plan" class="w-14" />
@@ -43,7 +42,7 @@
           <button
             data-collapse-toggle="navbar-default"
             type="button"
-            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             aria-controls="navbar-default"
             aria-expanded="false"
           >
@@ -66,15 +65,15 @@
           </button>
           <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <div
-              class="flex justify-center items-center gap-4 absolute md:relative bg-sky-200 w-full start-0 z-50"
+              class="absolute z-50 flex items-center justify-center w-full gap-4 md:relative bg-sky-200 start-0"
             >
               <ul
-                class="font-medium flex items-start w-full flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+                class="flex flex-col items-start w-full p-4 mt-4 font-medium md:p-0 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
               >
                 <li>
                   <a
-                    href="#/calendar"
-                    class="block menu-item py-2 px-3 font-medium text-sky-900 rounded md:bg-transparent md:p-0 focus:text-white md:focus:text-sky-900"
+                    href="#/kalender"
+                    class="block px-3 py-2 font-medium rounded menu-item text-sky-900 md:bg-transparent md:p-0 focus:text-white md:focus:text-sky-900"
                     aria-current="page"
                     >Calender</a
                   >
@@ -83,7 +82,7 @@
                   <a
                     id="home"
                     href="#/todolist"
-                    class="block menu-item py-2 px-3 font-medium text-sky-900 rounded md:bg-transparent md:p-0 focus:text-white md:focus:text-sky-900"
+                    class="block px-3 py-2 font-medium rounded menu-item text-sky-900 md:bg-transparent md:p-0 focus:text-white md:focus:text-sky-900"
                     >Todo-List</a
                   >
                 </li>
@@ -91,22 +90,22 @@
                   <a
                     id="home"
                     href="#/histori"
-                    class="block menu-item py-2 px-3 font-medium text-sky-900 rounded md:bg-transparent md:p-0 focus:text-white md:focus:text-sky-900"
+                    class="block px-3 py-2 font-medium rounded menu-item text-sky-900 md:bg-transparent md:p-0 focus:text-white md:focus:text-sky-900"
                     >Histori</a
                   >
                 </li>
               </ul>
               <div
-                class="md:px-3 md:scroll-py-10 md:relative flex flex-col absolute justify-center items-center cursor-pointer"
+                class="absolute flex flex-col items-center justify-center cursor-pointer md:px-3 md:scroll-py-10 md:relative"
               >
                 <div
-                  class="shadow-xl w-16 h-16 rounded-full flex justify-center items-center relative"
+                  class="relative flex items-center justify-center w-16 h-16 rounded-full shadow-xl"
                 >
                   <img
                     id="profil"
                     src="../ketua.png"
                     alt=""
-                    class="w-14 h-14 rounded-full bg-cover"
+                    class="bg-cover rounded-full w-14 h-14"
                   />
                   <span
                     id="spanProfil"
@@ -117,7 +116,7 @@
                 </div>
                 <p
                   id="nama"
-                  class="absolute hidden mt-20 w-28 transition text-sky-900 font-semibold"
+                  class="absolute hidden mt-20 font-semibold transition w-28 text-sky-900"
                 >
                   <a href="./profil.html">Ilham Maulana</a>
                 </p>
@@ -128,27 +127,30 @@
       </nav>
     </header>
 
-    <main id="dashboard" class="contentDashboard p-6 pb-36"></main>
-    <footer class="bg-sky-200 shadow fixed bottom-0 w-full z-50">
-      <div
-        class="w-[98%] border border-t-black mx-auto max-w-screen-xl p-4 flex flex-col justify-center items-center sm:flex sm:flex-row sm:items-center sm:justify-between"
-      >
-        <span class="text-sm text-sky-900"
-          >© 2023
-          <a href="https://flowbite.com/" class="hover:underline">PlanPlan™</a>.
-          All Rights Reserved.
-        </span>
-        <ul
-          class="flex flex-wrap gap-3 items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0 border"
-        >
+    <main id="dashboard" class="p-6 contentDashboard pb-36"></main>
+    
+    <footer class="bottom-0 w-full shadow bg-sky-200">
+      <div class="w-[95%] border border-t border-t-sky-900 border-sky-200 mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+        <span class="text-sm text-sky-900">© 2023 <a class="hover:underline">PlanPlan™</a>. All Rights Reserved.</span>
+        <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 sm:mt-0">
           <li>
-            <a href="#/about" class="text-sky-900">Tentang Kami</a>
+            <a href="#/about" class="hover:underline me-4 md:me-6 text-sky-900">Tentang Kami</a>
           </li>
           <li>
-            <a href="" class="text-sky-900">Contact</a>
+            <a href="#/about" class="hover:underline text-sky-900">Kontak</a>
           </li>
         </ul>
       </div>
-    </footer>
+    </footer> 
+    <script>
+      const spanrofil = document.getElementById("spanProfil");
+      const profil = document.getElementById("profil");
+      const nama = document.getElementById("nama");
+
+      profil.addEventListener("click", function () {
+        spanrofil.classList.toggle("rotasi");
+        nama.classList.toggle("hidden");
+      });
+    </script>
   </body>
 </html>

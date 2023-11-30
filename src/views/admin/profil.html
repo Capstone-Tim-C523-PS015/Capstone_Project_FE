@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Icot -->
+    <!-- Icon -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
@@ -22,12 +22,12 @@
     </style>
     <!--  -->
 
-    <title>Dashboard</title>
+    <title>Your Profile</title>
   </head>
   <body class="bg-sky-50">
     <header class="">
       <nav
-        class="bg-sky-50 w-full flex justify-center items-center relative pt-4"
+        class="relative flex items-center justify-center w-full pt-4 bg-sky-50"
       >
         <div class="left-[2%] top-[5%] absolute">
           <a href="index.html">
@@ -36,13 +36,13 @@
         </div>
         <div class="flex gap-2">
           <img
-            class="md:w-32 w-24"
+            class="w-24 md:w-32"
             src="../logo2.png"
             alt="Logo Plan Plan"
             class=""
           />
           <span
-            class="hidden sm:block self-center font-bold text-xl md:text-3xl whitespace-nowrap text-sky-900"
+            class="self-center hidden text-xl font-bold sm:block md:text-3xl whitespace-nowrap text-sky-900"
             >Plan Plan</span
           >
         </div>
@@ -51,8 +51,8 @@
 
     <main id="" class="p-6 pb-36">
       <section class="pb-8">
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <div class="flex justify-start items-end">
+        <div class="flex flex-col justify-center gap-4 sm:flex-row">
+          <div class="flex items-end justify-start">
             <img
               src="../awan.png"
               alt=""
@@ -64,14 +64,14 @@
               <img
                 src="../ketua.png"
                 alt=""
-                class="w-32 h-32 md:w-48 md:h-48 rounded-full p-2 shadow-xl"
+                class="w-32 h-32 p-2 rounded-full shadow-xl md:w-48 md:h-48"
               />
               <button
-                class="flex gap-2 items-center justify-center border bg-sky-900 px-3 py-2 rounded-lg text-white font-bold"
+                class="flex items-center justify-center gap-2 px-3 py-2 font-bold text-white border rounded-lg bg-sky-900"
               >
                 <label
                   for="addfile"
-                  class="flex w-full items-center justify-center cursor-pointer"
+                  class="flex items-center justify-center w-full cursor-pointer"
                 >
                   <span class="material-symbols-outlined"> upload </span
                   >UploadFoto Kamu
@@ -81,7 +81,7 @@
               </button>
             </div>
           </div>
-          <div class="flex justify-end items-start">
+          <div class="flex items-start justify-end">
             <img
               src="../awan.png"
               alt=""
@@ -92,7 +92,7 @@
       </section>
 
       <section
-        class="pt-6 pb-6 shadow-lg bg-sky-100 rounded-lg p-4"
+        class="p-4 pt-6 pb-6 rounded-lg shadow-lg bg-sky-100"
         style="box-shadow: 4px 4px 6px -6px #999"
       >
         <div
@@ -174,7 +174,7 @@
         </div>
       </section>
     </main>
-    <footer class="bg-sky-200 shadow fixed bottom-0 w-full z-50">
+    <footer class="fixed bottom-0 z-50 w-full shadow bg-sky-200">
       <div
         class="w-[98%] border border-t-black mx-auto max-w-screen-xl p-4 flex flex-col justify-center items-center sm:flex sm:flex-row sm:items-center sm:justify-between"
       >
@@ -184,7 +184,7 @@
           All Rights Reserved.
         </span>
         <ul
-          class="flex flex-wrap gap-3 items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0 border"
+          class="flex flex-wrap items-center gap-3 mt-3 text-sm font-medium text-gray-500 border dark:text-gray-400 sm:mt-0"
         >
           <li>
             <a href="#/about" class="text-sky-900">Tentang Kami</a>
@@ -195,5 +195,9 @@
         </ul>
       </div>
     </footer>
+
+    <script>
+      import '../../styles/index.css';
+    </script>
   </body>
 </html>

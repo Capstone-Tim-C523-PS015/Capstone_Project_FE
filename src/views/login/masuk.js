@@ -92,7 +92,6 @@ const masuk = {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(loginData),
-            mode: 'no-cors',
           };
 
           const response = await fetch(`${Api.LoginUrl}`, options);
