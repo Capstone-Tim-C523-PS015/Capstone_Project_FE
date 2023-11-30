@@ -1,5 +1,5 @@
-import About from "../../views/page/about_2";
-import Home from "../../views/page/home_2";
+import About from "../../views/page/about";
+import Home from "../../views/page/home";
 import Kalendar from "../../views/page/dashboard/calendar";
 import TodoList from "../../views/page/dashboard/todoList";
 import Histori from "../../views/page/dashboard/histori";
@@ -11,3 +11,5 @@ const routes = {
   "/todolist": TodoList,
   "/histori": Histori,
 };
+
+export default routes;
