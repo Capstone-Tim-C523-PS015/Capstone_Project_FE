@@ -1,30 +1,57 @@
-import 'flowbite';
-import '../styles/index.css';
-import App from '../views/app';
+import "flowbite";
+import "../styles/index.css";
+import App from "../views/app";
+import "fullcalendar";
+import { createElement } from "@fullcalendar/core/preact";
 
-const app = new App({ content: document.querySelector('.content') });
-window.addEventListener('hashchange', () => {
+const app = new App({ content: document.querySelector(".content") });
+window.addEventListener("hashchange", () => {
+  app.renderPage();
+}); 
+
+window.addEventListener("load", () => {
   app.renderPage();
 });
 
-window.addEventListener('load', () => {
-  app.renderPage();
+const dashboard = new App({
+  content: document.querySelector(".contentDashboard"),
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener("hashchange", () => {
+  dashboard.renderPage();
+});
+
+window.addEventListener("load", () => {
+  dashboard.renderPage();
+});
+const indexdashboard = new App({
+  content: document.querySelector(".contentindexdash"),
+});
+
+window.addEventListener("hashchange", () => {
+  indexdashboard.renderPage();
+});
+
+window.addEventListener("load", () => {
+  indexdashboard.renderPage();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
   // Ambil semua elemen dengan kelas 'menu-item'
-  const menuItems = document.querySelectorAll('.menu-item');
+  var menuItems = document.querySelectorAll(".menu-item");
 
   // Tambahkan event listener untuk setiap elemen menu
-  menuItems.forEach((item) => {
-    item.addEventListener('click', () => {
+  menuItems.forEach(function (item) {
+    item.addEventListener("click", function () {
       // Hapus kelas 'active' dari semua elemen menu
-      menuItems.forEach((menuItem) => {
-        menuItem.classList.remove('active');
+      menuItems.forEach(function (menuItem) {
+        menuItem.classList.remove("active");
       });
 
       // Tambahkan kelas 'active' ke elemen menu yang diklik
-      item.classList.add('active');
+      item.classList.add("active");
     });
   });
 });
+
+

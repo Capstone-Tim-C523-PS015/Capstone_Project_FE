@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha384-H8R4b6PMtUwnNl/b6M7OCjL8aWMIj1hASMAQjDdq23a1VYjTGaK6hJVRbBzKkqI2"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      .fc-daygrid-day {
+        border: 1px solid #ddd;
+      }
+    </style>
+    <!--  -->
+
+    <title>Dashboard</title>
+  </head>
+  <body class="bg-sky-50">
+    <header>
+      <nav class="border-blue-200 shadow-lg bg-sky-200">
+        <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
+          <div class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="./images/logo.jpg" alt="Logo Plan Plan" class="w-14" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap text-sky-900">Plan Plan</span>
+          </div>
+          <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm rounded-lg text-sky-900 md:hidden hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-200">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+            </svg>
+          </button>
+          <div class="hidden w-full md:block md:w-auto lg:flex lg:gap-8 lg:items-center" id="navbar-default">
+            <ul class="flex flex-col items-center p-4 mt-4 font-medium border rounded-lg md:p-0 border-sky-800 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+              <li>
+                <a href="./indexdash.html#/dashboard" class="block px-3 py-2 font-medium rounded menu-item text-sky-900 hover:font-bold md:bg-transparent md:p-0 ">Beranda</a>
+              </li>
+              <li>
+                <a id="home" href="#/kalender" class="block px-3 py-2 font-medium rounded menu-item text-sky-900 hover:font-bold md:bg-transparent md:p-0 ">Kalender</a>
+              </li>
+              <li>
+                <a id="home" href="#/todolist" class="block px-3 py-2 font-medium rounded menu-item text-sky-900 hover:font-bold md:bg-transparent md:p-0 ">Todo-List</a>
+              </li>
+              <li>
+                <a id="home" href="#/histori" class="block px-3 py-2 font-medium rounded menu-item text-sky-900 hover:font-bold md:bg-transparent md:p-0 ">Histori</a>
+              </li>
+              <li class="flex flex-col items-center justify-center px-3 mt-3 cursor-pointer md:scroll-py-10 md:mt-0 md:relative">
+                <div class="relative flex items-center justify-center w-16 h-16 rounded-full shadow-xl">
+                  <img id="profil" src="./images/ilham.png" alt="" class="w-16 h-16 bg-cover rounded-full" />
+                  <img id="spanProfil" class="absolute mt-14 ml-[65%] first-letter:rounded-full transition" src="./svg/buttondown.svg" alt="">
+                </div>
+                <div id="dropdown" class="absolute z-10 hidden px-3 py-1 mt-0 ml-56 font-semibold md:ml-0 md:mt-36 w-36 bg-sky-200">
+                  <p class="transition text-sky-900">
+                    <a href="./profil.html">Profile saya</a>
+                  </p>
+                  <p class="transition text-sky-900">
+                    <a href="./index.html#/beranda">keluar</a>
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="dashboard" class="p-6 contentDashboard pb-36"></main>
+    
+    <footer class="bottom-0 w-full shadow bg-sky-200">
+      <div class="w-[95%] border border-t border-t-sky-900 border-sky-200 mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+        <span class="text-sm text-sky-900">© 2023 <a class="hover:underline">PlanPlan™</a>. All Rights Reserved.</span>
+        <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 sm:mt-0">
+          <li>
+            <a href="#/about" class="hover:underline me-4 md:me-6 text-sky-900">Tentang Kami</a>
+          </li>
+          <li>
+            <a href="#/about" class="hover:underline text-sky-900">Kontak</a>
+          </li>
+        </ul>
+      </div>
+    </footer> 
+    <script>
+      const spanrofil = document.getElementById("spanProfil");
+      const profil = document.getElementById("profil");
+      const dropdown = document.getElementById("dropdown");
+
+      profil.addEventListener("click", function () {
+        spanrofil.classList.toggle("rotasi");
+        dropdown.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>
