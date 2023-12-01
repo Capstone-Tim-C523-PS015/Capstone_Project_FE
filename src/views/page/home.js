@@ -7,8 +7,8 @@ const Home = {
             <div class="flex lg:justify-around flex-wrap-reverse lg:items-center mt-4">
               <div>
                 <h1 class="font-black text-xl md:text-4xl" style="letter-spacing: 2px;">Selamat datang di PlanPlan!</h1>
-                <p class="max-w-xs text-sky-900 my-4 text-xs md:text-">Tempat untuk merencanakan dan mengelola aktivitas atau tugas dalam kehidupan sehari-hari. Bergabunglah sekarang dan jadikan setiap langkah Anda menuju kesuksesan yang lebih teratur dan menyenangkan.</p>
-                <button id="scrollButton" class="w-44 flex justify-center items-center gap-2 font-bold rounded-lg bg-sky-900 text-sky-50 h-10">Mulai Menjelajah <span class="material-symbols-outlined font-bold">arrow_right_alt</span></button>
+                <p class="max-w-xs md:max-w-xl text-sky-900 my-4 text-xs md:text-base">Tempat untuk merencanakan dan mengelola aktivitas atau tugas dalam kehidupan sehari-hari. Bergabunglah sekarang dan jadikan setiap langkah Anda menuju kesuksesan yang lebih teratur dan menyenangkan.</p>
+                <button id="scrollButton" class=" w-48 flex justify-center items-center gap-2 font-bold rounded-lg bg-sky-900 text-sky-50 h-10">Mulai Menjelajah <span class="material-symbols-outlined font-bold">arrow_right_alt</span></button>
               </div>
               <div><img src="./svg/hero1.svg" alt="" class="lg:h-80 w-[575px] h-48"/></div>
             </div>

@@ -31,7 +31,7 @@
 }
 
 .active {
-  @apply bg-blue-500 text-sky-950 font-bold;
+  @apply bg-sky-300 text-sky-900 font-bold;
 }
 
 #calendar {

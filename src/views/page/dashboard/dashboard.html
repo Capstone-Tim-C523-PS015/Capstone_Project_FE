@@ -24,104 +24,48 @@
     <title>Dashboard</title>
   </head>
   <body class="bg-sky-50">
-    <header class="">
-      <nav class="relative w-full border-gray-200 bg-sky-200 dark:bg-gray-900">
-        <div
-          class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto"
-        >
-          <a
-            href="./indexdash.html#/dashboard"
-            class="flex items-center space-x-3 rtl:space-x-reverse"
-          >
-            <img src="../logo.jpg" alt="Logo Plan Plan" class="w-14" />
-            <span
-              class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-sky-900"
-              >Plan Plan</span
-            >
-          </a>
-          <button
-            data-collapse-toggle="navbar-default"
-            type="button"
-            class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-default"
-            aria-expanded="false"
-          >
+    <header>
+      <nav class="border-blue-200 shadow-lg bg-sky-200">
+        <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
+          <div class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="./images/logo.jpg" alt="Logo Plan Plan" class="w-14" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap text-sky-900">Plan Plan</span>
+          </div>
+          <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm rounded-lg text-sky-900 md:hidden hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-200">
             <span class="sr-only">Open main menu</span>
-            <svg
-              class="w-5 h-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M1 1h15M1 7h15M1 13h15"
-              />
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
             </svg>
           </button>
-          <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-            <div
-              class="absolute z-50 flex items-center justify-center w-full gap-4 md:relative bg-sky-200 start-0"
-            >
-              <ul
-                class="flex flex-col items-start w-full p-4 mt-4 font-medium md:p-0 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
-              >
-                <li>
-                  <a
-                    href="#/kalender"
-                    class="block px-3 py-2 font-medium rounded menu-item text-sky-900 md:bg-transparent md:p-0 focus:text-white md:focus:text-sky-900"
-                    aria-current="page"
-                    >Calender</a
-                  >
-                </li>
-                <li>
-                  <a
-                    id="home"
-                    href="#/todolist"
-                    class="block px-3 py-2 font-medium rounded menu-item text-sky-900 md:bg-transparent md:p-0 focus:text-white md:focus:text-sky-900"
-                    >Todo-List</a
-                  >
-                </li>
-                <li>
-                  <a
-                    id="home"
-                    href="#/histori"
-                    class="block px-3 py-2 font-medium rounded menu-item text-sky-900 md:bg-transparent md:p-0 focus:text-white md:focus:text-sky-900"
-                    >Histori</a
-                  >
-                </li>
-              </ul>
-              <div
-                class="absolute flex flex-col items-center justify-center cursor-pointer md:px-3 md:scroll-py-10 md:relative"
-              >
-                <div
-                  class="relative flex items-center justify-center w-16 h-16 rounded-full shadow-xl"
-                >
-                  <img
-                    id="profil"
-                    src="../ketua.png"
-                    alt=""
-                    class="bg-cover rounded-full w-14 h-14"
-                  />
-                  <span
-                    id="spanProfil"
-                    class="material-symbols-outlined absolute mt-10 ml-[65%] bg-black text-white rounded-full transition"
-                  >
-                    check_circle
-                  </span>
+          <div class="hidden w-full md:block md:w-auto lg:flex lg:gap-8 lg:items-center" id="navbar-default">
+            <ul class="flex flex-col items-center p-4 mt-4 font-medium border rounded-lg md:p-0 border-sky-800 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+              <li>
+                <a href="./indexdash.html#/dashboard" class="block px-3 py-2 font-medium rounded menu-item text-sky-900 hover:font-bold md:bg-transparent md:p-0 ">Beranda</a>
+              </li>
+              <li>
+                <a id="home" href="#/kalender" class="block px-3 py-2 font-medium rounded menu-item text-sky-900 hover:font-bold md:bg-transparent md:p-0 ">Kalender</a>
+              </li>
+              <li>
+                <a id="home" href="#/todolist" class="block px-3 py-2 font-medium rounded menu-item text-sky-900 hover:font-bold md:bg-transparent md:p-0 ">Todo-List</a>
+              </li>
+              <li>
+                <a id="home" href="#/histori" class="block px-3 py-2 font-medium rounded menu-item text-sky-900 hover:font-bold md:bg-transparent md:p-0 ">Histori</a>
+              </li>
+              <li class="flex flex-col items-center justify-center px-3 mt-3 cursor-pointer md:scroll-py-10 md:mt-0 md:relative">
+                <div class="relative flex items-center justify-center w-16 h-16 rounded-full shadow-xl">
+                  <img id="profil" src="./images/ilham.png" alt="" class="w-16 h-16 bg-cover rounded-full" />
+                  <img id="spanProfil" class="absolute mt-14 ml-[65%] first-letter:rounded-full transition" src="./svg/buttondown.svg" alt="">
                 </div>
-                <p
-                  id="nama"
-                  class="absolute hidden mt-20 font-semibold transition w-28 text-sky-900"
-                >
-                  <a href="./profil.html">Ilham Maulana</a>
-                </p>
-              </div>
-            </div>
+                <div id="dropdown" class="absolute z-10 hidden px-3 py-1 mt-0 ml-56 font-semibold md:ml-0 md:mt-36 w-36 bg-sky-200">
+                  <p class="transition text-sky-900">
+                    <a href="./profil.html">Profile saya</a>
+                  </p>
+                  <p class="transition text-sky-900">
+                    <a href="./index.html#/beranda">keluar</a>
+                  </p>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
@@ -145,11 +89,11 @@
     <script>
       const spanrofil = document.getElementById("spanProfil");
       const profil = document.getElementById("profil");
-      const nama = document.getElementById("nama");
+      const dropdown = document.getElementById("dropdown");
 
       profil.addEventListener("click", function () {
         spanrofil.classList.toggle("rotasi");
-        nama.classList.toggle("hidden");
+        dropdown.classList.toggle("hidden");
       });
     </script>
   </body>

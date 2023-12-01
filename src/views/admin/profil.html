@@ -27,22 +27,22 @@
   <body class="bg-sky-50">
     <header class="">
       <nav
-        class="relative flex items-center justify-center w-full pt-4 bg-sky-50"
+        class="relative flex items-center justify-center w-full pt-5 bg-sky-50"
       >
-        <div class="left-[2%] top-[5%] absolute">
-          <a href="index.html">
-            <img src="../Vector.svg" alt="" class="w-12" />
+        <div class="left-[2%] top-[20%] absolute">
+          <a type="button" id="go-back-btn" class="cursor-pointer ">
+            <img src="./svg/arrowback.svg" alt="" class="w-12" />
           </a>
         </div>
         <div class="flex gap-2">
           <img
-            class="w-24 md:w-32"
-            src="../logo2.png"
+            class="w-14 md:w-20"
+            src="./images/logo.jpg"
             alt="Logo Plan Plan"
             class=""
           />
           <span
-            class="self-center hidden text-xl font-bold sm:block md:text-3xl whitespace-nowrap text-sky-900"
+            class="self-center hidden text-xl font-bold sm:block md:text-2xl whitespace-nowrap text-sky-900"
             >Plan Plan</span
           >
         </div>
@@ -51,30 +51,30 @@
 
     <main id="" class="p-6 pb-36">
       <section class="pb-8">
-        <div class="flex flex-col justify-center gap-4 sm:flex-row">
+        <div class="flex justify-center gap-14">
           <div class="flex items-end justify-start">
             <img
-              src="../awan.png"
+              src="./svg/awan.svg"
               alt=""
-              class="w-32 sm:w-36 lg:w-44 sm:h-[50%]"
+              class="h-10 lg:w-32 lg:h-20 w-22"
             />
           </div>
           <div>
-            <div class="flex flex-col items-center justify-center gap-2">
+            <div class="flex flex-col items-center justify-center gap-5" >
               <img
-                src="../ketua.png"
+                src="./images/ilham.png"
                 alt=""
-                class="w-32 h-32 p-2 rounded-full shadow-xl md:w-48 md:h-48"
+                class="p-1 rounded-full shadow-xl w-36 h-36 md:w-48 md:h-48" style="box-shadow: 4px 4px 6px -6px #000000"
               />
               <button
-                class="flex items-center justify-center gap-2 px-3 py-2 font-bold text-white border rounded-lg bg-sky-900"
+                class="flex items-center justify-center gap-2 px-3 py-2 font-bold border rounded-lg w-44 md:w-64 text-sky-50 bg-sky-900"
               >
                 <label
                   for="addfile"
                   class="flex items-center justify-center w-full cursor-pointer"
                 >
                   <span class="material-symbols-outlined"> upload </span
-                  >UploadFoto Kamu
+                  ><p class="text-xs md:text-xl">UploadFoto Kamu</p>
                 </label>
 
                 <input type="file" name="" id="addfile" class="hidden" />
@@ -83,66 +83,68 @@
           </div>
           <div class="flex items-start justify-end">
             <img
-              src="../awan.png"
+              src="./svg/awan.svg"
               alt=""
-              class="w-32 sm:w-36 lg:w-44 sm:h-[50%]"
+              class="h-10 lg:w-32 lg:h-20 w-22"
             />
           </div>
         </div>
       </section>
 
       <section
-        class="p-4 pt-6 pb-6 rounded-lg shadow-lg bg-sky-100"
-        style="box-shadow: 4px 4px 6px -6px #999"
+        class="pb-6"
       >
         <div
-          class="flex flex-col justify-center md:flex-row mx-auto gap-36 sm:w-[80%] lg:w-[70%]"
+          class="flex flex-col justify-center md:flex-row mx-auto gap-20 p-10 sm:w-[80%] lg:w-[70%] bg-sky-100 rounded-lg shadow-lg border border-sky-900 "
+          style="box-shadow: 7px 7px 6px -6px #000000"
         >
           <form class="w-full md:w-[50%]">
             <div class="mb-5">
               <label
                 for="nama"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                class="block mb-2 text-sm font-medium text-sky-900"
                 >Nama Pengguna *</label
               >
               <input
                 type="text"
                 id="nama"
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                placeholder="name@flowbite.com"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-sky-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 "
+                placeholder="Nama Pengguna"
                 required
               />
             </div>
             <div class="mb-5">
               <label
                 for="email"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                class="block mb-2 text-sm font-medium text-sky-900 "
                 >Email Pengguna *</label
               >
               <input
                 type="email"
                 id="email"
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-sky-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5"
+                placeholder="Email@gmail.com"
                 required
               />
             </div>
             <div class="mb-5">
               <label
                 for="repeat-password"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                class="block mb-2 text-sm font-medium text-sky-900 "
                 >Ubah Password *</label
               >
               <input
                 type="password"
                 id="repeat-password"
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-sky-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5  "
+                placeholder="********"
                 required
               />
             </div>
 
             <button
               type="submit"
-              class="text-white bg-green-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              class="text-sky-50   bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
             >
               Simpan password
             </button>
@@ -152,20 +154,20 @@
             <div>
               <label
                 for="message"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                class="block mb-2 text-sm font-medium text-sky-900 "
                 >Tentang Saya</label
               >
               <textarea
                 id="message"
                 rows="4"
-                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Leave a comment..."
+                class="block p-2.5 w-full text-sm text-sky-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-green-500 focus:border-green-500 "
+                placeholder="Deskripsi Diri..... "
               ></textarea>
             </div>
             <div class="flex justify-end">
               <button
                 type="submit"
-                class="text-white bg-green-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                class="text-white bg-green-700 hover:bg-gree-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
               >
                 Simpan Profil
               </button>
@@ -197,7 +199,9 @@
     </footer>
 
     <script>
-      import '../../styles/index.css';
+      document.getElementById("go-back-btn").addEventListener("click", function() {
+        window.history.back();
+      });
     </script>
   </body>
 </html>

@@ -1,5 +1,8 @@
-import { Calendar } from "fullcalendar";
-import "../../../styles/index.css";
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-use-before-define */
+/* eslint-disable func-names */
+import { Calendar } from 'fullcalendar';
+import '../../../styles/index.css';
 
 const Kalendar = {
   async render() {
@@ -129,15 +132,15 @@ const Kalendar = {
   },
 
   async afterRender() {
-    const calendarEl = document.getElementById("kalendar");
+    const calendarEl = document.getElementById('kalendar');
     // Custome Date
     document
-      .getElementById("customDate")
-      .addEventListener("input", function () {
+      .getElementById('customDate')
+      .addEventListener('input', function () {
         const selectedDate = new Date(this.value);
-        const options = { month: "long", year: "numeric", day: "numeric" };
-        const formattedDate = selectedDate.toLocaleDateString("en-US", options);
-        document.getElementById("formattedDate").textContent = formattedDate;
+        const options = { month: 'long', year: 'numeric', day: 'numeric' };
+        const formattedDate = selectedDate.toLocaleDateString('en-US', options);
+        document.getElementById('formattedDate').textContent = formattedDate;
       });
     // End Custome Date
 
@@ -145,30 +148,30 @@ const Kalendar = {
     function initializeCalendar() {
       const calendar = new Calendar(calendarEl, {
         selectable: true,
-        initialView: "dayGridMonth",
+        initialView: 'dayGridMonth',
         headerToolbar: {
-          left: "prev,next today",
-          center: "title",
-          right: "dayGridMonth,timeGridWeek,timeGridDay",
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay',
         },
-        eventRender: function (event, element) {
+        eventRender(event, element) {
           // Tambahkan ikon lonceng di sini
-          element.find(".fc-content").prepend('<i class="fas fa-bell"></i>');
+          element.find('.fc-content').prepend('<i class="fas fa-bell"></i>');
         },
         events: [
           {
-            title: "19:00 [Zoom] Cap...",
-            start: "2023-11-25",
-            end: "2023-11-26",
-            status: "Penting",
-            description: "",
+            title: '19:00 [Zoom] Cap...',
+            start: '2023-11-25',
+            end: '2023-11-26',
+            status: 'Penting',
+            description: '',
           },
           {
-            title: "Capstone Desain",
-            start: "2023-11-01",
-            end: "2023-11-02",
-            status: "Dikerjakan",
-            description: "",
+            title: 'Capstone Desain',
+            start: '2023-11-01',
+            end: '2023-11-02',
+            status: 'Dikerjakan',
+            description: '',
           },
         ],
         aspectRatio: 2,
@@ -180,70 +183,70 @@ const Kalendar = {
     }
 
     function handleDateClick(info) {
-      const modal = document.getElementById("dateModal");
-      const dahboard = document.getElementById("dashboard");
-      const btnclose = document.getElementById("close");
+      const modal = document.getElementById('dateModal');
+      const dahboard = document.getElementById('dashboard');
+      const btnclose = document.getElementById('close');
 
       if (modal) {
-        modal.classList.toggle("hidden");
-        dahboard.classList.toggle("blacked-out");
+        modal.classList.toggle('hidden');
+        dahboard.classList.toggle('blacked-out');
       }
 
-      btnclose.addEventListener("click", () => {
-        modal.classList.add("hidden");
-        dahboard.classList.remove("blacked-out");
+      btnclose.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        dahboard.classList.remove('blacked-out');
       });
     }
 
     function handleEventClick(info) {
-      const modal = document.getElementById("dateModal");
-      const modalEvent = document.getElementById("modalEvent");
-      const dahboard = document.getElementById("dashboard");
-      const btnclose = document.getElementById("closeEvent");
-      const iconDelete = document.getElementById("deleteEvent");
-      const editEventBtn = document.getElementById("editEvent");
-      const todate = document.getElementById("todate");
-      const verifikasiDelete = document.getElementById("verifikasiDelete");
-      const titleEvent = document.getElementById("titleEvent");
-      const setatus = document.getElementById("btnstatus");
-      const modalBackdrop = document.getElementById("modalBackdrop");
-      const batalDelete = document.getElementById("batalDelete");
+      const modal = document.getElementById('dateModal');
+      const modalEvent = document.getElementById('modalEvent');
+      const dahboard = document.getElementById('dashboard');
+      const btnclose = document.getElementById('closeEvent');
+      const iconDelete = document.getElementById('deleteEvent');
+      const editEventBtn = document.getElementById('editEvent');
+      const todate = document.getElementById('todate');
+      const verifikasiDelete = document.getElementById('verifikasiDelete');
+      const titleEvent = document.getElementById('titleEvent');
+      const setatus = document.getElementById('btnstatus');
+      const modalBackdrop = document.getElementById('modalBackdrop');
+      const batalDelete = document.getElementById('batalDelete');
 
       if (modalEvent) {
-        modalEvent.classList.toggle("hidden");
-        dahboard.classList.add("blacked-out");
-        modalBackdrop.classList.remove("hidden");
+        modalEvent.classList.toggle('hidden');
+        dahboard.classList.add('blacked-out');
+        modalBackdrop.classList.remove('hidden');
       }
 
-      btnclose.addEventListener("click", () => {
-        modalEvent.classList.add("hidden");
-        dahboard.classList.remove("blacked-out");
-        modalBackdrop.classList.add("hidden");
+      btnclose.addEventListener('click', () => {
+        modalEvent.classList.add('hidden');
+        dahboard.classList.remove('blacked-out');
+        modalBackdrop.classList.add('hidden');
       });
 
-      iconDelete.addEventListener("click", () => {
-        verifikasiDelete.classList.toggle("hidden");
+      iconDelete.addEventListener('click', () => {
+        verifikasiDelete.classList.toggle('hidden');
       });
 
-      batalDelete.addEventListener("click", () => {
-        verifikasiDelete.classList.add("hidden");
+      batalDelete.addEventListener('click', () => {
+        verifikasiDelete.classList.add('hidden');
       });
 
-      editEventBtn.addEventListener("click", () => {
+      editEventBtn.addEventListener('click', () => {
         handleEditEvent(info);
       });
 
       titleEvent.innerHTML = info.event.title;
       setatus.innerHTML = info.event.extendedProps.status;
 
-      if (info.event.extendedProps.status === "Penting") {
-        setatus.style.backgroundColor = "red";
-        setatus.style.color = "white";
-      } else if (info.event.extendedProps.status === "Dikerjakan") {
-        setatus.style.backgroundColor = "#7DD3FC";
-        setatus.style.color = "#0C4A6E";
+      if (info.event.extendedProps.status === 'Penting') {
+        setatus.style.backgroundColor = 'red';
+        setatus.style.color = 'white';
+      } else if (info.event.extendedProps.status === 'Dikerjakan') {
+        setatus.style.backgroundColor = '#7DD3FC';
+        setatus.style.color = '#0C4A6E';
       } else {
-        setatus.style.backgroundColor = "";
+        setatus.style.backgroundColor = '';
       }
 
       todate.innerHTML = info.event.start.toLocaleString();
@@ -251,24 +254,24 @@ const Kalendar = {
 
     function handleEditEvent(info) {
       function editEvent(event) {
-        document.getElementById("judul").value = event.title;
+        document.getElementById('judul').value = event.title;
       }
 
       editEvent(info.event);
 
-      const modal = document.getElementById("dateModal");
-      const modalEvent = document.getElementById("modalEvent");
-      const modalBackdrop = document.getElementById("modalBackdrop");
-      const dahboard = document.getElementById("dashboard");
-      const btnclose = document.getElementById("close");
+      const modal = document.getElementById('dateModal');
+      const modalEvent = document.getElementById('modalEvent');
+      const modalBackdrop = document.getElementById('modalBackdrop');
+      const dahboard = document.getElementById('dashboard');
+      const btnclose = document.getElementById('close');
 
-      modal.classList.remove("hidden");
-      modalEvent.classList.add("hidden");
-      modalBackdrop.classList.add("hidden");
+      modal.classList.remove('hidden');
+      modalEvent.classList.add('hidden');
+      modalBackdrop.classList.add('hidden');
 
-      btnclose.addEventListener("click", function () {
-        modal.classList.add("hidden");
-        dahboard.classList.remove("blacked-out");
+      btnclose.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        dahboard.classList.remove('blacked-out');
       });
     }
 
@@ -278,35 +281,35 @@ const Kalendar = {
     // End API Calendar
 
     // Event Toggle Notifikasi Btn
-    const toggle = document.getElementById("toggle");
-    const indicator = document.getElementById("indicator");
+    const toggle = document.getElementById('toggle');
+    const indicator = document.getElementById('indicator');
 
-    toggle.addEventListener("change", () => {
+    toggle.addEventListener('change', () => {
       const isChecked = toggle.checked;
-      const label = isChecked ? "On" : "Off";
+      const label = isChecked ? 'On' : 'Off';
 
       indicator.style.transform = isChecked
-        ? "translateX(100%)"
-        : "translateX(0)";
+        ? 'translateX(100%)'
+        : 'translateX(0)';
 
-      indicator.classList.toggle("on", isChecked);
+      indicator.classList.toggle('on', isChecked);
     });
     // End Togle Notofikasi Btn
 
     // Event Btn Category
-    const modal = document.getElementById("dateModal");
+    const modal = document.getElementById('dateModal');
 
-    const btnEvent = document.getElementById("btnEvent");
-    const btnTask = document.getElementById("btnTask");
+    const btnEvent = document.getElementById('btnEvent');
+    const btnTask = document.getElementById('btnTask');
 
-    btnEvent.addEventListener("click", function () {
-      btnEvent.classList.add("bg-sky-300");
-      btnTask.classList.remove("bg-sky-300");
+    btnEvent.addEventListener('click', () => {
+      btnEvent.classList.add('bg-sky-300');
+      btnTask.classList.remove('bg-sky-300');
     });
 
-    btnTask.addEventListener("click", function () {
-      btnTask.classList.add("bg-sky-300");
-      btnEvent.classList.remove("bg-sky-300");
+    btnTask.addEventListener('click', () => {
+      btnTask.classList.add('bg-sky-300');
+      btnEvent.classList.remove('bg-sky-300');
     });
     // End Btn Category
   },
