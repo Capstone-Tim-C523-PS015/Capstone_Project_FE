@@ -1,57 +1,57 @@
-import "flowbite";
-import "../styles/index.css";
-import App from "../views/app";
-import "fullcalendar";
-import { createElement } from "@fullcalendar/core/preact";
+/* eslint-disable import/order */
+/* eslint-disable no-unused-vars */
+import 'flowbite';
+import '../styles/index.css';
+import App from '../views/app';
+import 'fullcalendar';
+import { createElement } from '@fullcalendar/core/preact';
 
-const app = new App({ content: document.querySelector(".content") });
-window.addEventListener("hashchange", () => {
+const app = new App({ content: document.querySelector('.content') });
+window.addEventListener('hashchange', () => {
   app.renderPage();
-}); 
+});
 
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   app.renderPage();
 });
 
 const dashboard = new App({
-  content: document.querySelector(".contentDashboard"),
+  content: document.querySelector('.contentDashboard'),
 });
 
-window.addEventListener("hashchange", () => {
+window.addEventListener('hashchange', () => {
   dashboard.renderPage();
 });
 
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   dashboard.renderPage();
 });
 const indexdashboard = new App({
-  content: document.querySelector(".contentindexdash"),
+  content: document.querySelector('.contentindexdash'),
 });
 
-window.addEventListener("hashchange", () => {
+window.addEventListener('hashchange', () => {
   indexdashboard.renderPage();
 });
 
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   indexdashboard.renderPage();
 });
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', () => {
   // Ambil semua elemen dengan kelas 'menu-item'
-  var menuItems = document.querySelectorAll(".menu-item");
+  const menuItems = document.querySelectorAll('.menu-item');
 
   // Tambahkan event listener untuk setiap elemen menu
-  menuItems.forEach(function (item) {
-    item.addEventListener("click", function () {
+  menuItems.forEach((item) => {
+    item.addEventListener('click', () => {
       // Hapus kelas 'active' dari semua elemen menu
-      menuItems.forEach(function (menuItem) {
-        menuItem.classList.remove("active");
+      menuItems.forEach((menuItem) => {
+        menuItem.classList.remove('active');
       });
 
       // Tambahkan kelas 'active' ke elemen menu yang diklik
-      item.classList.add("active");
+      item.classList.add('active');
     });
   });
 });
-
-
