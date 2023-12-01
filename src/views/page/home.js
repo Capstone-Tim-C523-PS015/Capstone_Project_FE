@@ -28,7 +28,7 @@ const Home = {
                   Sebuah Fitur untuk membantu Anda dalam mengelola dan mengatur prioritas task mana yang perlu dikerjakan terlebih dahulu. Task akan dikelompokkan ke dalam kuadran yang sesuai. Kuadran yang dimaksud yaitu akan dikelompokkan berdasarkan mendesak, penting, ditunda, dan selesai, sehingga Anda dapat memiliki visibilitas yang jelas terhadap task mana yang menjadi prioritas Anda terlebih dahulu untuk dikerjakan.
                 </p>
                 <div class="w-full mt-4">
-                  <a href="#/daftar">
+                  <a href="./daftar.html">
                   <button class="flex justify-center items-center gap-2 font-bold rounded-lg bg-sky-900 text-sky-50 w-44 h-10 shadow-lg">Mulai Mencoba<span class="material-symbols-outlined font-bold">arrow_right_alt</span></button>
                   </a>
                 </div>
@@ -42,7 +42,7 @@ const Home = {
                   Sebuah alat untuk membantu Anda dalam mengelola waktu dan sebagai pengingat Aktivitas atau Acara yang ingin Anda lakukan pada hari itu. Tampilan Kalender dapat diubah formatnya sesuai dengan keinginan Anda yaitu harian, mingguan, dan bulanan. Terdapat dua pilihan status yaitu sebagai Event dan Task. Jika memilih Task maka akan otomatis ditambahkan pada Fitur Todo-List.
                 </p>
                 <div class="w-full mt-4">
-                  <a href="#/daftar">
+                  <a href="./daftar.html">
                     <button class="flex justify-center items-center gap-2 font-bold rounded-lg bg-sky-900 text-sky-50 w-44 h-10 shadow-lg">Mulai Mencoba<span class="material-symbols-outlined font-bold">arrow_right_alt</span></button>
                   </a>
                 </div>
@@ -57,7 +57,7 @@ const Home = {
                   Sebuah Fitur untuk membantu Anda dalam mengelola dan menyelesaikan task atau tugas dalam kehidupan sehari hari. Fitur ini dapat menetapkan tenggat waktu, judul task, dan deksripsi task, dapat juga melakukan perubahan status yang dimana berisikan beberapa status yaitu dikerjakan, menunggu, revisi, dan selesai
                 </p>
                 <div class="w-full mt-4">
-                  <a href="#/daftar">
+                  <a href="./daftar.html">
                     <button class="flex justify-center items-center gap-2 font-bold rounded-lg bg-sky-900 text-sky-50 w-44 h-10 shadow-lg">Mulai Mencoba<span class="material-symbols-outlined font-bold">arrow_right_alt</span></button>
                   </a>
                 </div>
@@ -71,7 +71,7 @@ const Home = {
                 Sebuah Fitur yang dirancang untuk memberikan pemberitahuan terkait event atau deadline task, hal ini membantu Anda untuk tetap terhubung dengan setiap perkembangan progress dan tanggung jawab Anda. Anda dapat menetapkan jadwal notifikasi sesuai dengan kebutuhan Anda
                 </p>
                 <div class="w-full mt-4">
-                  <a href="#/daftar">
+                  <a href="./daftar.html">
                     <button class="flex justify-center items-center gap-2 font-bold rounded-lg bg-sky-900 text-sky-50 w-44 h-10 shadow-lg">Mulai Mencoba<span class="material-symbols-outlined font-bold">arrow_right_alt</span></button>
                   </a>
               </div>
@@ -89,7 +89,7 @@ const Home = {
                   Sebuah fitur untuk membantu anda dalam mengelola dan mengatur prioritas task mana yang perlu dikerjakan terlebih dahulu. Task akan dikelompokkan kedalam kuadran kuadran yang sesuai. Kuadran yang dimaksud yaitu akan dikelompokkan berdasarakan mendesak, penting, ditunda, dan selesai, Sehingga Anda dapat memiliki visibilitas yang jelas terhadap task mana yang menjadi prioritas Anda terlebih dahulu untuk dikerjakan.
                 </p>
                 <div class="w-full mt-4">
-                  <a href="#/daftar">
+                  <a href="./daftar.html">
                     <button class="flex justify-center items-center gap-2 font-bold rounded-lg bg-sky-900 text-sky-50 w-44 h-10 shadow-lg">Mulai Mencoba<span class="material-symbols-outlined font-bold">arrow_right_alt</span></button>
                   </a>
                 </div>
