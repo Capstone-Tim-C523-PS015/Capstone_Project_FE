@@ -20,7 +20,7 @@ const Home = {
         </div> 
       </div>
 
-      <div class="target pb-32 lg:mx-6">
+      <div id="event-kosong" class="target pb-32 lg:mx-6 hidden">
         <div class="flex flex-col items-center justify-center">
           <div class=" border-black border-b-2 md:w-96 w-72 text-center">
             <h1 class="text-3xl font-bold text-sky-900">PRIORITAS</h1>
@@ -35,7 +35,39 @@ const Home = {
         </div>
       </div>
 
-      <div class=" pb-32 lg:mx-6">
+
+      
+
+      <div id="event-true" class="hidden w-full px-6  >
+        <div class="flex justify-center w-full">
+          <div class="lg:w-[70%] mx-auto h-screen flex flex-col justify-center">
+          <div class=" border-black mx-auto border-b-2 md:w-96 w-72 text-center">
+            <h1 class="text-3xl font-bold text-sky-900">PRIORITAS</h1>
+          </div>
+            <div class="flex w-full justify-center pt-8">
+              <div class="w-1/2 flex flex-col text-center border-sky-950 border-r-2 border-b-2 h-96 bg-sky-200 ">
+                <h1 class="py-4 bg-sky-900 text-white text-2xl font-semibold">Mendesak</h1>
+                <div>
+                  <p>Pengerjaan Capstone</p>
+                </div>
+              </div>
+              <div class="w-1/2 flex flex-col text-center border-sky-950 border-b-2 h-96 bg-sky-200 ">
+                <h1 class="py-4 bg-sky-900 text-white text-2xl font-semibold">Penting</h1>
+              </div>
+            </div>
+            <div class="flex w-full">
+              <div class="w-1/2 flex flex-col text-center border-sky-950 border-r-2 h-96 bg-sky-200 ">
+                <h1 class="py-4 bg-sky-900 text-white text-2xl font-semibold">Menunggu</h1>
+              </div>
+              <div class="w-1/2 flex flex-col text-center border-sky-950 h-96 bg-sky-200 ">
+                <h1 class="py-4 bg-sky-900 text-white text-2xl font-semibold">Selesai</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class=" pb-32 lg:mx-6 pt-32">
         <div class="flex flex-col items-center justify-center">
           <div class=" border-black border-b-2 md:w-96 w-72 text-center">
             <h1 class="text-3xl font-bold text-sky-900">KALENDER</h1>
@@ -44,7 +76,7 @@ const Home = {
         </div>
       </div>
 
-      <div class="pb-32 lg:mx-6 ">
+      <div id="noEventList" class="pb-32 lg:mx-6 ">
         <div class="flex flex-col items-center justify-center">
           <div class=" border-black border-b-2 md:w-96 w-72 text-center">
             <h1 class="text-3xl font-bold text-sky-900">TODO-LIST</h1>
@@ -59,7 +91,15 @@ const Home = {
         </div>
       </div>
 
-      <div class="pb-10 lg:mx-6 ">
+      <div id="eventList" class="hidden pb-32">
+        <div class=" border-black border-b-2 md:w-96 w-72 text-center mx-auto">
+          <h1 class="text-3xl font-bold text-sky-900">TODO-LIST</h1>
+        </div>
+        <h1 class="text-black text-2xl border-sky-900 border-b-2 w-full font-bold pb-4">Hari Ini</h1>
+        <div id="card" class="pt-4 flex flex-wrap gap-2 justify-center"></div>
+      </div>
+
+      <div id="event-No-histori" class="pb-10 lg:mx-6 ">
         <div class="flex flex-col items-center justify-center">
           <div class=" border-black border-b-2 md:w-96 w-72 text-center">
             <h1 class="text-3xl font-bold text-sky-900">HISTORI</h1>
@@ -72,6 +112,13 @@ const Home = {
             </div>
           </div>
         </div>
+      </div>
+
+      <div id="eventHistori" class="hidden pb-32">
+        <div class=" border-black border-b-2 md:w-96 w-72 text-center mx-auto">
+          <h1 class="text-3xl font-bold text-sky-900">HISTORI</h1>
+        </div>
+        <div id="cardHistori" class="pt-4 flex flex-wrap gap-2 justify-center"></div>
       </div>
     </div>
       
@@ -106,10 +153,143 @@ const Home = {
       },
 
       initialView: "dayGridMonth",
-      events: [],
+      events: [
+        {
+          title: "19:00 [Zoom] Cap...",
+          start: "2023-11-25",
+          end: "2023-11-26",
+          status: "Penting",
+          description: "",
+        },
+        {
+          title: "Capstone Desain",
+          start: "2023-11-01",
+          end: "2023-11-02",
+          status: "Dikerjakan",
+          description: "",
+        },
+        {
+          title: "Capstone Desain",
+          start: "2023-12-01",
+          end: "2023-12-02",
+          status: "Dikerjakan",
+          description: "",
+        },
+      ],
       aspectRatio: 2,
     });
     calendar.render();
+
+    // Todo Prioritas
+    if (calendar.getEvents().length === 0) {
+      document.getElementById("event-kosong").classList.remove("hidden");
+      document.getElementById("event-true").classList.add("hidden");
+    } else {
+      document.getElementById("event-true").classList.remove("hidden");
+      document.getElementById("event-kosong").classList.add("hidden");
+    }
+    console.log(calendar.getEvents().length);
+
+    // Todo List
+    if (calendar.getEvents().length === 0) {
+      document.getElementById("noEventList").classList.remove("hidden");
+      document.getElementById("eventList").classList.add("hidden");
+    } else {
+      document.getElementById("eventList").classList.remove("hidden");
+      document.getElementById("noEventList").classList.add("hidden");
+    }
+
+    // Todo Histori
+    if (calendar.getEvents().length === 0) {
+      document.getElementById("event-No-histori").classList.remove("hidden");
+      document.getElementById("eventHistori").classList.add("hidden");
+    } else {
+      document.getElementById("eventHistori").classList.remove("hidden");
+      document.getElementById("event-No-histori").classList.add("hidden");
+    }
+
+    const events = [
+      {
+        title: "19:00 [Zoom] Cap...",
+        start: "2023-11-25",
+        end: "2023-11-26",
+        status: "Penting",
+        description: "",
+      },
+      {
+        title: "Capstone Desain",
+        start: "2023-11-01",
+        end: "2023-11-02",
+        status: "selesai",
+        description: "",
+      },
+      {
+        title: "Capstone Desain",
+        start: "2023-12-01",
+        end: "2023-12-02",
+        status: "selesai",
+        description: "",
+      },
+    ];
+    const cardContainer = document.getElementById("card");
+    events.forEach((event) => {
+      const eventCard = document.createElement("div");
+      eventCard.className =
+        "w-80 border-sky-900 border py-3 px-2 bg-sky-100 rounded-lg";
+
+      const titleElement = document.createElement("h1");
+      titleElement.className =
+        "text-lg font-bold border-sky-900 border-b-2 w-full text-sky-900";
+      titleElement.textContent = event.title;
+      eventCard.appendChild(titleElement);
+
+      const detailsContainer = document.createElement("div");
+      const statusElement = document.createElement("span");
+      statusElement.textContent = "Status : ";
+      const dateElement = document.createElement("p");
+      dateElement.textContent = event.start; // Anda dapat memformat tanggal sesuai kebutuhan
+      const descriptionElement = document.createElement("div");
+      descriptionElement.innerHTML = `<p>${event.description}</p>`;
+
+      detailsContainer.appendChild(statusElement);
+      detailsContainer.appendChild(dateElement);
+      detailsContainer.appendChild(descriptionElement);
+
+      eventCard.appendChild(detailsContainer);
+
+      cardContainer.appendChild(eventCard);
+    });
+
+    const cardHistori = document.getElementById("cardHistori");
+
+    events.forEach((event) => {
+      if (event.status === "selesai") {
+        const eventCard = document.createElement("div");
+        eventCard.className =
+          "w-80 border-sky-900 border py-3 px-2 bg-sky-100 rounded-lg";
+
+        const titleElement = document.createElement("h1");
+        titleElement.className =
+          "text-lg font-bold border-sky-900 border-b-2 w-full text-sky-900";
+        titleElement.textContent = event.title;
+        eventCard.appendChild(titleElement);
+
+        const detailsContainer = document.createElement("div");
+        const statusElement = document.createElement("span");
+        statusElement.textContent = `Status : ${event.status}`;
+        const dateElement = document.createElement("p");
+        dateElement.textContent = event.start;
+        const descriptionElement = document.createElement("div");
+        descriptionElement.innerHTML = `<p>${event.description}</p>`;
+
+        detailsContainer.appendChild(statusElement);
+        detailsContainer.appendChild(dateElement);
+        detailsContainer.appendChild(descriptionElement);
+
+        eventCard.appendChild(detailsContainer);
+        cardHistori.appendChild(eventCard);
+      }
+    });
   },
 };
 
