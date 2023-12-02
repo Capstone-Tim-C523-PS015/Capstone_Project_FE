@@ -25,8 +25,6 @@ const TodoList = {
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
                       </svg>
                       <h2 class="px-6 text-sky-950 text-2xl justify-center items-center font-semibold" id="judulTodo">Membuat Desain<h2>
-                      <h2 class="px-6 text-sky-950 text-2xl justify-center items-center font-semibold" id="judulTodo">Membuat Desain<h2>
-                      <h2 class="px-6 text-sky-950 text-2xl justify-center items-center font-semibold" id="judulTodo">Membuat Desain<h2>
                       <svg class="w-6 h-6 text-sky-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 21">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 3.464V1.1m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175C17 15.4 17 16 16.462 16H3.538C3 16 3 15.4 3 14.807c0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 10 3.464ZM1.866 8.832a8.458 8.458 0 0 1 2.252-5.714m14.016 5.714a8.458 8.458 0 0 0-2.252-5.714M6.54 16a3.48 3.48 0 0 0 6.92 0H6.54Z"/>
                       </svg>
@@ -37,9 +35,13 @@ const TodoList = {
                       <button type="button" id="btn-dikerjakan" class="text-sky-900 bg-sky-300 hover:bg-sky-400 border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-sm px-3 py-0.5 text-center me-2 mb-2">Dikerjakan</button>
                       <button type="button" id="btn-selesai" class="text-sky-900 bg-sky-100 hover:bg-sky-200 border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-sm px-3 py-0.5 text-center me-2 mb-2">Selesai</button>
                     </div>
-                    <div class="flex flex-row gap-2 py-2">
-                      <div class="">
-                      </div>
+                    <div class="flex flex-row gap-2 py-2 border-sky-950 border-b-2"">
+                      <h2 class="flex flex-grow text-sky-950 text font-semibold" id="deadline-tanggal">
+                        Senin, 20 November 2023 - 23.59 WIB
+                      </h2>
+                      <h2>
+                        -1 Hari
+                      </h2>
                     </div>
                   </div>
               </div>

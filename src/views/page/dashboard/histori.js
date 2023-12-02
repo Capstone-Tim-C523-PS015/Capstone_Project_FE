@@ -9,7 +9,9 @@ const Histori = {
             `;
   },
 
-  async afterRender() {},
+  async afterRender() {
+    //
+  },
 };
 
 export default Histori;
