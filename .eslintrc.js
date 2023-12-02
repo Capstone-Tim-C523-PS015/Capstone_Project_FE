@@ -25,5 +25,6 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'no-useless-escape': 'off',
     'no-console': 'off',
+    'linebreak-style': 'off',
   },
 };
