@@ -47,8 +47,8 @@ const Home = {
             <div class="flex w-full justify-center pt-8">
               <div class="w-1/2 flex flex-col text-center border-sky-950 border-r-2 border-b-2 h-96 bg-sky-200 ">
                 <h1 class="py-4 bg-sky-900 text-white text-2xl font-semibold">Mendesak</h1>
-                <div>
-                  <p>Pengerjaan Capstone</p>
+                <div id="list-prioritas">
+                  
                 </div>
               </div>
               <div class="w-1/2 flex flex-col text-center border-sky-950 border-b-2 h-96 bg-sky-200 ">
@@ -127,6 +127,29 @@ const Home = {
   },
 
   async afterRender() {
+    fetch("http://be.gunz.my.id/todo", {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer",
+      },
+    })
+      .then((response) => {
+        // Periksa apakah respons berhasil (status code 200-299)
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        // Mengembalikan hasil parsing respons JSON
+        return response.json();
+      })
+      .then((data) => {
+        // Handle the response data here
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+      });
+
     window.addEventListener("beforeunload", function () {
       // Tambahkan kelas animasi saat meninggalkan halaman
       const contentElement = document.getElementById("content");
@@ -180,34 +203,6 @@ const Home = {
     });
     calendar.render();
 
-    // Todo Prioritas
-    if (calendar.getEvents().length === 0) {
-      document.getElementById("event-kosong").classList.remove("hidden");
-      document.getElementById("event-true").classList.add("hidden");
-    } else {
-      document.getElementById("event-true").classList.remove("hidden");
-      document.getElementById("event-kosong").classList.add("hidden");
-    }
-    console.log(calendar.getEvents().length);
-
-    // Todo List
-    if (calendar.getEvents().length === 0) {
-      document.getElementById("noEventList").classList.remove("hidden");
-      document.getElementById("eventList").classList.add("hidden");
-    } else {
-      document.getElementById("eventList").classList.remove("hidden");
-      document.getElementById("noEventList").classList.add("hidden");
-    }
-
-    // Todo Histori
-    if (calendar.getEvents().length === 0) {
-      document.getElementById("event-No-histori").classList.remove("hidden");
-      document.getElementById("eventHistori").classList.add("hidden");
-    } else {
-      document.getElementById("eventHistori").classList.remove("hidden");
-      document.getElementById("event-No-histori").classList.add("hidden");
-    }
-
     const events = [
       {
         title: "19:00 [Zoom] Cap...",
@@ -217,47 +212,84 @@ const Home = {
         description: "",
       },
       {
-        title: "Capstone Desain",
+        title: "Capstone Item",
         start: "2023-11-01",
         end: "2023-11-02",
         status: "selesai",
         description: "",
       },
       {
-        title: "Capstone Desain",
+        title: "Capstone Feature",
         start: "2023-12-01",
         end: "2023-12-02",
         status: "selesai",
         description: "",
       },
     ];
+    console.log(events.length);
+    // Todo Prioritas
+    if (events.length === 0) {
+      document.getElementById("event-kosong").classList.remove("hidden");
+      document.getElementById("event-true").classList.add("hidden");
+    } else {
+      document.getElementById("event-true").classList.remove("hidden");
+      document.getElementById("event-kosong").classList.add("hidden");
+      const listPrioritas = document.getElementById("list-prioritas");
+
+      events.forEach((item) => {
+        const itemListPrioritas = document.createElement("p");
+        itemListPrioritas.innerText = item.title;
+        listPrioritas.appendChild(itemListPrioritas);
+      });
+    }
+
+    // Todo List
+    if (events.length === 0) {
+      document.getElementById("noEventList").classList.remove("hidden");
+      document.getElementById("eventList").classList.add("hidden");
+    } else {
+      document.getElementById("eventList").classList.remove("hidden");
+      document.getElementById("noEventList").classList.add("hidden");
+    }
+
+    // Todo Histori
+    if (events.length === 0) {
+      document.getElementById("event-No-histori").classList.remove("hidden");
+      document.getElementById("eventHistori").classList.add("hidden");
+    } else {
+      document.getElementById("eventHistori").classList.remove("hidden");
+      document.getElementById("event-No-histori").classList.add("hidden");
+    }
+
     const cardContainer = document.getElementById("card");
     events.forEach((event) => {
-      const eventCard = document.createElement("div");
-      eventCard.className =
-        "w-80 border-sky-900 border py-3 px-2 bg-sky-100 rounded-lg";
+      if (event.status !== "selesai") {
+        const eventCard = document.createElement("div");
+        eventCard.className =
+          "w-80 border-sky-900 border py-3 px-2 bg-sky-100 rounded-lg";
 
-      const titleElement = document.createElement("h1");
-      titleElement.className =
-        "text-lg font-bold border-sky-900 border-b-2 w-full text-sky-900";
-      titleElement.textContent = event.title;
-      eventCard.appendChild(titleElement);
+        const titleElement = document.createElement("h1");
+        titleElement.className =
+          "text-lg font-bold border-sky-900 border-b-2 w-full text-sky-900";
+        titleElement.textContent = event.title;
+        eventCard.appendChild(titleElement);
 
-      const detailsContainer = document.createElement("div");
-      const statusElement = document.createElement("span");
-      statusElement.textContent = "Status : ";
-      const dateElement = document.createElement("p");
-      dateElement.textContent = event.start; // Anda dapat memformat tanggal sesuai kebutuhan
-      const descriptionElement = document.createElement("div");
-      descriptionElement.innerHTML = `<p>${event.description}</p>`;
+        const detailsContainer = document.createElement("div");
+        const statusElement = document.createElement("span");
+        statusElement.textContent = "Status : ";
+        const dateElement = document.createElement("p");
+        dateElement.textContent = event.start;
+        const descriptionElement = document.createElement("div");
+        descriptionElement.innerHTML = `<p>${event.description}</p>`;
 
-      detailsContainer.appendChild(statusElement);
-      detailsContainer.appendChild(dateElement);
-      detailsContainer.appendChild(descriptionElement);
+        detailsContainer.appendChild(statusElement);
+        detailsContainer.appendChild(dateElement);
+        detailsContainer.appendChild(descriptionElement);
 
-      eventCard.appendChild(detailsContainer);
+        eventCard.appendChild(detailsContainer);
 
-      cardContainer.appendChild(eventCard);
+        cardContainer.appendChild(eventCard);
+      }
     });
 
     const cardHistori = document.getElementById("cardHistori");

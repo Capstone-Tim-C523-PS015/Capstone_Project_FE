@@ -75,7 +75,7 @@ const Kalendar = {
             <span id="closeEvent" class="material-symbols-outlined absolute right-[-5px] bg-red-500 rounded-full text-white cursor-pointer top-[-10px]">close</span>
             <div class="modal-dialog relative border-black" role="document">
               <div class="modal-content px-6 w-full ">
-                <div class="modal-header flex flex-col text-center justify-center pt-4">
+                <div class="modal-header flex flex-col justify-center pt-4">
                   <h5 class="modal-title text-sky-900 text-lg font-bold border-black border-b-2 px-4" id="dateModalLabel">Detail Acara</h5>
                   <div class="flex justify-between py-2 items-center">
                     <div>
@@ -94,24 +94,22 @@ const Kalendar = {
                     </div>  
                     <p id="todate" class="text-center"></p>
                   </div>
-                </div>
-                <div class="">
-                  <div class="w-full overflow-hidden">
-                    <p>Ilham Maulana is inviting you to a scheduled Zoom meeting. <br>
-                      Topic: Meeting Rutin Capstone <br>
-                      Time: Nov 19, 2023 08:00 PM Bangkok <br>
-                              Every 5 weeks on Sun, until Nov 19, 2023, 1 occurrence(s) <br>
-                              Nov 19, 2023 08:00 PM <br>
-                      Please download and import the following iCalendar (.ics) files to your calendar system. <br>
-                      Weekly: https://unnes-ac-id.zoom.us/meeting/tJAvdOihqTItG9xKzOFe9IJcpGvHVYkD7qHJ/ics?icsToken=98tyKuCsrDgrE9OctxiPRowIAIjCd_PwtlhajfpFtwXKJSUKSyn1JsVUGoRGG_yH
-
-                      Join Zoom Meeting
-                      https://unnes-ac-id.zoom.us/j/94231979718?pwd=dDhTZXBVbFdNNnhsWUV6SDJLSStKUT09
-
-                      Meeting ID: 942 3197 9718
-                      Passcode: 660101
-                    </p>
-                  </div>
+                  <div class="w-full">
+                      <p class="max-h-64 overflow-y-scroll">Ilham Maulana is inviting you to a scheduled Zoom meeting.
+                        Topic: Meeting Rutin Capstone <br>
+                        Time: Nov 19, 2023 08:00 PM Bangkok <br>
+                                Every 5 weeks on Sun, until Nov 19, 2023, 1 occurrence(s)
+                                Nov 19, 2023 08:00 PM <br>
+                        Please download and import the following iCalendar (.ics) files to your calendar system.
+                        Weekly: https://unnes-ac-id.zoom.us/meeting/tJAvdOihqTItG9xKzOFe9IJcpGvHVYkD7qHJ/ics?icsToken=98tyKuCsrDgrE9OctxiPRowIAIjCd_PwtlhajfpFtwXKJSUKSyn1JsVUGoRGG_yH
+  
+                        Join Zoom Meeting
+                        https://unnes-ac-id.zoom.us/j/94231979718?pwd=dDhTZXBVbFdNNnhsWUV6SDJLSStKUT09
+  
+                        Meeting ID: 942 3197 9718
+                        Passcode: 660101
+                      </p>
+                    </div>
                 </div>
               </div>
               <div id="verifikasiDelete" class="px-2 py-2 w-[70%] left-[15%] hidden border my-auto absolute top-[40%]  rounded-xl border-sky-900 bg-sky-100">
