@@ -127,6 +127,25 @@ const Home = {
   },
 
   async afterRender() {
+    fetch("http://be.gunz.my.id/todo", {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+      });
+
     window.addEventListener("beforeunload", function () {
       // Tambahkan kelas animasi saat meninggalkan halaman
       const contentElement = document.getElementById("content");
@@ -158,6 +177,7 @@ const Home = {
           title: "19:00 [Zoom] Cap...",
           start: "2023-11-25",
           end: "2023-11-26",
+          time: "23:59",
           status: "Penting",
           description: "",
         },
@@ -185,6 +205,7 @@ const Home = {
         title: "19:00 [Zoom] Cap...",
         start: "2023-11-25",
         end: "2023-11-26",
+        time: "23:59",
         status: "Penting",
         description: "",
       },
@@ -192,6 +213,7 @@ const Home = {
         title: "Capstone Item",
         start: "2023-11-01",
         end: "2023-11-02",
+        time: "23:59",
         status: "selesai",
         description: "",
       },
@@ -199,6 +221,7 @@ const Home = {
         title: "Capstone Feature",
         start: "2023-12-01",
         end: "2023-12-02",
+        time: "23:59",
         status: "selesai",
         description: "",
       },
@@ -215,7 +238,7 @@ const Home = {
 
       events.forEach((item) => {
         const itemListPrioritas = document.createElement("p");
-        itemListPrioritas.innerText = item.title;
+        itemListPrioritas.innerText = `${item.time} [${item.status}] ${item.title}`;
         listPrioritas.appendChild(itemListPrioritas);
       });
     }
