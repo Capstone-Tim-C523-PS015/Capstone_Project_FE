@@ -127,29 +127,6 @@ const Home = {
   },
 
   async afterRender() {
-    fetch("http://be.gunz.my.id/todo", {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer",
-      },
-    })
-      .then((response) => {
-        // Periksa apakah respons berhasil (status code 200-299)
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        // Mengembalikan hasil parsing respons JSON
-        return response.json();
-      })
-      .then((data) => {
-        // Handle the response data here
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Fetch error:", error);
-      });
-
     window.addEventListener("beforeunload", function () {
       // Tambahkan kelas animasi saat meninggalkan halaman
       const contentElement = document.getElementById("content");
