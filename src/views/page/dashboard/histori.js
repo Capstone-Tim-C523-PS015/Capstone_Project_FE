@@ -3,7 +3,7 @@ import '../../../styles/index.css';
 const Histori = {
   async render() {
     return `
-    <div class="pb-10 lg:mx-6 ">
+  <div class="pb-10 lg:mx-6 ">
     <div class="flex flex-col items-center justify-center">
       <div class=" border-black border-b-2 md:w-96 w-72 text-center">
         <h1 class="text-3xl font-bold text-sky-900">HISTORI</h1>
@@ -16,6 +16,14 @@ const Histori = {
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="flex flex-row border-sky-950 border-b-2"> 
+    <h1 class="flex flex-grow py-3 text-2xl font-bold" id="tanggal">Revisi</h1>
+  </div>
+
+  <div class="flex flex-row border-sky-950 border-b-2"> 
+    <h1 class="flex flex-grow py-3 text-2xl font-bold" id="tanggal">Selesai</h1>
   </div>
             `;
   },
