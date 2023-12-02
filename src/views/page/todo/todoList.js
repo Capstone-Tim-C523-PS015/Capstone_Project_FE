@@ -31,7 +31,13 @@ const TodoList = {
                     </div>
                     <div class="flex flex-row py-4 gap-3">
                       <h3 class="text-sky-950 text-md font-bold">Status:</h3>
-                      <button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-bold rounded-md text-sm px-3 py-0.5 text-center me-2 mb-2">Terlambat</button>
+                      <button type="button" id="btn-terlambat" class="text-white bg-rose-700 hover:bg-rose-800 border-2 border-sky-950/40 focus:ring-4 focus:ring-red-300 font-bold rounded-md text-sm px-3 py-0.5 text-center me-2 mb-2">Terlambat</button>
+                      <button type="button" id="btn-dikerjakan" class="text-sky-900 bg-sky-300 hover:bg-sky-400 border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-md text-sm px-3 py-0.5 text-center me-2 mb-2">Dikerjakan</button>
+                      <button type="button" id="btn-selesai" class="text-sky-900 bg-sky-100 hover:bg-sky-200 border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-md text-sm px-3 py-0.5 text-center me-2 mb-2">Selesai</button>
+                    </div>
+                    <div class="flex flex-row gap-2 py-2">
+                      <div class="">
+                      </div>
                     </div>
                   </div>
               </div>
