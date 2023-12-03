@@ -127,25 +127,6 @@ const Home = {
   },
 
   async afterRender() {
-    fetch("http://be.gunz.my.id/todo", {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer",
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Fetch error:", error);
-      });
-
     window.addEventListener("beforeunload", function () {
       // Tambahkan kelas animasi saat meninggalkan halaman
       const contentElement = document.getElementById("content");
