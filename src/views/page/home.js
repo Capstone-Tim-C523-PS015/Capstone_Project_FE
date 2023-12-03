@@ -134,7 +134,9 @@ const Home = {
     axios.get(url, {headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${jwt}`,
-    }}).then(response => console.log(response.data));
+    }})
+    .then(response => console.log(response.data))
+    .catch(error => console.log(error.response));
 
     window.addEventListener("beforeunload", function () {
       // Tambahkan kelas animasi saat meninggalkan halaman
