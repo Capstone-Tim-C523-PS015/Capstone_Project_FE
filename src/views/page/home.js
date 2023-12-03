@@ -173,7 +173,6 @@ const Home = {
             center: "title",
             right: "dayGridMonth,timeGridWeek,timeGridDay",
           },
-
           initialView: "dayGridMonth",
           events: formattedData,
           aspectRatio: 2,
@@ -292,7 +291,7 @@ const Home = {
 
             const detailsContainer = document.createElement("div");
             const statusElement = document.createElement("span");
-            statusElement.textContent = `Status : `;
+            statusElement.textContent = `Status : ${event.status}`;
             const dateElement = document.createElement("p");
             dateElement.textContent = event.start;
             const descriptionElement = document.createElement("div");
