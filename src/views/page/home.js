@@ -1,5 +1,7 @@
 import { Calendar } from "fullcalendar";
 import "../../styles/index.css";
+import axios from 'axios';
+
 const Home = {
   async render() {
     return `
@@ -127,24 +129,12 @@ const Home = {
   },
 
   async afterRender() {
-    fetch("http://be.gunz.my.id/todo", {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer",
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Fetch error:", error);
-      });
+    const url = "https://be.gunz.my.id/todo";
+    const jwt = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JlLmd1bnoubXkuaWQvYXV0aC9sb2dpbiIsImlhdCI6MTcwMTU2OTg0MywiZXhwIjoxNzAxNTczNDQzLCJuYmYiOjE3MDE1Njk4NDMsImp0aSI6IjhRN1owT0VmdXNmbExXWVgiLCJzdWIiOiIxIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.cJxBNveLWhi3QG6UIk8n2p8h1bOzrZvWkNxRgwNSPjs';
+    axios.get(url, {headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${jwt}`,
+    }}).then(response => console.log(response.data));
 
     window.addEventListener("beforeunload", function () {
       // Tambahkan kelas animasi saat meninggalkan halaman
