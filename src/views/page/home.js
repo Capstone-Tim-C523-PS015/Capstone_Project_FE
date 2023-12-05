@@ -386,12 +386,6 @@ const Home = {
         const cardHistori = document.getElementById("cardHistori");
 
         Object.keys(groupedTodos).forEach((tanggal) => {
-          const deadlineDate = new Date(tanggal);
-          const hari = deadlineDate.getDate();
-          const bulan = deadlineDate.toLocaleString("id-ID", { month: "long" });
-          const tahun = deadlineDate.getFullYear();
-          const tanggalFormatBaru = hari + " " + bulan + " " + tahun;
-          console.log(`kwkw ${tanggalFormatBaru}`);
           // Membuat elemen untuk setiap tanggal
           const tanggalContainer = document.createElement("div");
           tanggalContainer.className =
@@ -401,7 +395,7 @@ const Home = {
           const h1Tanggal = document.createElement("h1");
           h1Tanggal.className =
             " w-full text-2xl font-bold text-sky-900 border-black border-b-2";
-          h1Tanggal.textContent = `Todo List - ${tanggalFormatBaru}`;
+          h1Tanggal.textContent = `Todo List - ${tanggal.split("T")[0]}`;
           tanggalContainer.appendChild(h1Tanggal);
 
           // Iterasi melalui Todos pada tanggal tertentu

@@ -328,8 +328,13 @@ const Kalendar = {
     const buttonSubmitAktivitas = document.getElementById(
       "buttonSubmitAktivitas"
     );
+
     buttonSubmitAktivitas.addEventListener("click", () => {
       addEvent();
+      const modal = document.getElementById("dateModal");
+      const dahboard = document.getElementById("dashboard");
+      modal.classList.add("hidden");
+      dahboard.classList.remove("blacked-out");
     });
 
     function addEvent() {
