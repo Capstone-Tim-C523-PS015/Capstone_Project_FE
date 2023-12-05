@@ -1,6 +1,6 @@
 import { Calendar } from "fullcalendar";
 import "../../../styles/index.css";
-
+import axios from "axios";
 const Kalendar = {
   async render() {
     return `
@@ -31,7 +31,7 @@ const Kalendar = {
                       <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-2 order-1 lg:order-2 ">
                           <label for="" class="text-sm text-sky-900 font-bold">Tanggal</label>
-                          <button class="flex items-center justify-center border border-sky-950 rounded-lg"><span id="formattedDate" class="w-full"></span><input type="date" id="customDate" class="w-11 border-none rounded-lg cursor-pointer"></button>
+                          <button class="flex items-center justify-center border border-sky-950 rounded-lg"><span id="formattedDate" class="w-full"></span><input type="datetime-local" id="customDate" class="w-11 border-none rounded-lg cursor-pointer"></button>
                         </div>
                         <div class="flex flex-col gap-2 order-2 lg:order-1 lg:w-32">
                           <label for="" class="text-sm text-sky-900 font-bold">Waktu</label>
@@ -59,7 +59,7 @@ const Kalendar = {
                       </div>
                       
                     </form>
-                    <button class="bg-green-700 py-2 lg:w-full  text-white rounded-lg flex items-center justify-center  px-4">Simpan Aktivitas</button>
+                    <button id="buttonSubmitAktivitas" class="bg-green-700 py-2 lg:w-full  text-white rounded-lg flex items-center justify-center  px-4" type="button">Simpan Aktivitas</button>
                   </div>
                   
                 </div>
@@ -145,40 +145,53 @@ const Kalendar = {
 
     // API Calendar
     function initializeCalendar() {
-      const calendar = new Calendar(calendarEl, {
-        selectable: true,
-        initialView: "dayGridMonth",
-        headerToolbar: {
-          left: "prev,next today",
-          center: "title",
-          right: "dayGridMonth,timeGridWeek,timeGridDay",
-        },
-        eventRender: function (event, element) {
-          // Tambahkan ikon lonceng di sini
-          element.find(".fc-content").prepend('<i class="fas fa-bell"></i>');
-        },
-        events: [
-          {
-            title: "19:00 [Zoom] Cap...",
-            start: "2023-11-25",
-            end: "2023-11-26",
-            status: "Penting",
-            description: "",
+      const url = "https://be.gunz.my.id/todo";
+      const jwt =
+        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JlLmd1bnoubXkuaWQvYXV0aC9sb2dpbiIsImlhdCI6MTcwMTU4MjI5OCwibmJmIjoxNzAxNTgyMjk4LCJqdGkiOiJkWnpVMjZYTHU2b1RDd2VSIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.iY7UV-2ftKlSAN9KuycnwU_42cLyoGqAzRPWAiR_y4s";
+      axios
+        .get(url, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${jwt}`,
           },
-          {
-            title: "Capstone Desain",
-            start: "2023-11-01",
-            end: "2023-11-02",
-            status: "Dikerjakan",
-            description: "",
-          },
-        ],
-        aspectRatio: 2,
-        dateClick: handleDateClick,
-        eventClick: handleEventClick,
-      });
+        })
+        .then((response) => {
+          console.log(response);
+          console.log(response.data.todos);
+          const Todos = response.data.todos;
+          // Fungsi untuk konfigurasi dengan API Fullcalendar
+          const formattedData = Todos.map((item) => ({
+            title: item.title,
+            start: item.deadline,
+            end: item.deadline,
+            extendedProps: {
+              description: item.description,
+              status: item.status,
+              userId: item.userId,
+            },
+          }));
+          const calendar = new Calendar(calendarEl, {
+            selectable: true,
+            initialView: "dayGridMonth",
+            headerToolbar: {
+              left: "prev,next today",
+              center: "title",
+              right: "dayGridMonth,timeGridWeek,timeGridDay",
+            },
+            eventRender: function (event, element) {
+              // Tambahkan ikon lonceng di sini
+              element
+                .find(".fc-content")
+                .prepend('<i class="fas fa-bell"></i>');
+            },
+            events: formattedData,
+            aspectRatio: 2,
+            dateClick: handleDateClick,
+            eventClick: handleEventClick,
+          });
 
-      calendar.render();
+          calendar.render();
+        });
     }
 
     function handleDateClick(info) {
@@ -311,6 +324,47 @@ const Kalendar = {
       btnEvent.classList.remove("bg-sky-300");
     });
     // End Btn Category
+
+    const buttonSubmitAktivitas = document.getElementById(
+      "buttonSubmitAktivitas"
+    );
+    buttonSubmitAktivitas.addEventListener("click", () => {
+      addEvent();
+    });
+
+    function addEvent() {
+      const judul = document.getElementById("judul").value;
+      const deadline = document.getElementById("customDate").value;
+      const deskripsi = document.getElementById("myTextarea").value;
+
+      let newData = {
+        title: judul,
+        description: deskripsi,
+        deadline: deadline,
+        status: "Dikerjakan",
+      };
+
+      const jwt =
+        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JlLmd1bnoubXkuaWQvYXV0aC9sb2dpbiIsImlhdCI6MTcwMTU4MjI5OCwibmJmIjoxNzAxNTgyMjk4LCJqdGkiOiJkWnpVMjZYTHU2b1RDd2VSIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.iY7UV-2ftKlSAN9KuycnwU_42cLyoGqAzRPWAiR_y4s";
+      const headers = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${jwt}`,
+      };
+
+      axios
+        .post("https://be.gunz.my.id/todo", JSON.stringify(newData), {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${jwt}`,
+          },
+        })
+        .then((response) => {
+          console.log(`Succes ${response.data}`);
+        })
+        .catch((error) => {
+          console.log(`Error ${error}`);
+        });
+    }
   },
 };
 
