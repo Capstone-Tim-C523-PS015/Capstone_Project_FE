@@ -60,6 +60,10 @@ module.exports = {
       filename: 'lupapassword.html',
       template: path.resolve(__dirname, 'src/views/admin/lupapassword.html'),
     }),
+    new HtmlWebpackPlugin({
+      filename: 'recovery.html',
+      template: path.resolve(__dirname, 'src/views/admin/recovery.html'),
+    }),
     new CopyWebpackPlugin({
       patterns: [
         {

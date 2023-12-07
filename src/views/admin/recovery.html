@@ -1,9 +1,12 @@
-import axios from 'axios';
-import Api from '../../scripts/global/api';
-
-const gantipass = {
-  async render() {
-    return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recovery password</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
     <main class="flex items-center justify-center h-screen bg-sky-50">
         <div class="flex flex-col items-center content-center justify-center max-w-lg grow">
             <img class="w-24 md:w-32" src="./images/logo.jpg" alt="Logo Plan Plan" />
@@ -44,41 +47,37 @@ const gantipass = {
             </form>  
         </div>
     </main>
-    `;
-  },
 
-  async afterRender() {
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get('token');
-    const veriftoken = `${Api.cektokenUrl}${token}`;
-    console.log(token);
-    axios.get(veriftoken)
-      .then(() => {
-      }).catch((error) => {
-        console.error(error.response.data.message);
-      });
-    const changepass = `${Api.resetUrl}`;
-    const newpassword = document.getElementById('newpassword').value;
-    const konfimpassword = document.getElementById('changepass').value;
-    const bodychange = {
-      new_password: newpassword,
-      new_password_confirmation: konfimpassword,
-      token,
-    };
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get('token');
+        const veriftoken = `https://be.gunz.my.id/recovery.html?token=${token}`;
+        axios.get(veriftoken)
+        .then(() => {
+        }).catch((error) => {
+            console.error(error.response.data.message);
+        });
+        const changepass = 'https://be.gunz.my.id/reset/updatePassword';
+        const newpassword = document.getElementById('newpassword').value;
+        const konfimpassword = document.getElementById('changepass').value;
+        const bodychange = {
+        new_password: newpassword,
+        new_password_confirmation: konfimpassword,
+        token,
+        };
 
-    axios.post(changepass, bodychange, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }).then((response) => {
-      const message = document.getElementById('Error_input');
-      message.innerHTML = response.data.message;
-      window.location.replace('./login.html#/masuk');
-    }).catch((error) => {
-      const message = document.getElementById('Error_input');
-      message.innerHTML = error.response.data.message;
-    });
-  },
-};
-
-export default gantipass;
+        axios.post(changepass, bodychange, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        }).then((response) => {
+        const message = document.getElementById('Error_input');
+        message.innerHTML = response.data.message;
+        window.location.replace('./login.html#/masuk');
+        }).catch((error) => {
+        const message = document.getElementById('Error_input');
+        message.innerHTML = error.response.data.message;
+        });
+    </script>
+</body>
+</html>

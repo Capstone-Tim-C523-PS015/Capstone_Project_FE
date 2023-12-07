@@ -7,7 +7,6 @@ import TodoList from '../../views/page/dashboard/todoList';
 import Histori from '../../views/page/dashboard/histori';
 import daftar from '../../views/login/daftar';
 import masuk from '../../views/login/masuk';
-import gantipass from '../../views/login/gantipassword';
 import sendemail from '../../views/login/sendemail';
 
 const routes = {
@@ -22,7 +21,6 @@ const routes = {
   '/masuk': masuk,
   '/daftar': daftar,
   '/recovery': sendemail,
-  '/newpassword': gantipass,
 };
 
 export default routes;
