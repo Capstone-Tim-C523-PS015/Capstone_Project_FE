@@ -48,10 +48,9 @@ const gantipass = {
   },
 
   async afterRender() {
-    const tokenreset = ('9705750a8fa72568d3c01e6a094d2e2fe2200b73bffbd2a79360ebe56b70adf2');
-    const veriftoken = `${Api.cektokenUrl}${tokenreset}`;
     const params = new URLSearchParams(window.location.search);
     const token = params.get('token');
+    const veriftoken = `${Api.cektokenUrl}${token}`;
     console.log(token);
     axios.get(veriftoken)
       .then(() => {
