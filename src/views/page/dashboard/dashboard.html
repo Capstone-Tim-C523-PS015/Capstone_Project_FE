@@ -13,12 +13,12 @@
       integrity="sha384-H8R4b6PMtUwnNl/b6M7OCjL8aWMIj1hASMAQjDdq23a1VYjTGaK6hJVRbBzKkqI2"
       crossorigin="anonymous"
     />
-
     <style>
       .fc-daygrid-day {
         border: 1px solid #ddd;
       }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!--  -->
 
     <title>Dashboard</title>
@@ -60,8 +60,8 @@
                   <p class="transition text-sky-900">
                     <a href="./profil.html">Profile saya</a>
                   </p>
-                  <p class="transition text-sky-900">
-                    <a href="./index.html#/beranda">keluar</a>
+                  <p id="logout" class="transition logout text-sky-900">
+                    <button type="submit" >keluar</button>
                   </p>
                 </div>
               </li>
@@ -87,6 +87,28 @@
       </div>
     </footer> 
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const logoutdiv = document.getElementById('logout');
+        logoutdiv.addEventListener('click', () => {
+          const Bearer = localStorage.getItem('token');
+          console.log('Token from localStorage:', Bearer); // Tambahkan log ini
+          axios.post('https://be.gunz.my.id/auth/logout', null, {
+            headers: {
+              Authorization: `Bearer ${Bearer}`,
+            },
+          }).then((response) => {
+            if (response.status === 200) {
+              localStorage.removeItem('token');
+              window.location.replace('/#/beranda');
+            } else {
+              console.error(response.data.message);
+            }
+          }).catch((error) => {
+            console.error(error.response.data.message);
+          });
+        });
+      });
+
       const spanrofil = document.getElementById("spanProfil");
       const profil = document.getElementById("profil");
       const dropdown = document.getElementById("dropdown");

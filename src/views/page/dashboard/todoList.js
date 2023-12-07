@@ -12,7 +12,14 @@ const TodoList = {
           `;
   },
 
-  async afterRender() {},
+  async afterRender() {
+    const jwttoken = localStorage.getItem('token');
+    if (jwttoken === null) {
+      window.location.replace('./login.html#/masuk');
+    } else {
+      window.location.replace('./dashboard.html#/todolist');
+    }
+  },
 };
 
 export default TodoList;
