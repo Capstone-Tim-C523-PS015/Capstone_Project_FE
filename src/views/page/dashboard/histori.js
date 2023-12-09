@@ -385,7 +385,7 @@ const Histori = {
     // Edit
     editEventBtns.forEach((button) => {
       const buttonId = button.dataset.todoId;
-      button.addEventListener('click', () => toSelesaiStatus(buttonId));
+      button.addEventListener('click', () => handleEditEvent(buttonId));
       console.log('button', buttonId);
 
       function handleEditEvent(buttonId) {
