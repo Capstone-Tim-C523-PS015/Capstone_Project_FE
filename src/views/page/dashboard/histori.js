@@ -7,7 +7,12 @@ const Histori = {
             `;
   },
 
-  async afterRender() {},
+  async afterRender() {
+    const jwttoken = localStorage.getItem('token');
+    if (jwttoken === null) {
+      window.location.replace('./login.html#/masuk');
+    }
+  },
 };
 
 export default Histori;

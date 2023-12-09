@@ -37,6 +37,28 @@ window.addEventListener('hashchange', () => {
 window.addEventListener('load', () => {
   indexdashboard.renderPage();
 });
+const contentlogin = new App({
+  content: document.querySelector('.contentuser'),
+});
+
+window.addEventListener('hashchange', () => {
+  contentlogin.renderPage();
+});
+
+window.addEventListener('load', () => {
+  contentlogin.renderPage();
+});
+const contentchangepassword = new App({
+  content: document.querySelector('.forgotpassword'),
+});
+
+window.addEventListener('hashchange', () => {
+  contentchangepassword.renderPage();
+});
+
+window.addEventListener('load', () => {
+  contentchangepassword.renderPage();
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   // Ambil semua elemen dengan kelas 'menu-item'

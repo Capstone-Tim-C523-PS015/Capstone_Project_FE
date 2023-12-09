@@ -81,13 +81,17 @@ const Home = {
   },
 
   async afterRender() {
+    const jwttoken = localStorage.getItem('token');
+    if (jwttoken === null) {
+      window.location.replace('./login.html#/masuk');
+    }
+
     window.addEventListener('beforeunload', () => {
       // Tambahkan kelas animasi saat meninggalkan halaman
       const contentElement = document.getElementById('content');
       contentElement.classList.remove('animate-fade-in');
       contentElement.classList.add('animate-fade-out');
     });
-
     document
       .getElementById('scrollButton')
       .addEventListener('click', () => {

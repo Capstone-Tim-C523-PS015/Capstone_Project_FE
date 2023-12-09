@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recovery password</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get('token');
+
+        if(token == null){
+            window.location.replace('./lupapassword.html');
+            localStorage.setItem('message', 'token tidak ditemukan silakan meminta terlebih dahulu');
+        }
+
+        const veriftoken = `https://be.gunz.my.id/reset/verifyToken?token=${token}`;
+        axios.get(veriftoken)
+        .then((response) => {}).catch((error) => {
+            const message = document.getElementById('Error_input');
+            message.innerHTML = error.response.data.message;
+            Message.classList.remove('text-green-800');  
+            Message.classList.add('text-rose-700');
+            setTimeout(time, 1000);
+            function time(){
+                const loadingrecovery = document.getElementById('loading-recovery');
+                const textubahsandi = document.getElementById('ubahsandi');
+
+                loadingrecovery.classList.add('hidden');
+                textubahsandi.classList.remove('hidden');
+            }
+        });
+    </script>
+</head>
+<body>
+    <main class="flex items-center justify-center h-screen bg-sky-50">
+        <div class="flex flex-col items-center content-center justify-center max-w-lg grow">
+            <img class="w-24 md:w-32" src="./images/logo.jpg" alt="Logo Plan Plan" />
+            <p class="px-2 mb-2 text-2xl font-bold text-center text-sky-900">Recovery Kata Sandi</p>
+            <p class="px-2 mb-2 text-base font-normal text-center text-sky-900">Silakan masukkan sandi baru anda</p>
+            
+            <form id="change-password" class="w-2/3 mx-auto">
+                <div class="flex justify-center mt-5">
+                    <p class="max-w-xs text-sm font-semibold text-center error-message text-rose-700" id="Error_input"></p>
+                </div>
+                <label for="password" class="block mt-2 mb-2 text-sm font-bold text-sky-900">Kata Sandi Baru</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
+                            <path d="M14 7h-1.5V4.5a4.5 4.5 0 1 0-9 0V7H2a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Zm-5 8a1 1 0 1 1-2 0v-3a1 1 0 1 1 2 0v3Zm1.5-8h-5V4.5a2.5 2.5 0 1 1 5 0V7Z" />
+                        </svg>
+                    </div>
+                    <input type="password" id="newpassword" class="bg-gray-50 border border-gray-300 font-semibold text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full ps-10 p-2.5" placeholder="Kata Sandi" required />
+                    <div class="absolute inset-y-0 right-3 top-1.5 px-2 py-2 cursor-pointer" id="seepasswordnew">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16">
+                          <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486z"/>
+                          <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829"/>
+                          <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708"/>
+                        </svg>
+                    </div>
+                </div>
+                <label for="password" class="block mt-2 mb-2 text-sm font-bold text-sky-900">konfirmasi Kata Sandi</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
+                        <path d="M14 7h-1.5V4.5a4.5 4.5 0 1 0-9 0V7H2a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Zm-5 8a1 1 0 1 1-2 0v-3a1 1 0 1 1 2 0v3Zm1.5-8h-5V4.5a2.5 2.5 0 1 1 5 0V7Z" />
+                    </svg>
+                    </div>
+                    <input type="password" id="konfirmpassword" class="bg-gray-50 border border-gray-300 font-semibold text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full ps-10 p-2.5" placeholder="Kata Sandi" required />
+                    <div class="absolute inset-y-0 right-3 top-1.5 px-2 py-2 cursor-pointer" id="seeconfirmpasswordnew">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16">
+                          <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486z"/>
+                          <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829"/>
+                          <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708"/>
+                        </svg>
+                    </div>
+                </div>
+                <button type="submit" id="changepass" class="flex justify-center w-full text-white bg-sky-900 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-6">
+                    <img id="loading-recovery" src="./svg/loading-login.svg" class="hidden w-5"><p id="ubahsandi">Kirim</p>
+                </button>  
+            </form>  
+        </div>
+    </main>
+
+    <script>
+        seepassword();
+
+        function seepassword(){
+            const seepasswordnew = document.getElementById('seepasswordnew');
+            const seeconfirmpasswordnew = document.getElementById('seeconfirmpasswordnew');
+            
+            seepasswordnew.addEventListener('click', function () {
+                const passwordnew = document.getElementById('newpassword');
+                passwordnew.type = passwordnew.type === 'password' ? 'text' : 'password';
+                seepasswordnew.innerHTML = seepasswordnew.innerHTML.includes('slash') ?
+                `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                </svg>` :
+                `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16">
+                    <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486z"/>
+                    <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829"/>
+                    <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708"/>
+                </svg>`;
+            });
+
+            seeconfirmpasswordnew.addEventListener('click', function () {
+                const konfirmpassword = document.getElementById('konfirmpassword');
+                konfirmpassword.type = konfirmpassword.type === 'password' ? 'text' : 'password';
+                seeconfirmpasswordnew.innerHTML = seeconfirmpasswordnew.innerHTML.includes('slash') ?
+                `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                </svg>` :
+                `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16">
+                    <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486z"/>
+                    <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829"/>
+                    <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708"/>
+                </svg>`;
+            });
+        }
+        document.getElementById('change-password').addEventListener('submit', function(e){
+            e.preventDefault();
+            const loadingrecovery = document.getElementById('loading-recovery');
+            const textubahsandi = document.getElementById('ubahsandi');
+
+            loadingrecovery.classList.remove('hidden');
+            textubahsandi.classList.add('hidden');
+            setTimeout(Recovery, 3000);
+        })
+
+        async function Recovery(){
+            const changepass = 'https://be.gunz.my.id/reset/updatePassword';
+            const newpassword = document.getElementById('newpassword').value;
+            const konfimpassword = document.getElementById('konfirmpassword').value;
+
+            const bodychange = {
+                new_password: newpassword,
+                new_password_confirmation: konfimpassword,
+                token: token,
+            };
+
+            axios.post(changepass, bodychange, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }).then((response) => {
+                const message = document.getElementById('Error_input');
+                message.innerHTML = response.data.message;
+                Message.classList.remove('text-rose-700');
+                Message.classList.add('text-green-800');  
+                setTimeout(time, 1000);
+                function time(){
+                    const loadingrecovery = document.getElementById('loading-recovery');
+                    const textubahsandi = document.getElementById('ubahsandi');
+
+                    loadingrecovery.classList.add('hidden');
+                    textubahsandi.classList.remove('hidden');
+                    window.location.replace('./login.html#/masuk')
+                }
+            }).catch((error) => {
+                const message = document.getElementById('Error_input');
+                message.innerHTML = error.response.data.message;
+                message.classList.remove('text-green-800');
+                message.classList.add('text-rose-700');
+                setTimeout(time, 1000);
+
+                function time() {
+                    const loadingrecovery = document.getElementById('loading-recovery');
+                    const textubahsandi = document.getElementById('ubahsandi');
+
+                    loadingrecovery.classList.add('hidden');
+                    textubahsandi.classList.remove('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,16 +1,17 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+/* eslint-disable import/no-extraneous-dependencies */
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, "src/scripts/index.js"),
+    app: path.resolve(__dirname, 'src/scripts/index.js'),
   },
   output: {
-    filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist"),
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
   module: {
@@ -19,13 +20,13 @@ module.exports = {
         test: /\.css$/,
         use: [
           {
-            loader: "style-loader",
+            loader: 'style-loader',
           },
           {
-            loader: "css-loader",
+            loader: 'css-loader',
           },
           {
-            loader: "postcss-loader",
+            loader: 'postcss-loader',
           },
         ],
       },
@@ -36,12 +37,12 @@ module.exports = {
       logo: './src/public/icons/icon.jpg',
     }),
     new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: path.resolve(__dirname, "src/views/index.html"),
+      filename: 'index.html',
+      template: path.resolve(__dirname, 'src/views/index.html'),
     }),
     new HtmlWebpackPlugin({
-      filename: "profil.html",
-      template: path.resolve(__dirname, "src/views/admin/profil.html"),
+      filename: 'profil.html',
+      template: path.resolve(__dirname, 'src/views/admin/profil.html'),
     }),
     new HtmlWebpackPlugin({
       filename: 'login.html',
@@ -56,14 +57,18 @@ module.exports = {
       template: path.resolve(__dirname, 'src/views/page/dashboard/indexdash.html'),
     }),
     new HtmlWebpackPlugin({
-      filename: 'daftar.html',
-      template: path.resolve(__dirname, 'src/views/admin/daftar.html'),
+      filename: 'lupapassword.html',
+      template: path.resolve(__dirname, 'src/views/admin/lupapassword.html'),
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'recovery.html',
+      template: path.resolve(__dirname, 'src/views/admin/recovery.html'),
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, "src/public/"),
-          to: path.resolve(__dirname, "dist/"),
+          from: path.resolve(__dirname, 'src/public/'),
+          to: path.resolve(__dirname, 'dist/'),
         },
       ],
     }),
