@@ -177,7 +177,7 @@ const Histori = {
             += `
             <div class="flex flex-col border-2 border-r-2 border-sky-900 p-4 m-4 rounded-2xl" id="kartu revisi">
               <div class="flex flex-col px-4 gap-2" >
-                <div class="flex flex-row gap-3 justify-center">
+                <div class="flex flex-col md:flex-row gap-3 justify-center">
                   <button id="editEvent" class="editEvent" data-todo-id="${todo.id}">
                     <svg class="w-6 h-6 text-sky-900" aria-hidden="true" id="edit "xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                       <path d="M12.687 14.408a3.01 3.01 0 0 1-1.533.821l-3.566.713a3 3 0 0 1-3.53-3.53l.713-3.566a3.01 3.01 0 0 1 .821-1.533L10.905 2H2.167A2.169 2.169 0 0 0 0 4.167v11.666A2.169 2.169 0 0 0 2.167 18h11.666A2.169 2.169 0 0 0 16 15.833V11.1l-3.313 3.308Zm5.53-9.065.546-.546a2.518 2.518 0 0 0 0-3.56 2.576 2.576 0 0 0-3.559 0l-.547.547 3.56 3.56Z"/>
@@ -194,7 +194,7 @@ const Histori = {
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 3.464V1.1m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175C17 15.4 17 16 16.462 16H3.538C3 16 3 15.4 3 14.807c0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 10 3.464ZM1.866 8.832a8.458 8.458 0 0 1 2.252-5.714m14.016 5.714a8.458 8.458 0 0 0-2.252-5.714M6.54 16a3.48 3.48 0 0 0 6.92 0H6.54Z"/>
                   </svg>
                 </div>
-                <div class="flex flex-row py-4 gap-3">
+                <div class="flex flex-col md:flex-row py-4 gap-3">
                 <h3 class="text-sky-950 text-md font-bold">Status:</h3>
                 <button type="button" id="btn-selesai" data-todo-id="${todo.id}" data-status="selesai" class="btn-selesai text-sky-900 bg-sky-300 hover:bg-sky-400 border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-sm px-3 py-0.5 text-center me-2 mb-2">Selesai</button>
                 <button type="button" id="btn-revisi" data-todo-id="${todo.id}" data-status="revisi" class="btn-revisi text-sky-900 bg-sky-100 hover:bg-sky-200 border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-sm px-3 py-0.5 text-center me-2 mb-2">Revisi</button>
