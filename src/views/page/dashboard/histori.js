@@ -25,8 +25,8 @@ const Histori = {
     <h1 class="flex flex-grow py-3 text-2xl font-bold" id="tanggal">Revisi</h1>
   </div>
 
-  <div class="flex flex-col gap-2 p-2">
-    <div class="flex flex-row gap-4 items-center justify-center" id="revisi-container">
+  <div class="gap-2 p-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 items-center justify-center" id="revisi-container">
 
 
     </div>
@@ -36,8 +36,8 @@ const Histori = {
     <h1 class="flex flex-grow py-3 text-2xl font-bold" id="tanggal">Selesai</h1>
   </div>
 
-  <div class="flex flex-col gap-2 p-2">
-    <div class="flex flex-row gap-4 items-center justify-center" id="selesai-container">
+  <div class="gap-2 p-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 items-center justify-center" id="selesai-container">
       
     </div>
   </div>
