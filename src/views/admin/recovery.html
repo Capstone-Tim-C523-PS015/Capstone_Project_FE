@@ -18,17 +18,17 @@
         axios.get(veriftoken)
         .then((response) => {}).catch((error) => {
             const message = document.getElementById('Error_input');
-                message.innerHTML = error.response.data.message;
-                Message.classList.remove('text-green-800');  
-                Message.classList.add('text-rose-700');
-                setTimeout(time, 1000);
-                function time(){
-                    const loadingrecovery = document.getElementById('loading-recovery');
-                    const textubahsandi = document.getElementById('ubahsandi');
+            message.innerHTML = error.response.data.message;
+            Message.classList.remove('text-green-800');  
+            Message.classList.add('text-rose-700');
+            setTimeout(time, 1000);
+            function time(){
+                const loadingrecovery = document.getElementById('loading-recovery');
+                const textubahsandi = document.getElementById('ubahsandi');
 
-                    loadingrecovery.classList.add('hidden');
-                    textubahsandi.classList.remove('hidden');
-                }
+                loadingrecovery.classList.add('hidden');
+                textubahsandi.classList.remove('hidden');
+            }
         });
     </script>
 </head>

@@ -24,7 +24,7 @@ const masuk = {
                         <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
                     </svg>
                     </div>
-                    <input type="text" id="email-address-icon" class="bg-gray-50 border border-gray-300 font-semibold text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full ps-10 p-2.5" placeholder="Email@gmail.com" required  />
+                    <input type="email" id="email-address-icon" class="bg-gray-50 border border-gray-300 font-semibold text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full ps-10 p-2.5" placeholder="Email@gmail.com" required  />
                 </div>
         
                 <label for="password" class="block mt-2 mb-2 text-sm font-bold text-sky-900">Kata Sandi</label>
@@ -77,9 +77,7 @@ const masuk = {
 
   async afterRender() {
     const jwttoken = localStorage.getItem('token');
-    if (jwttoken === null) {
-      window.location.replace('./login.html#/masuk');
-    } else {
+    if (jwttoken != null) {
       window.location.replace('./indexdash.html#/dashboard');
     }
 
@@ -107,7 +105,6 @@ const masuk = {
     async function login() {
       const email = document.getElementById('email-address-icon').value;
       const password = document.getElementById('password').value;
-      // Ganti URL sesuai dengan endpoint login di backend Anda
       const loginUrl = `${Api.LoginUrl}`;
       const body = { email, password };
 
@@ -117,11 +114,11 @@ const masuk = {
         },
       }).then((response) => {
         const errorMessage = document.getElementById('Error_input');
-        errorMessage.innerHTML = error.response.data.message;
+        errorMessage.innerHTML = response.data.message;
         errorMessage.classList.add('text-green-800');
         errorMessage.classList.remove('text-rose-700');
 
-        setTimeout(time, 3000);
+        setTimeout(time, 1000);
         function time(){
           const loadinglogin = document.getElementById('loading-login');
           const textlogin = document.getElementById('Masukuser');
@@ -144,6 +141,8 @@ const masuk = {
         textlogin.classList.remove('hidden');    
       });
     }
+
+
     async function seepassword(){
       const seepasswordid = document.getElementById('seepassword');
       seepasswordid.addEventListener('click', function () {

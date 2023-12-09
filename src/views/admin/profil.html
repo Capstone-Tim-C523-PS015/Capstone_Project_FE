@@ -26,14 +26,16 @@
         <img class="w-14 md:w-20" src="./images/logo.jpg" alt="Logo Plan Plan">
         <span class="self-center hidden text-xl font-bold sm:block md:text-2xl whitespace-nowrap text-sky-900">Plan Plan</span>
       </div>
-      <div class="right-[2%] top-[36%] md:top-[20%] absolute text-sky-100 rounded-xl p-2 bg-rose-800 hover:bg-rose-700">
-        <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" id="buttondelete" type="button" class="cursor-pointer flex justify-center text-center items-center">
-          <svg class=" md:w-5 w-3 mr-1" id="icondelete" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-x" viewBox="0 0 16 16">
-            <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m.256 7a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
-            <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m-.646-4.854.646.647.646-.647a.5.5 0 0 1 .708.708l-.647.646.647.646a.5.5 0 0 1-.708.708l-.646-.647-.646.647a.5.5 0 0 1-.708-.708l.647-.646-.647-.646a.5.5 0 0 1 .708-.708"/>
-          </svg>
+      <div class=" w-28 md:w-36 right-[2%] top-[36%] md:top-[20%] absolute text-sky-100 rounded-xl p-2 bg-rose-800 hover:bg-rose-700">
+        <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" id="buttondelete" type="button" class=" w-full cursor-pointer flex justify-center text-center items-center">
+          <div class="flex" id="text-delete">
+            <svg class=" md:w-5 w-3 mr-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-x" viewBox="0 0 16 16">
+              <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m.256 7a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
+              <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m-.646-4.854.646.647.646-.647a.5.5 0 0 1 .708.708l-.647.646.647.646a.5.5 0 0 1-.708.708l-.646-.647-.646.647a.5.5 0 0 1-.708-.708l.647-.646-.647-.646a.5.5 0 0 1 .708-.708"/>
+            </svg>
+            <p class="font-semibold text-sky-100 text-xs md:text-sm" >Delete User</p>
+          </div>
           <img src="./svg/loading-delete.svg" id="loading-delete" class="hidden w-5">
-          <p class="font-semibold text-sky-100 text-xs md:text-sm" id="text-delete">Delete User</p>
         </button>
       </div>
       <div class="right-[2%] top-[60%] absolute error-message text-rose-700 font-semibold text-center text-sm max-w-xs" id="Error_input_delete"></div>
@@ -126,10 +128,10 @@
             </div>
           </div>
           <div class=" my-2 flex justify-start" ><p class="error-message text-rose-700 font-semibold text-center text-sm max-w-xs" id="Error_input_password"></p></div>
-          <button type="submit" class="text-sky-50 bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-xs md:text-sm md:px-5 md:py-2.5 px-3 py-2 text-center" id="changepassword"><img id="loading" src="./svg/loading.svg" class="hidden bg-green-800 w-5"><p id="simpanpasswordnew">Simpan password</p></button>
+          <button type="submit" class="w-8/12 md:w-6/12 flex justify-center text-sky-50 bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-xs md:text-sm md:px-5 md:py-2.5 px-3 py-2 text-center" id="changepassword"><img id="loading" src="./svg/loading.svg" class="hidden bg-green-800 w-5"><p id="simpanpasswordnew">Simpan password</p></button>
         </form>
 
-        <form class="w-full md:w-[50%] flex flex-col gap-4" id="formdatauser">
+        <form class="w-full md:w-[50%] flex flex-col" id="formdatauser">
           <div class="mb-5">
             <label for="nama" class="block mb-2 text-sm font-medium text-sky-900">Nama Pengguna *</label>
             <input type="text" id="username" class="shadow-sm bg-gray-50 border border-gray-300 text-sky-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5" placeholder="Nama Pengguna" required>
@@ -144,7 +146,7 @@
           </div>
           <div class=" my-2 flex justify-end" ><p class="error-message text-rose-700 font-semibold text-center text-sm max-w-xs" id="Error_input_user"></p></div>
           <div class="flex justify-end">
-            <button type="submit" class="text-white bg-green-700 hover:bg-gree-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-xs md:text-sm md:px-5 md:py-2.5 px-3 py-2 text-center" id="simpanprofile"><img id="loadingprofil" src="./svg/loading.svg" class="hidden bg-green-800 w-5"><p id="simpanprofilnew">Simpan profil</p></button>
+            <button type="submit" class="w-7/12 md:w-5/12 flex justify-center text-white bg-green-700 hover:bg-gree-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-xs md:text-sm md:px-5 md:py-2.5 px-3 py-2 text-center" id="simpanprofile"><img id="loadingprofil" src="./svg/loading.svg" class="hidden bg-green-800 w-5"><p id="simpanprofilnew">Simpan profil</p></button>
           </div>
         </form>
       </div>
@@ -240,11 +242,9 @@
     });
     document.getElementById("deleteuser").addEventListener("click", function(e){
       e.preventDefault();
-      const icondelete = document.getElementById('icondelete')
       const textdelete = document.getElementById('text-delete');
       const svgloadingdelete = document.getElementById('loading-delete');
 
-      icondelete.classList.add('hidden');
       textdelete.classList.add('hidden');
       svgloadingdelete.classList.remove('hidden');
 
@@ -410,11 +410,9 @@
 
         setTimeout(deleteakun, 3000);
         function deleteakun(){
-          const icondelete = document.getElementById('icondelete')
           const textdelete = document.getElementById('text-delete');
           const svgloadingdelete = document.getElementById('loading-delete');
 
-          icondelete.classList.remove('hidden');
           textdelete.classList.remove('hidden');
           svgloadingdelete.classList.add('hidden');
 
