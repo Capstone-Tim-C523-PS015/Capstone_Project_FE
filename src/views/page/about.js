@@ -156,9 +156,7 @@ const About = {
 
   async afterRender() {
     const jwttoken = localStorage.getItem('token');
-    if (jwttoken === null) {
-      window.location.replace('/#/tentangkami');
-    } else {
+    if (jwttoken != null) {
       window.location.replace('./indexdash.html#/dashboard');
     }
 

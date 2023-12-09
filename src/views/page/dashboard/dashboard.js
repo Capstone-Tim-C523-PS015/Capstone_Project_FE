@@ -84,8 +84,6 @@ const Home = {
     const jwttoken = localStorage.getItem('token');
     if (jwttoken === null) {
       window.location.replace('./login.html#/masuk');
-    } else {
-      window.location.replace('./indexdash.html#/dashboard');
     }
 
     window.addEventListener('beforeunload', () => {

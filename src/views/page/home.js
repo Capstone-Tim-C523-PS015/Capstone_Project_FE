@@ -103,9 +103,7 @@ const Home = {
 
   async afterRender() {
     const jwttoken = localStorage.getItem('token');
-    if (jwttoken === null) {
-      window.location.replace('/#/beranda');
-    } else {
+    if (jwttoken != null) {
       window.location.replace('./indexdash.html#/dashboard');
     }
 

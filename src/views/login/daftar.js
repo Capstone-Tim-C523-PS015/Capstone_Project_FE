@@ -26,10 +26,11 @@ const daftar = {
 
         <div class="flex flex-col items-center content-center justify-center grow">
           <img class="w-24 md:w-32" src="./images/logo.jpg" alt="Logo Plan Plan" />
-          <p class="px-2 mb-2 text-xl font-bold text-center text-sky-900">Silahkan untuk membuat akun!</p>
+          <p class="mb-2 text-lg font-bold text-center text-sky-900">Silahkan untuk membuat</p>
+          <p class="px-2 text-lg font-bold text-center text-sky-900">akun!</p>
     
           <form id="Regis-form" class="w-2/3 mx-auto">
-          <div class=" mt-5 flex justify-center" ><p class="error-message text-rose-700 font-semibold text-center text-sm max-w-xs" id="Error_input"></p></div>
+            <div class=" mt-5 flex justify-center" ><p class="error-message text-rose-700 font-semibold text-center text-sm max-w-xs" id="Error_input"></p></div>
             <label for="username" class="block mt-2 mb-2 text-sm font-bold text-sky-900">Nama Pengguna</label>
             <div class="relative">
               <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
@@ -59,12 +60,19 @@ const daftar = {
                 </svg>
               </div>
               <input type="password" id="password" class="bg-gray-50 border border-gray-300 font-semibold text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full ps-10 p-2.5" placeholder="Kata Sandi" required />
+              <div class="absolute inset-y-0 right-3 top-1.5 px-2 py-2 cursor-pointer" id="seepassword">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16">
+                  <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486z"/>
+                  <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829"/>
+                  <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708"/>
+                </svg>
+              </div>
             </div>
     
-            <button type="submit" id="daftar-btn" class="w-full text-white bg-sky-900 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-6">
-              Daftar
+            <button type="submit" id="daftar-btn" class=" flex justify-center w-full text-white bg-sky-900 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-6">
+              <img id="loading-daftar" src="./svg/loading-login.svg" class="hidden w-5"><p id="Daftar">Daftar</p>
             </button>
-            <p class="text-sky-950 font-normal text-[10px] md:text-base lg:max-w-6xl text-center px-2 mt-4">
+            <p class="text-sky-950 font-normal text-sm md:text-base lg:max-w-6xl text-center px-2 mt-4">
               Sudah memiliki akun? <a href="#/masuk" class="text-sky-600 hover:underline">Masuk</a>
             </p>
           </form>
@@ -77,17 +85,22 @@ const daftar = {
 
   async afterRender() {
     const jwttoken = localStorage.getItem('token');
-    if (jwttoken === null) {
-      window.location.replace('./login.html#/daftar');
-    } else {
+    if (jwttoken != null) {
       window.location.replace('./indexdash.html#/dashboard');
     }
+
     const RegisForm = document.getElementById('Regis-form');
 
+    seepassword();
     if (RegisForm) {
       RegisForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        regis();
+        const loadingdaftar = document.getElementById('loading-daftar');
+        const textdaftar = document.getElementById('Daftar');
+
+        loadingdaftar.classList.remove('hidden');
+        textdaftar.classList.add('hidden');
+        setTimeout(regis, 3000);
       });
     }
 
@@ -105,29 +118,51 @@ const daftar = {
           'Content-Type': 'application/json',
         },
       }).then((response) => {
+        localStorage.setItem('email', email);
+        localStorage.setItem('password', password);
         const errormessage = document.getElementById('Error_input');
         const errorMessageText = response.data.message;
         errormessage.innerHTML = errorMessageText;
-        window.location.href = './login.html#/masuk';
-      }).catch((error) => {
-        if (error.response) {
-          // Cek kode status respons
-          if (error.response.status === 400) {
-            // Tampilkan pesan kesalahan
-            const errormessage = document.getElementById('Error_input');
-            const errorMessageText = error.response.data.message;
-            errormessage.innerHTML = errorMessageText;
-          } else {
-            // Tampilkan pesan kesalahan umum
-            const errormessage = document.getElementById('Error_input');
-            errormessage.innerHTML = error.response.data.message;
-          }
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          // Jika tidak ada respons dari server
-          const errormessage = document.getElementById('Error_input');
-          errormessage.textContent = error.response.data.message;
+        errormessage.classList.remove('text-rose-700');
+        errormessage.classList.add('text-green-800');
+
+        setTimeout(time, 3000);
+        function time() {
+          const loadingdaftar = document.getElementById('loading-daftar');
+          const textdaftar = document.getElementById('Daftar');
+
+          loadingdaftar.classList.add('hidden');
+          textdaftar.classList.remove('hidden');
+          window.location.href = './login.html#/masuk';
         }
+      }).catch((error) => {
+        const errormessage = document.getElementById('Error_input');
+        const errorMessageText = error.response.data.message;
+        errormessage.innerHTML = errorMessageText;
+        errormessage.classList.remove('text-green-800');
+        errormessage.classList.add('text-rose-700');
+        const loadingdaftar = document.getElementById('loading-daftar');
+        const textdaftar = document.getElementById('Daftar');
+
+        loadingdaftar.classList.add('hidden');
+        textdaftar.classList.remove('hidden');
+      });
+    }
+    async function seepassword() {
+      const seepasswordid = document.getElementById('seepassword');
+      seepasswordid.addEventListener('click', () => {
+        const password = document.getElementById('password');
+        password.type = password.type === 'password' ? 'text' : 'password';
+        seepasswordid.innerHTML = seepasswordid.innerHTML.includes('slash')
+          ? `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+          </svg>`
+          : `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash" viewBox="0 0 16 16">
+            <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486z"/>
+            <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829"/>
+            <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708"/>
+          </svg>`;
       });
     }
   },

@@ -135,9 +135,8 @@ const Kalendar = {
     const jwttoken = localStorage.getItem('token');
     if (jwttoken === null) {
       window.location.replace('./login.html#/masuk');
-    } else {
-      window.location.replace('./dashboard.html#/kalender');
     }
+
     const calendarEl = document.getElementById('kalendar');
     // Custome Date
     document

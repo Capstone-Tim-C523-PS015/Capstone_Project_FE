@@ -158,8 +158,6 @@ const About2 = {
     const jwttoken = localStorage.getItem('token');
     if (jwttoken === null) {
       window.location.replace('./login.html#/masuk');
-    } else {
-      window.location.replace('./indexdash.html#/tentangkita');
     }
 
     window.addEventListener('beforeunload', () => {

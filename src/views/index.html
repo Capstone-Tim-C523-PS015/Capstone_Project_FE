@@ -59,6 +59,12 @@
       </ul>
     </div>
   </footer>  
+  <script>
+    const jwttoken = localStorage.getItem('token');
+    if (jwttoken != null) {
+      window.location.replace('./indexdash.html#/dashboard');
+    }
+  </script>
 </body>
 
 </html>

@@ -11,8 +11,6 @@ const Histori = {
     const jwttoken = localStorage.getItem('token');
     if (jwttoken === null) {
       window.location.replace('./login.html#/masuk');
-    } else {
-      window.location.replace('./dashboard.html#/histori');
     }
   },
 };
