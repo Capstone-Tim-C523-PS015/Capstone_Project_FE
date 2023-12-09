@@ -1,6 +1,7 @@
 import '../../../styles/index.css';
 import Api from '../../../scripts/global/api';
 import 'flowbite';
+import axios from 'axios';
 
 const TodoList = {
   async render() {
@@ -111,6 +112,17 @@ const TodoList = {
                 </div>
               </div>
             </div>
+            <div id="verifikasiDelete" class="px-2 py-2 w-[70%] left-[15%] border my-auto absolute hidden top-[40%] rounded-xl border-sky-900 bg-sky-100">
+              <div class="flex flex-col gap-2 justify-center items-center">
+                <h5 class="font-bold text-sky-900">Menghapus Tugas !!</h5>
+                <p class="text-sm">Apakah anda yakin ingin menghapus Tugas ini ?</p>
+                <div class="flex gap-2">
+                  <button id="batalDelete" class="font-bold p-1 rounded-lg border border-sky-950">Batal</button>
+                  <button id="btnHapus" class="bg-red-500 text-white font-bold p-1 rounded-lg">Hapus</button>
+                </div>
+              </div>
+            </div>
+            <div id="modalBackdrop" class="hidden fixed top-0 left-0 w-full h-full"></div>
 
           `;
   },
@@ -125,38 +137,76 @@ const TodoList = {
         const formattedDate = selectedDate.toLocaleDateString('en-US', options);
         document.getElementById('formattedDate').textContent = formattedDate;
       });
+    // End Custome Date
 
-    function handleAddClick() {
-      const modal = document.getElementById('crud-modal');
-      const btnadd = document.getElementById('add-button');
-
-      btnadd.addEventListener('click', () => {
-        modal.classList.remove('hidden');
-      });
-    }
-
-    function handleCloseClick() {
-      const modal = document.getElementById('crud-modal');
+    function handleDateClick(info) {
+      const modal = document.getElementById('dateModal');
+      const dahboard = document.getElementById('dashboard');
       const btnclose = document.getElementById('close');
+
+      if (modal) {
+        modal.classList.toggle('hidden');
+        dahboard.classList.toggle('blacked-out');
+      }
 
       btnclose.addEventListener('click', () => {
         modal.classList.add('hidden');
+        dahboard.classList.remove('blacked-out');
       });
     }
 
-    function handleNotification() {
-      const toggle = document.getElementById('toggle');
-      const indicator = document.getElementById('indicator');
+    function handleEventClick(info) {
+      const modal = document.getElementById('dateModal');
+      const modalEvent = document.getElementById('modalEvent');
+      const dahboard = document.getElementById('dashboard');
+      const btnclose = document.getElementById('closeEvent');
+      const iconDelete = document.getElementById('deleteEvent');
+      const editEventBtn = document.getElementById('editEvent');
+      const todate = document.getElementById('todate');
+      const verifikasiDelete = document.getElementById('verifikasiDelete');
+      const titleEvent = document.getElementById('titleEvent');
+      const setatus = document.getElementById('btnstatus');
+      const modalBackdrop = document.getElementById('modalBackdrop');
+      const batalDelete = document.getElementById('batalDelete');
 
-      toggle.addEventListener('change', () => {
-        const isChecked = toggle.checked;
+      if (modalEvent) {
+        modalEvent.classList.toggle('hidden');
+        dahboard.classList.add('blacked-out');
+        modalBackdrop.classList.remove('hidden');
+      }
 
-        indicator.style.transform = isChecked
-          ? 'translateX(100%)'
-          : 'translateX(0)';
-
-        indicator.classList.toggle('on', isChecked);
+      btnclose.addEventListener('click', () => {
+        modalEvent.classList.add('hidden');
+        dahboard.classList.remove('blacked-out');
+        modalBackdrop.classList.add('hidden');
       });
+
+      iconDelete.addEventListener('click', () => {
+        verifikasiDelete.classList.toggle('hidden');
+      });
+
+      batalDelete.addEventListener('click', () => {
+        verifikasiDelete.classList.add('hidden');
+      });
+
+      editEventBtn.addEventListener('click', () => {
+        handleEditEvent(info);
+      });
+
+      titleEvent.innerHTML = info.event.title;
+      setatus.innerHTML = info.event.extendedProps.status;
+
+      if (info.event.extendedProps.status === 'Penting') {
+        setatus.style.backgroundColor = 'red';
+        setatus.style.color = 'white';
+      } else if (info.event.extendedProps.status === 'Dikerjakan') {
+        setatus.style.backgroundColor = '#7DD3FC';
+        setatus.style.color = '#0C4A6E';
+      } else {
+        setatus.style.backgroundColor = '';
+      }
+
+      todate.innerHTML = info.event.start.toLocaleString();
     }
 
     function handleEditEvent(info) {
@@ -182,9 +232,88 @@ const TodoList = {
       });
     }
 
-    handleAddClick();
-    handleCloseClick();
-    handleNotification();
+    // Inisialisasi kalender
+    initializeCalendar();
+
+    // End API Calendar
+
+    // Event Toggle Notifikasi Btn
+    const toggle = document.getElementById('toggle');
+    const indicator = document.getElementById('indicator');
+
+    toggle.addEventListener('change', () => {
+      const isChecked = toggle.checked;
+      const label = isChecked ? 'On' : 'Off';
+
+      indicator.style.transform = isChecked
+        ? 'translateX(100%)'
+        : 'translateX(0)';
+
+      indicator.classList.toggle('on', isChecked);
+    });
+    // End Togle Notofikasi Btn
+
+    // Event Btn Category
+    const modal = document.getElementById('dateModal');
+
+    const btnEvent = document.getElementById('btnEvent');
+    const btnTask = document.getElementById('btnTask');
+
+    btnEvent.addEventListener('click', () => {
+      btnEvent.classList.add('bg-sky-300');
+      btnTask.classList.remove('bg-sky-300');
+    });
+
+    btnTask.addEventListener('click', () => {
+      btnTask.classList.add('bg-sky-300');
+      btnEvent.classList.remove('bg-sky-300');
+    });
+    // End Btn Category
+
+    const buttonSubmitAktivitas = document.getElementById(
+      'buttonSubmitAktivitas',
+    );
+
+    buttonSubmitAktivitas.addEventListener('click', () => {
+      addEvent();
+      const modal = document.getElementById('dateModal');
+      const dahboard = document.getElementById('dashboard');
+      modal.classList.add('hidden');
+      dahboard.classList.remove('blacked-out');
+    });
+
+    function addEvent() {
+      const judul = document.getElementById('judul').value;
+      const deadline = document.getElementById('customDate').value;
+      const deskripsi = document.getElementById('myTextarea').value;
+
+      const newData = {
+        title: judul,
+        description: deskripsi,
+        deadline,
+        status: 'Dikerjakan',
+      };
+
+      const jwt = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JlLmd1bnoubXkuaWQvYXV0aC9sb2dpbiIsImlhdCI6MTcwMTU4MjI5OCwibmJmIjoxNzAxNTgyMjk4LCJqdGkiOiJkWnpVMjZYTHU2b1RDd2VSIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.iY7UV-2ftKlSAN9KuycnwU_42cLyoGqAzRPWAiR_y4s';
+      const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${jwt}`,
+      };
+
+      axios
+        .post('https://be.gunz.my.id/todo', JSON.stringify(newData), {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${jwt}`,
+          },
+        })
+        .then((response) => {
+          console.log(`Succes ${response.data}`);
+        })
+        .catch((error) => {
+          console.log(`Error ${error}`);
+        });
+    }
   },
 };
 
