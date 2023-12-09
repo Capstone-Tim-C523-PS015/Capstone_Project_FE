@@ -43,7 +43,7 @@ const Histori = {
   </div>
 
  
-  <div class="modal px-2 py-2 px-2 py-2 w-[80%] left-[15%] border my-auto absolute hidden top-[20%] rounded-xl border-sky-900 bg-white" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="dateModalLabel" aria-hidden="true">
+  <div class="modal px-2 py-2 px-2 py-2 w-[80%] left-[15%] border my-auto fixed hidden top-[20%] rounded-xl border-sky-900 bg-white" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="dateModalLabel" aria-hidden="true">
   <span id="close" class="material-symbols-outlined absolute right-[-5px] bg-red-500 rounded-full text-white cursor-pointer top-[-10px]">close</span>
     <div class="modal-dialog m-8" role="document">
       <div class="modal-content px-6">
@@ -102,7 +102,7 @@ const Histori = {
       </div>
     </div>
   </div>
-  <div id="verifikasiDelete" class="px-2 py-2 w-[70%] left-[15%] border my-auto absolute hidden top-[40%] rounded-xl border-sky-900 bg-sky-100">
+  <div id="verifikasiDelete" class="px-2 py-2 w-[70%] left-[15%] border my-auto fixed hidden top-[40%] rounded-xl border-sky-900 bg-sky-100">
     <div class="flex flex-col gap-2 justify-center items-center">
       <h5 class="font-bold text-sky-900">Menghapus Tugas !!</h5>
       <p class="text-sm">Apakah anda yakin ingin menghapus Tugas ini ?</p>
@@ -159,7 +159,7 @@ const Histori = {
               </div>
               <div class="flex flex-row gap-2 py-2 border-sky-950 border-b-2"">
                 <h2 class="flex flex-grow text-sky-950 text font-semibold" id="deadline-tanggal" data-deadline="${todo.deadline}">
-                  ${todo.deadline}
+                
                 </h2>
                 <h2>
                   -1 Hari
@@ -201,7 +201,7 @@ const Histori = {
               </div>  
                 <div class="flex flex-row gap-2 py-2 border-sky-950 border-b-2"">
                   <h2 class="flex flex-grow text-sky-950 text font-semibold" id="deadline-tanggal" data-deadline="${todo.deadline}">
-                    ${todo.deadline}
+                   
                   </h2>
                   <h2>
                     -1 Hari
@@ -226,6 +226,17 @@ const Histori = {
         const formattedDate = selectedDate.toLocaleDateString('en-US', options);
         document.getElementById('formattedDate').textContent = formattedDate;
       });
+
+    // Mengubah Formate Tanggal ke Hari, Tanggal Bulan Tahun
+    const currentDeadline = document.querySelectorAll('#deadline-tanggal');
+    currentDeadline.forEach((date) => {
+      const currentDeadlineData = new Date(date.dataset.deadline);
+      console.log("Current Deadline Data: ", currentDeadlineData)
+      const dateFormatter = new Intl.DateTimeFormat('id', { day: 'numeric', month: 'long', weekday: "long", year: "numeric" });
+      const currentDeadlineDataIdFormat = dateFormatter.format(currentDeadlineData);
+      date.innerHTML = currentDeadlineDataIdFormat;
+    });
+
     // End Custome Date
 
     const modal = document.getElementById('dateModal');
