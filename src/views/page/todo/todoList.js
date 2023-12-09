@@ -1,4 +1,6 @@
 import '../../../styles/index.css';
+import Api from '../../../scripts/global/api';
+import 'flowbite';
 
 const TodoList = {
   async render() {
@@ -17,13 +19,13 @@ const TodoList = {
                 <div class="flex flex-col border-2 border-r-2 border-sky-900 py-4 px-4 rounded-2xl">
                   <div class="flex flex-col px-4 gap-2">
                     <div class="flex flex-row gap-3 justify-center">
-                      <button id="edit-todo">
+                      <button id="editEvent">
                         <svg class="w-6 h-6 text-sky-900" aria-hidden="true" id="edit "xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                           <path d="M12.687 14.408a3.01 3.01 0 0 1-1.533.821l-3.566.713a3 3 0 0 1-3.53-3.53l.713-3.566a3.01 3.01 0 0 1 .821-1.533L10.905 2H2.167A2.169 2.169 0 0 0 0 4.167v11.666A2.169 2.169 0 0 0 2.167 18h11.666A2.169 2.169 0 0 0 16 15.833V11.1l-3.313 3.308Zm5.53-9.065.546-.546a2.518 2.518 0 0 0 0-3.56 2.576 2.576 0 0 0-3.559 0l-.547.547 3.56 3.56Z"/>
                           <path d="M13.243 3.2 7.359 9.081a.5.5 0 0 0-.136.256L6.51 12.9a.5.5 0 0 0 .59.59l3.566-.713a.5.5 0 0 0 .255-.136L16.8 6.757 13.243 3.2Z"/>
                         </svg>
                       </button>
-                      <button id="delete-todo">
+                      <button id="deleteEvent">
                         <svg class="w-6 h-6 text-sky-900" aria-hidden="true" id="hapus "xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
                         </svg>
@@ -154,6 +156,29 @@ const TodoList = {
           : 'translateX(0)';
 
         indicator.classList.toggle('on', isChecked);
+      });
+    }
+
+    function handleEditEvent(info) {
+      function editEvent(event) {
+        document.getElementById('judul').value = event.title;
+      }
+
+      editEvent(info.event);
+
+      const modal = document.getElementById('dateModal');
+      const modalEvent = document.getElementById('modalEvent');
+      const modalBackdrop = document.getElementById('modalBackdrop');
+      const dahboard = document.getElementById('dashboard');
+      const btnclose = document.getElementById('close');
+
+      modal.classList.remove('hidden');
+      modalEvent.classList.add('hidden');
+      modalBackdrop.classList.add('hidden');
+
+      btnclose.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        dahboard.classList.remove('blacked-out');
       });
     }
 
