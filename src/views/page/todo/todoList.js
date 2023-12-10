@@ -1,6 +1,7 @@
 import '../../../styles/index.css';
 import 'flowbite';
 import axios from 'axios';
+import moment from 'moment';
 import Api from '../../../scripts/global/api';
 import TodoSource from '../../../scripts/data/todo-source';
 
@@ -31,16 +32,7 @@ const TodoList = {
   </button>
 </div>
 
-  <div class="flex flex-row border-sky-950 border-b-2"> 
-    <h1 class="flex flex-grow py-3 text-2xl font-bold" id="tanggal">Kemarin</h1>
-  </div>
 
-  <div class="flex w-[90%] gap-2 p-2 relative items-center justify-center">
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 place-content-center" id="kemarin-container">
-
-
-    </div>
-  </div>
 
   <div class="flex flex-row border-sky-950 border-b-2"> 
     <h1 class="flex flex-grow py-3 text-2xl font-bold" id="tanggal">Hari Ini</h1>
@@ -64,7 +56,7 @@ const TodoList = {
     </div>
   </div>
  
-  <div class="modal px-2 py-2 px-2 py-2 w-[80%] left-[15%] border my-auto absolute hidden top-[20%] rounded-xl border-sky-900 bg-white" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="dateModalLabel" aria-hidden="true">
+  <div class="modal px-2 py-2 w-[80%] left-[15%] border my-auto absolute hidden top-[20%] rounded-xl border-sky-900 bg-white" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="dateModalLabel" aria-hidden="true">
   <span id="close" class="material-symbols-outlined absolute right-[-5px] bg-red-500 rounded-full text-white cursor-pointer top-[-10px]">close</span>
     <div class="modal-dialog m-8" role="document">
       <div class="modal-content px-6">
@@ -140,18 +132,24 @@ const TodoList = {
 
   async afterRender() {
     const todos = await TodoSource.getAllTodos();
-    console.log('Todos:', todos);
+    const date = moment();
+    const today = date.format('YYYY-MM-DD Th:m');
+    const deadlineTodo = document.querySelector('#deadline-tanggal');
 
     const emptyContainer = document.querySelector('#empty-containter');
 
     const kemarinContainer = document.querySelector('#kemarin-container');
     const todayContainer = document.querySelector('#hari-ini-container');
 
+    if (today !== deadlineTodo) {
+      return;
+    }
+
     todos.forEach((todo) => {
       if (!todo) {
         emptyContainer.classList.remove('hidden');
       } else {
-        if (todo.status === 'revisi') {
+        if (todo.deadline === today) {
           kemarinContainer.innerHTML
           += `
           <div class="flex flex-col border-2 border-r-2 border-sky-900 p-4 m-4 rounded-2xl" id="kartu revisi">
