@@ -161,8 +161,8 @@ const Histori = {
                 <h2 class="flex flex-grow text-sky-950 text font-semibold" id="deadline-tanggal" data-deadline="${todo.deadline}">
                 
                 </h2>
-                <h2>
-                  -1 Hari
+                <h2 id="countdown">
+
                 </h2> 
               </div>
               <div class="p-1">
@@ -203,8 +203,8 @@ const Histori = {
                   <h2 class="flex flex-grow text-sky-950 text font-semibold" id="deadline-tanggal" data-deadline="${todo.deadline}">
                    
                   </h2>
-                  <h2>
-                    -1 Hari
+                  <h2 id="countdown">
+
                   </h2> 
                 </div>
                 <div class="p-1">
@@ -231,14 +231,33 @@ const Histori = {
     const currentDeadline = document.querySelectorAll('#deadline-tanggal');
     currentDeadline.forEach((date) => {
       const currentDeadlineData = new Date(date.dataset.deadline);
-      console.log("Current Deadline Data: ", currentDeadlineData)
-      const dateFormatter = new Intl.DateTimeFormat('id', { day: 'numeric', month: 'long', weekday: "long", year: "numeric" });
+      console.log('Current Deadline Data: ', currentDeadlineData);
+      const dateFormatter = new Intl.DateTimeFormat('id', {
+        day: 'numeric', month: 'long', weekday: 'long', year: 'numeric',
+      });
       const currentDeadlineDataIdFormat = dateFormatter.format(currentDeadlineData);
       date.innerHTML = currentDeadlineDataIdFormat;
+
+      const countdownDeadline = document.querySelectorAll('#countdown');
+      countdownDeadline.forEach((countdown) => {
+      // Menghitung Sisa Hari Deadline
+        const realTimeDate = new Date();
+
+        // To calculate the time difference of two dates
+        const Difference_In_Time = currentDeadlineData.getTime() - realTimeDate.getTime();
+
+        // To calculate the no. of days between two dates
+        const Difference_In_Days = Math.round(Difference_In_Time / (1000 * 3600 * 24));
+
+        // To display the final no. of days (result)
+        countdown.innerHTML = `${Difference_In_Days} hari`;
+        console.log(`Total number of days between dates:\n${
+          currentDeadlineData.toDateString()} and ${realTimeDate.toDateString()
+        } is: ${Difference_In_Days} days`);
+      });
     });
 
-    // End Custome Date
-
+    // --------------------------------------------------------------
     const modal = document.getElementById('dateModal');
     const dahboard = document.getElementById('dashboard');
     const btnclose = document.getElementById('close');
@@ -446,21 +465,35 @@ const Histori = {
         // End Btn Category
 
         // Menampilkan Data Eksisting
-        const currentTitle = document.querySelector('#judulTodo');
-        const currentDeadline = document.querySelector('#deadline-tanggal');
-        const currentDescription = document.querySelector('#deskripsi');
-
-        const inputTodoTitle = document.querySelector('#judul');
-        inputTodoTitle.setAttribute("value", currentTitle.dataset.title);
-        const inputTodoTime = document.querySelector('#customTime');
+        const currentTitles = document.querySelectorAll('#judulTodo');
+        currentTitles.forEach((currentTitle) => {
+          const inputTodoTitles = document.querySelectorAll('#judul');
+          inputTodoTitles.forEach((inputTodoTitle) => {
+            inputTodoTitle.setAttribute('value', currentTitle.dataset.title);
+          });
+        });
 
         // Untuk Waktu dan Tanggal saya tidak bisa menaruh default
-        inputTodoTime.setAttribute("value", currentDeadline.dataset.deadline);
-        const inputTodoDate = document.querySelector('#customDate');
-        inputTodoDate.setAttribute("value", currentDeadline.dataset.deadline);
-        const inputTodoDesc = document.querySelector('#myTextarea');
+        const currentDeadlines = document.querySelectorAll('#deadline-tanggal');
+        currentDeadlines.forEach((currentDeadline) => {
+          const inputTodoTimes = document.querySelectorAll('#customTime');
+          inputTodoTimes.forEach((inputTodoTime) => {
+            inputTodoTime.setAttribute('value', currentDeadline.dataset.deadline);
+          });
+          const inputTodoDates = document.querySelectorAll('#customDate');
+          inputTodoDates.forEach((inputTodoDate) => {
+            inputTodoDate.setAttribute('value', currentDeadline.dataset.deadline);
+          });
+        });
 
-        inputTodoDesc.innerHTML = currentDescription.dataset.description;
+        const currentDescriptions = document.querySelectorAll('#deskripsi');
+        currentDescriptions.forEach((currentDescription) => {
+          const inputTodoDescs = document.querySelectorAll('#myTextarea');
+          inputTodoDescs.forEach((inputTodoDesc) => {
+            inputTodoDesc.innerHTML = currentDescription.dataset.description;
+          });
+        });
+
         const buttonSave = document.querySelector('#saveBtn');
 
         // Menampilkan category button sesuai data eksisting
