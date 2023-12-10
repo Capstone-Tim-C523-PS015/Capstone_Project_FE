@@ -6,6 +6,7 @@ import App from "../views/app";
 import "fullcalendar";
 import { createElement } from "@fullcalendar/core/preact";
 import swRegister from "./utils/sw-register";
+import "regenerator-runtime";
 
 const app = new App({ content: document.querySelector(".content") });
 window.addEventListener("hashchange", () => {

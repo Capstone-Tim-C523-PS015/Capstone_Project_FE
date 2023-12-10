@@ -81,6 +81,40 @@ module.exports = {
     }),
     new WorkboxWebpackPlugin.GenerateSW({
       swDest: "./sw.bundle.js",
+      runtimeCaching: [
+        {
+          urlPattern: ({ url }) =>
+            url.href.startsWith("https://be.gunz.my.id/todo"),
+          handler: "StaleWhileRevalidate",
+          options: {
+            cacheName: "API-Todo",
+          },
+        },
+        {
+          urlPattern: ({ url }) =>
+            url.href.startsWith("https://be.gunz.my.id/activity"),
+          handler: "StaleWhileRevalidate",
+          options: {
+            cacheName: "API-Activity",
+          },
+        },
+        {
+          urlPattern: ({ url }) =>
+            url.href.startsWith("https://be.gunz.my.id/user"),
+          handler: "StaleWhileRevalidate",
+          options: {
+            cacheName: "API-User",
+          },
+        },
+        {
+          urlPattern: ({ url }) =>
+            url.href.startsWith("https://be.gunz.my.id/auth/login"),
+          handler: "StaleWhileRevalidate",
+          options: {
+            cacheName: "API-Login",
+          },
+        },
+      ],
     }),
 
     new CleanWebpackPlugin(),
