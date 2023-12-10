@@ -43,12 +43,12 @@ const Histori = {
   </div>
 
  
-  <div class="modal px-2 py-2 px-2 py-2 w-[80%] left-[15%] border my-auto fixed hidden top-[20%] rounded-xl border-sky-900 bg-white" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="dateModalLabel" aria-hidden="true">
+  <div class="modal px-2 py-2 px-2 py-2 w-[80%] left-[15%] border my-auto absolute hidden top-[20%] rounded-xl border-sky-900 bg-white" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="dateModalLabel" aria-hidden="true">
   <span id="close" class="material-symbols-outlined absolute right-[-5px] bg-red-500 rounded-full text-white cursor-pointer top-[-10px]">close</span>
     <div class="modal-dialog m-8" role="document">
       <div class="modal-content px-6">
         <div class="modal-header flex text-center justify-center pt-4">
-          <h5 class="modal-title text-sky-900 text-lg font-bold border-black border-b-2 px-4" id="dateModalLabel">Edit Aktivitas</h5>
+          <h5 class="modal-title text-sky-900 text-lg font-bold border-black border-b-2 px-4" id="dateModalLabel">Aktivitas Baru</h5>
         </div>
         <div class="mt-6 md:flex lg:flex">
           <div class="md:w-1/2 md:pr-6">
@@ -102,7 +102,7 @@ const Histori = {
       </div>
     </div>
   </div>
-  <div id="verifikasiDelete" class="px-2 py-2 w-[70%] left-[15%] border my-auto fixed hidden top-[40%] rounded-xl border-sky-900 bg-sky-100">
+  <div id="verifikasiDelete" class="px-2 py-2 w-[70%] left-[15%] border my-auto absolute hidden top-[40%] rounded-xl border-sky-900 bg-sky-100">
     <div class="flex flex-col gap-2 justify-center items-center">
       <h5 class="font-bold text-sky-900">Menghapus Tugas !!</h5>
       <p class="text-sm">Apakah anda yakin ingin menghapus Tugas ini ?</p>
@@ -135,34 +135,34 @@ const Histori = {
           += `
           <div class="flex flex-col border-2 border-r-2 border-sky-900 p-4 m-4 rounded-2xl" id="kartu revisi">
             <div class="flex flex-col px-4 gap-2" >
-              <div class="flex flex-col md:flex-row gap-3 justify-center">
+              <div class="grid grid-cols-3 md:flex md:flex-row gap-3 justify-center">
                 <button id="editEvent" class="editEvent" data-todo-id="${todo.id}">
-                  <svg class="w-6 h-6 text-sky-900" aria-hidden="true" id="edit "xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                  <svg class="w-8 h-8 md:w-6 md:h-6 text-sky-900" aria-hidden="true" id="edit "xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                     <path d="M12.687 14.408a3.01 3.01 0 0 1-1.533.821l-3.566.713a3 3 0 0 1-3.53-3.53l.713-3.566a3.01 3.01 0 0 1 .821-1.533L10.905 2H2.167A2.169 2.169 0 0 0 0 4.167v11.666A2.169 2.169 0 0 0 2.167 18h11.666A2.169 2.169 0 0 0 16 15.833V11.1l-3.313 3.308Zm5.53-9.065.546-.546a2.518 2.518 0 0 0 0-3.56 2.576 2.576 0 0 0-3.559 0l-.547.547 3.56 3.56Z"/>
                     <path d="M13.243 3.2 7.359 9.081a.5.5 0 0 0-.136.256L6.51 12.9a.5.5 0 0 0 .59.59l3.566-.713a.5.5 0 0 0 .255-.136L16.8 6.757 13.243 3.2Z"/>
                   </svg>
                 </button>
                 <button id="deleteEvent" class="deleteEvent" data-todo-id="${todo.id}">
-                  <svg class="w-6 h-6 text-sky-900" aria-hidden="true" id="hapus "xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                  <svg class="w-8 h-8 md:w-6 md:h-6  text-sky-900" aria-hidden="true" id="hapus "xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
                   </svg>
                 </button>
-                <h2 class="px-6 text-sky-950 text-2xl justify-center items-center font-semibold" id="judulTodo" data-title="${todo.title}">${todo.title}</h2>
-                <svg class="w-6 h-6 text-sky-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 21">
+                <h2 class="col-span-3 row-start-3 px-6 text-sky-950 text-2xl justify-center items-center font-semibold" id="judulTodo" data-title="${todo.title}">${todo.title}</h2>
+                <svg class="w-8 h-8 md:w-6 md:h-6  text-sky-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 21">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 3.464V1.1m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175C17 15.4 17 16 16.462 16H3.538C3 16 3 15.4 3 14.807c0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 10 3.464ZM1.866 8.832a8.458 8.458 0 0 1 2.252-5.714m14.016 5.714a8.458 8.458 0 0 0-2.252-5.714M6.54 16a3.48 3.48 0 0 0 6.92 0H6.54Z"/>
                 </svg>
               </div>
-              <div class="flex flex-col md:flex-row py-4 gap-3" id="statusCategory" data-status="${todo.status}">
+              <div class="flex flex-col md:flex-row py-4 gap-3">
                 <h3 class="text-sky-950 text-md font-bold">Status:</h3>
-                <button type="button" id="btn-selesai" data-todo-id="${todo.id}" class="btn-selesai text-sky-900 bg-sky-100 hover:bg-sky-200 border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-sm px-3 py-0.5 text-center me-2 mb-2">Selesai</button>
-                <button type="button" id="btn-revisi" data-todo-id="${todo.id}" class="btn-revisi text-white bg-rose-700 hover:bg-rose-800 border-2 border-sky-950/40 focus:ring-4 focus:ring-red-300 font-bold rounded-lg text-sm px-3 py-0.5 text-center me-2 mb-2">Revisi</button>
+                <button type="button" id="btn-selesai" data-todo-id="${todo.id}" class="h-12 md:h-6 btn-selesai text-sky-900 bg-sky-100 hover:bg-sky-200 border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-md md:text-sm px-3 py-0.5 text-center me-2 mb-2">Selesai</button>
+                <button type="button" id="btn-revisi" data-todo-id="${todo.id}" class="h-12 md:h-6 btn-revisi text-white bg-rose-700 hover:bg-rose-800 border-2 border-sky-950/40 focus:ring-4 focus:ring-red-300 font-bold rounded-lg text-md md:text-sm px-3 py-0.5 text-center me-2 mb-2">Revisi</button>
               </div>
               <div class="flex flex-row gap-2 py-2 border-sky-950 border-b-2"">
                 <h2 class="flex flex-grow text-sky-950 text font-semibold" id="deadline-tanggal" data-deadline="${todo.deadline}">
-                
+                  ${todo.deadline}
                 </h2>
-                <h2 id="countdown">
-
+                <h2 id="countdown" data-deadline="${todo.deadline}">
+                  
                 </h2> 
               </div>
               <div class="p-1">
@@ -177,34 +177,34 @@ const Histori = {
             += `
             <div class="flex flex-col border-2 border-r-2 border-sky-900 p-4 m-4 rounded-2xl" id="kartu revisi">
               <div class="flex flex-col px-4 gap-2" >
-                <div class="flex flex-col md:flex-row gap-3 justify-center">
+                <div class="grid grid-cols-3 md:flex md:flex-row gap-3 justify-center">
                   <button id="editEvent" class="editEvent" data-todo-id="${todo.id}">
-                    <svg class="w-6 h-6 text-sky-900" aria-hidden="true" id="edit "xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                    <svg class="w-8 h-8 md:w-6 md:h-6  text-sky-900" aria-hidden="true" id="edit "xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                       <path d="M12.687 14.408a3.01 3.01 0 0 1-1.533.821l-3.566.713a3 3 0 0 1-3.53-3.53l.713-3.566a3.01 3.01 0 0 1 .821-1.533L10.905 2H2.167A2.169 2.169 0 0 0 0 4.167v11.666A2.169 2.169 0 0 0 2.167 18h11.666A2.169 2.169 0 0 0 16 15.833V11.1l-3.313 3.308Zm5.53-9.065.546-.546a2.518 2.518 0 0 0 0-3.56 2.576 2.576 0 0 0-3.559 0l-.547.547 3.56 3.56Z"/>
                       <path d="M13.243 3.2 7.359 9.081a.5.5 0 0 0-.136.256L6.51 12.9a.5.5 0 0 0 .59.59l3.566-.713a.5.5 0 0 0 .255-.136L16.8 6.757 13.243 3.2Z"/>
                     </svg>
                   </button>
                   <button id="deleteEvent" class="deleteEvent" data-todo-id="${todo.id}">
-                  <svg class="w-6 h-6 text-sky-900" aria-hidden="true" id="hapus "xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                  <svg class="w-8 h-8 md:w-6 md:h-6  text-sky-900" aria-hidden="true" id="hapus "xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
                   </svg>
-                </button>
-                  <h2 class="px-6 text-sky-950 text-2xl justify-center items-center font-semibold" id="judulTodo" data-title="${todo.title}">${todo.title}<h2>
-                  <svg class="w-6 h-6 text-sky-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 21">
+                </button> 
+                  <h2 class="col-span-3 row-start-3 px-6 text-sky-950 text-2xl justify-center items-center font-semibold" id="judulTodo" data-title="${todo.title}">${todo.title}<h2>
+                  <svg class="w-8 h-8 md:w-6 md:h-6  text-sky-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 21">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 3.464V1.1m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175C17 15.4 17 16 16.462 16H3.538C3 16 3 15.4 3 14.807c0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 10 3.464ZM1.866 8.832a8.458 8.458 0 0 1 2.252-5.714m14.016 5.714a8.458 8.458 0 0 0-2.252-5.714M6.54 16a3.48 3.48 0 0 0 6.92 0H6.54Z"/>
                   </svg>
                 </div>
-                <div class="flex flex-col md:flex-row py-4 gap-3" id="statusCategory" data-status="${todo.status}">
+                <div class="flex flex-col md:flex-row py-4 gap-3">
                 <h3 class="text-sky-950 text-md font-bold">Status:</h3>
-                <button type="button" id="btn-selesai" data-todo-id="${todo.id}" data-status="selesai" class="btn-selesai text-sky-900 bg-sky-300 hover:bg-sky-400 border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-sm px-3 py-0.5 text-center me-2 mb-2">Selesai</button>
-                <button type="button" id="btn-revisi" data-todo-id="${todo.id}" data-status="revisi" class="btn-revisi text-sky-900 bg-sky-100 hover:bg-sky-200 border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-sm px-3 py-0.5 text-center me-2 mb-2">Revisi</button>
+                <button type="button" id="btn-selesai" data-todo-id="${todo.id}" data-status="selesai" class="btn-selesai h-12 md:h-6 text-sky-900 bg-sky-300 hover:bg-sky-400 border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-md md:text-sm px-3 py-0.5 text-center me-2 mb-2">Selesai</button>
+                <button type="button" id="btn-revisi" data-todo-id="${todo.id}" data-status="revisi" class="btn-revisi h-12 md:h-6 text-sky-900 bg-sky-100 hover:bg-sky-200 border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-md md:text-sm px-3 py-0.5 text-center me-2 mb-2">Revisi</button>
               </div>  
                 <div class="flex flex-row gap-2 py-2 border-sky-950 border-b-2"">
                   <h2 class="flex flex-grow text-sky-950 text font-semibold" id="deadline-tanggal" data-deadline="${todo.deadline}">
-                   
+                    ${todo.deadline}
                   </h2>
-                  <h2 id="countdown">
-
+                  <h2 id="countdown" data-deadline="${todo.deadline}">
+                    
                   </h2> 
                 </div>
                 <div class="p-1">
@@ -226,7 +226,7 @@ const Histori = {
         const formattedDate = selectedDate.toLocaleDateString('en-US', options);
         document.getElementById('formattedDate').textContent = formattedDate;
       });
-
+    // End Custome Date
     // Mengubah Formate Tanggal ke Hari, Tanggal Bulan Tahun
     const currentDeadline = document.querySelectorAll('#deadline-tanggal');
     currentDeadline.forEach((date) => {
@@ -237,27 +237,25 @@ const Histori = {
       });
       const currentDeadlineDataIdFormat = dateFormatter.format(currentDeadlineData);
       date.innerHTML = currentDeadlineDataIdFormat;
-
-      const countdownDeadline = document.querySelectorAll('#countdown');
-      countdownDeadline.forEach((countdown) => {
+    });
+    const countdownDeadline = document.querySelectorAll('#countdown');
+    countdownDeadline.forEach((countdown) => {
       // Menghitung Sisa Hari Deadline
-        const realTimeDate = new Date();
+      const realTimeDate = new Date();
+      const currentDeadlineCountdown = new Date(countdown.dataset.deadline);
+      // To calculate the time difference of two dates
+      const Difference_In_Time = currentDeadlineCountdown.getTime() - realTimeDate.getTime();
 
-        // To calculate the time difference of two dates
-        const Difference_In_Time = currentDeadlineData.getTime() - realTimeDate.getTime();
+      // To calculate the no. of days between two dates
+      const Difference_In_Days = Math.round(Difference_In_Time / (1000 * 3600 * 24));
 
-        // To calculate the no. of days between two dates
-        const Difference_In_Days = Math.round(Difference_In_Time / (1000 * 3600 * 24));
-
-        // To display the final no. of days (result)
-        countdown.innerHTML = `${Difference_In_Days} hari`;
-        console.log(`Total number of days between dates:\n${
-          currentDeadlineData.toDateString()} and ${realTimeDate.toDateString()
-        } is: ${Difference_In_Days} days`);
-      });
+      // To display the final no. of days (result)
+      countdown.innerHTML = `${Difference_In_Days} hari`;
+      console.log(`Total number of days between dates:\n${
+        currentDeadlineCountdown.toDateString()} and ${realTimeDate.toDateString()
+      } is: ${Difference_In_Days} days`);
     });
 
-    // --------------------------------------------------------------
     const modal = document.getElementById('dateModal');
     const dahboard = document.getElementById('dashboard');
     const btnclose = document.getElementById('close');
@@ -270,7 +268,7 @@ const Histori = {
     const selesaiStatusBtn = document.querySelectorAll('.btn-selesai');
     const revisiStatusBtn = document.querySelectorAll('.btn-revisi');
 
-    // Fungsi ketika user menekan tombol Selesai pada Todo Card
+    // selesai
     selesaiStatusBtn.forEach((button) => {
       const buttonId = button.dataset.todoId;
       button.addEventListener('click', () => toSelesaiStatus(buttonId));
@@ -301,7 +299,6 @@ const Histori = {
           alert(message);
         };
 
-        // Mengambil Data Title, Deadline, Description dari yang sudah ada sebelumnya
         const currentTitle = document.querySelector('#judulTodo');
         const currentDeadline = document.querySelector('#deadline-tanggal');
         const currentDescription = document.querySelector('#deskripsi');
@@ -317,7 +314,7 @@ const Histori = {
       }
     });
 
-    // Fungsi ketika user menekan tombol Revisi pada Todo Card
+    // Revisi
     revisiStatusBtn.forEach((button) => {
       const buttonId = button.dataset.todoId;
       button.addEventListener('click', () => toSelesaiStatus(buttonId));
@@ -368,7 +365,7 @@ const Histori = {
       modalBackdrop.classList.add('hidden');
     });
 
-    // Fungsi Delete TODO via icon Delete
+    // Delete
     iconDelete.forEach((button) => {
       const buttonId = button.dataset.todoId;
       button.addEventListener('click', () => {
@@ -413,7 +410,7 @@ const Histori = {
       }
     });
 
-    // Fungsi Edit TODO via Edit Icon
+    // Edit
     editEventBtns.forEach((button) => {
       const buttonId = button.dataset.todoId;
       button.addEventListener('click', () => handleEditEvent(buttonId));
@@ -437,6 +434,7 @@ const Histori = {
             console.log(response);
 
             showResponseMessage(responseJson.message);
+            window.location.reload(); // Auto Refresh Setelah event selesai
           } catch (error) {
             showResponseMessage(error);
           }
@@ -446,7 +444,8 @@ const Histori = {
           alert(message);
         };
 
-        // Event Btn Category pada Modal Popup
+        // Event Btn Category
+
         const btnSelesai = document.getElementById('btnSelesai');
         const btnRevisi = document.getElementById('btnRevisi');
         let statusRevisi = '';
@@ -462,64 +461,23 @@ const Histori = {
           btnSelesai.classList.remove('bg-sky-300');
           statusRevisi = 'revisi';
         });
+
         // End Btn Category
 
-        // Menampilkan Data Eksisting
-        const currentTitles = document.querySelectorAll('#judulTodo');
-        currentTitles.forEach((currentTitle) => {
-          const inputTodoTitles = document.querySelectorAll('#judul');
-          inputTodoTitles.forEach((inputTodoTitle) => {
-            inputTodoTitle.setAttribute('value', currentTitle.dataset.title);
-          });
-        });
-
-        // Untuk Waktu dan Tanggal saya tidak bisa menaruh default
-        const currentDeadlines = document.querySelectorAll('#deadline-tanggal');
-        currentDeadlines.forEach((currentDeadline) => {
-          const inputTodoTimes = document.querySelectorAll('#customTime');
-          inputTodoTimes.forEach((inputTodoTime) => {
-            inputTodoTime.setAttribute('value', currentDeadline.dataset.deadline);
-          });
-          const inputTodoDates = document.querySelectorAll('#customDate');
-          inputTodoDates.forEach((inputTodoDate) => {
-            inputTodoDate.setAttribute('value', currentDeadline.dataset.deadline);
-          });
-        });
-
-        const currentDescriptions = document.querySelectorAll('#deskripsi');
-        currentDescriptions.forEach((currentDescription) => {
-          const inputTodoDescs = document.querySelectorAll('#myTextarea');
-          inputTodoDescs.forEach((inputTodoDesc) => {
-            inputTodoDesc.innerHTML = currentDescription.dataset.description;
-          });
-        });
-
+        const inputTodoTitle = document.querySelector('#judul');
+        const inputTodoDate = document.querySelector('#customDate');
+        const inputTodoDesc = document.querySelector('#myTextarea');
         const buttonSave = document.querySelector('#saveBtn');
 
-        // Menampilkan category button sesuai data eksisting
-        const statusCategory = document.querySelector('#statusCategory');
-        if (statusCategory.dataset.status === 'selesai') {
-          btnSelesai.classList.add('bg-sky-300');
-          btnRevisi.classList.remove('bg-sky-300');
-        }
-        if (statusCategory.dataset.status === 'revisi') {
-          btnRevisi.classList.add('bg-sky-300');
-          btnSelesai.classList.remove('bg-sky-300');
-        }
-
-        // Membawa value yang sudah terisi
         buttonSave.addEventListener('click', () => {
           const updatedTodo = {
             title: inputTodoTitle.value,
-            deadline: inputTodoDate.value + inputTodoTime.value,
+            deadline: inputTodoDate.value,
             description: inputTodoDesc.value,
             status: statusRevisi,
           };
 
           editEvent(updatedTodo);
-
-          modal.classList.add('hidden');
-          dahboard.classList.remove('blacked-out');
         });
 
         // --------------------------------------------
