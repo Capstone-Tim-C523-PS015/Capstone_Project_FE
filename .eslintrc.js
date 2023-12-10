@@ -27,5 +27,8 @@ module.exports = {
     'no-console': 'off',
     'linebreak-style': 'off',
     'no-use-before-define': 'off',
+    'camelcase': 'off',
+    'quote-props': 'off',
+    'no-param-reassign': 'off',
   },
 };
