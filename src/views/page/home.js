@@ -108,9 +108,9 @@ const Home = {
           <div class=" border-black border-b-2 md:w-96 w-72 text-center">
             <h1 class="text-3xl font-bold text-sky-900">KALENDER</h1>
           </div>
-          <div id='calendar' class="w-full border border-black mt-5 p-4 z-0"></div>
+          <div id='calendar' class="w-full border bg-white shadow-lg shadow-sky-400 mt-5 p-4 z-0"></div>
 
-          <div class="modal w-[70%] z-20 fade bg-white md:w-[70%] lg:w-[40%] pb-12 rounded-2xl absolute hidden" id="modalEvent" tabindex="-1" role="dialog" aria-labelledby="dateModalLabel" aria-hidden="true">
+          <div class="modal w-[70%] z-20 fade bg-sky-50 border-sky-800 border md:w-[70%] lg:w-[40%] pb-12 rounded-2xl absolute hidden" id="modalEvent" tabindex="-1" role="dialog" aria-labelledby="dateModalLabel" aria-hidden="true">
             <span id="closeEventCalendarModal" class="material-symbols-outlined absolute right-[-5px] bg-red-500 rounded-full text-white cursor-pointer top-[-10px]">close</span>
             <div class="modal-dialog relative border-black" role="document">
               <div class="modal-content px-6 w-full ">
@@ -268,7 +268,7 @@ const Home = {
           // End Calendar
 
           // Todo Prioritas
-          if ((Todos.length === 0) & (TodosEvent.length === 0)) {
+          if ((Todos.length === 0) | (TodosEvent.length === 0)) {
             document.getElementById("event-kosong").classList.remove("hidden");
             document.getElementById("event-true").classList.add("hidden");
           } else {
@@ -287,7 +287,8 @@ const Home = {
             const listmenunggu = document.getElementById("list-menunggu");
             const listslesai = document.getElementById("list-slesai");
             const itemListPrioritas = document.createElement("p");
-            itemListPrioritas.className = "font-bold text-sky-900 scrollButton";
+            itemListPrioritas.className =
+              "font-bold py-2 text-sky-900 scrollButton";
             // Membuat objek Date dari string waktu API menampilkan waktu
             const deadlineApi = item.deadline;
             const deadlineDate = new Date(deadlineApi);
@@ -388,6 +389,7 @@ const Home = {
 
           // Todo List
           Todos.forEach((event) => {
+            console.log("event 1", event);
             if (event.length === 0) {
               document.getElementById("noEventList").classList.remove("hidden");
               document.getElementById("eventList").classList.add("hidden");
@@ -619,6 +621,7 @@ const Home = {
       const btnstatus = document.getElementById("btnstatus");
       const divStatus = document.getElementById("divStatus");
       const deskripsi = document.getElementById("deskripsi");
+      const kalendar = document.getElementById("calendar");
       console.log(btnclose);
 
       if (info.event.extendedProps.status === "selesai") {
@@ -636,7 +639,6 @@ const Home = {
       }
       if (modalEvent) {
         modalEvent.classList.toggle("hidden");
-        dahboard.classList.add("blacked-out");
       }
 
       btnclose.addEventListener("click", () => {
