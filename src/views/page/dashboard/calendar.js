@@ -1,5 +1,4 @@
 /* eslint-disable no-use-before-define */
-/* eslint-disable no-restricted-globals */
 import { Calendar } from 'fullcalendar';
 import '../../../styles/index.css';
 import axios from 'axios';
@@ -7,10 +6,10 @@ import axios from 'axios';
 const Kalendar = {
   async render() {
     return `
-      <div id="contentUtama" class="h-screen lg:mx-6 relative">
+      <div id="contentUtama" class="h-screen  relative">
         <div class="flex flex-col items-center relative justify-center">
-          <div id='kalendar' class="w-full h-screen border border-black mt-5 p-4 z-0"></div>
-          <div class="modal w-[80%] fade bg-white md:w-[70%] lg:w-[40%] pb-12 rounded-2xl absolute hidden" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="dateModalLabel" aria-hidden="true">
+          <div id='kalendar' class="w-full h-screen  bg-white shadow-lg target shadow-sky-400 mt-5  z-0 cursor-pointer"></div>
+          <div class="modal w-[80%] fade bg-sky-50 md:w-[70%] lg:w-[40%] pb-12 rounded-2xl absolute hidden shadow-lg transition-transform duration-1000 ease-in-out bottom-3" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="dateModalLabel" aria-hidden="true">
           <span id="close" class="material-symbols-outlined absolute right-[-5px] bg-red-500 rounded-full text-white cursor-pointer top-[-10px]">close</span>
             <div class="modal-dialog" role="document">
 
@@ -121,8 +120,8 @@ const Kalendar = {
             </div>
           </div>
 
-          <div id="PutTodo" class="modal-content px-6 absolute hidden bg-white rounded-xl pb-6">
-          <span id="closeTodo" class="material-symbols-outlined absolute right-[-5px] bg-red-500 rounded-full text-white cursor-pointer top-[-10px]">close</span>
+          <div id="PutTodo" class="modal-content px-6 absolute hidden bg-sky-50 shadow-xl rounded-lg pb-6">
+            <span id="closeTodo" class="material-symbols-outlined absolute right-[-5px] bg-red-500 rounded-full text-white cursor-pointer top-[-10px]">close</span>
             <div class="modal-header flex text-center justify-center pt-4">
               <h5 class="modal-title text-sky-900 text-lg font-bold border-black border-b-2 px-4" id="dateModalPutTodo">Edit Tugas</h5>
             </div>
@@ -132,6 +131,10 @@ const Kalendar = {
                   <div class="flex gap-2 flex-col lg:gap-2">
                     <label for="" class="text-sm text-sky-900 font-bold">Judul Aktivitas</label>
                     <input id="judulPutTodo" type="text" class="w-full rounded-lg" placeholder="Meeting Project">
+                  </div>
+                  <div class="flex flex-col gap-3">
+                    <p class="font-bold text-sky-900">Kategori : </p>
+                    <span class="px-3 py-1 rounded-lg bg-sky-500 text-sky-50 font-bold flex justify-center items-center">Todo Activity</span>
                   </div>
                   <div class="flex flex-col gap-6">
                     <div class="flex flex-col gap-2 order-1 lg:order-2 ">
@@ -145,15 +148,15 @@ const Kalendar = {
                 <form action="" class="flex flex-col gap-2 lg:gap-8 relative w-full h-full">
                   <div class="flex flex-col gap-2 w-full">
                     <label for="myTextarea" class="text-sm text-sky-900 font-bold">Deskripsi</label>
-                    <textarea id="myTextareaPutTodo" name="myTextarea" class="rounded-xl px-2 py-1 w-full md:h-40 lg:h-40"></textarea>
+                    <textarea id="myTextareaPutTodo" name="myTextarea" class="rounded-xl px-2 py-1 w-full md:h-40 lg:h-36"></textarea>
                   </div>
                   <div class="flex gap-2">
                     <label for="" class="text-sm text-sky-900 font-bold">Notifikasi</label>
                       <div class="flex items-center">
                         <input type="checkbox" id="toggle" class="hidden">
                         <label for="toggle" class="cursor-pointer flex items-center">
-                            <div class="w-12 h-6 rounded-full p-1 bg-sky-300 flex items-center">
-                                <div id="indicator" class="w-6 h-6 bg-white  rounded-full transition-transform"></div>
+                            <div class="w-10 h-4 rounded-full p-1 bg-sky-300 flex items-center">
+                                <div id="indicator" class="w-4 h-4 bg-white  rounded-full transition-transform"></div>
                             </div>
                         </label>
                     </div>
@@ -169,8 +172,60 @@ const Kalendar = {
 
 
 
+          <div id="PutActivity" class="modal-content px-6 absolute hidden bg-sky-50 shadow-xl rounded-xl pb-6">
+            <span id="closeActivity" class="material-symbols-outlined absolute right-[-5px] bg-red-500 rounded-full text-white cursor-pointer top-[-10px]">close</span>
+            <div class="modal-header flex text-center justify-center pt-4">
+              <h5 class="modal-title text-sky-900 text-lg font-bold border-black border-b-2 px-4" id="dateModalPutActivity">Edit Event</h5>
+            </div>
+            <div class="mt-6 md:flex lg:flex">
+              <div class="md:w-1/2 md:pr-6">
+                <form class="gap-2 w-full flex flex-col lg:gap-8">
+                  <div class="flex gap-2 flex-col lg:gap-2">
+                    <label for="" class="text-sm text-sky-900 font-bold">Judul Aktivitas</label>
+                    <input id="judulPutActivity" type="text" class="w-full rounded-lg" placeholder="Meeting Project">
+                  </div>
+                  <div class="flex flex-col gap-3">
+                    <p class="font-bold text-sky-900">Kategori : </p>
+                    <span class="px-3 py-1 rounded-lg bg-sky-500 text-sky-50 font-bold flex justify-center items-center">Event Activity</span>
+                  </div>
+                  <div class="flex flex-col gap-6">
+                    <div class="flex flex-col gap-2 order-1 lg:order-2 ">
+                      <label for="" class="text-sm text-sky-900 font-bold">Deadline</label>
+                      <input type="datetime-local" id="customDatePutActivity" class="w-full border-sky-950 border rounded-lg cursor-pointer"\>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="md:w-1/2 gap-2 flex flex-col justify-center  md:pl-6">
+                <form action="" class="flex flex-col gap-2 lg:gap-8 relative w-full h-full">
+                  <div class="flex flex-col gap-2 w-full">
+                    <label for="myTextareaActivity" class="text-sm text-sky-900 font-bold">Deskripsi</label>
+                    <textarea id="myTextareaPutActivity" name="myTextarea" class="rounded-xl px-2 py-1 w-full md:h-40 lg:h-40"></textarea>
+                  </div>
+                  <div class="flex gap-2">
+                    <label for="" class="text-sm text-sky-900 font-bold">Notifikasi</label>
+                      <div class="flex items-center">
+                        <input type="checkbox" id="toggleActivity" class="hidden">
+                        <label for="toggle" class="cursor-pointer flex items-center">
+                            <div class="w-12 h-6 rounded-full p-1 bg-sky-300 flex items-center">
+                                <div id="indicator" class="w-6 h-6 bg-white  rounded-full transition-transform"></div>
+                            </div>
+                        </label>
+                    </div>
+                  </div>
+                  
+                </form>
+                <button id="buttonSubmitPutActivity" class="bg-green-700 py-2 lg:w-full  text-white font-bold rounded-lg flex items-center justify-center  px-4" type="button">Simpan Tugas</button>
+              </div>
+              
+            </div>
+            <div class="modal-body" id="selectedDate"></div>
+          </div>
 
-          <div class="modal w-[70%] z-20 fade bg-white md:w-[70%] lg:w-[40%] pb-12 rounded-2xl absolute hidden" id="modalEvent" tabindex="-1" role="dialog" aria-labelledby="dateModalLabel" aria-hidden="true">
+
+
+
+          <div class="modal w-[70%] z-20 fade bg-sky-50 shadow-lg md:w-[70%] lg:w-[40%] pb-12 rounded-2xl absolute hidden" id="modalEvent" tabindex="-1" role="dialog" aria-labelledby="dateModalLabel" aria-hidden="true">
             <span id="closeEvent" class="material-symbols-outlined absolute right-[-5px] bg-red-500 rounded-full text-white cursor-pointer top-[-10px]">close</span>
             <div class="modal-dialog relative border-black" role="document">
               <div class="modal-content px-6 w-full ">
@@ -320,12 +375,7 @@ const Kalendar = {
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay',
               },
-              eventRender(event, element) {
-                // Tambahkan ikon lonceng di sini
-                element
-                  .find('.fc-content')
-                  .prepend('<i class="fas fa-bell"></i>');
-              },
+
               events: [...formattedData, ...formattedData2],
 
               aspectRatio: 2,
@@ -341,19 +391,27 @@ const Kalendar = {
         });
     }
 
-    function handleDateClick(info) {
+    function handleDateClick() {
       const modal = document.getElementById('dateModal');
       const dahboard = document.getElementById('dashboard');
       const btnclose = document.getElementById('close');
+      const kalendar = document.getElementById('kalendar');
+
+      document.querySelector('.target').scrollIntoView({ behavior: 'smooth' });
 
       if (modal) {
         modal.classList.toggle('hidden');
-        dahboard.classList.toggle('blacked-out');
+        modal.classList.remove('bottom-3');
+        // dahboard.classList.toggle("blacked-out");
+
+        // kalendar.classList.remove("bg-white");
       }
 
       btnclose.addEventListener('click', () => {
         modal.classList.add('hidden');
         dahboard.classList.remove('blacked-out');
+        kalendar.classList.add('bg-white');
+        modal.classList.add('bottom-3');
       });
     }
 
@@ -372,18 +430,22 @@ const Kalendar = {
       const deskripsiEvent = document.getElementById('deskripsiEvent');
       const modalBackdrop = document.getElementById('modalBackdrop');
       const batalDelete = document.getElementById('batalDelete');
+      const PutTodo = document.getElementById('PutTodo');
+      const PutActivity = document.getElementById('PutActivity');
+
+      document.querySelector('.target').scrollIntoView({ behavior: 'smooth' });
 
       if (
         (info.event.extendedProps.status === 'menunggu')
         || (info.event.extendedProps.status === 'dikerjakan')
       ) {
-        setatus.className = 'px-3 py-1 font-bold rounded-lg bg-sky-300 text-sky-900';
+        setatus.className = 'bg-sky-300 text-sky-900 px-3 py-1 rounded-lg font-bold';
       }
       if (
         (info.event.extendedProps.status === 'telat')
         || (info.event.extendedProps.status === 'dikerjakan')
       ) {
-        setatus.className = 'px-3 py-1 font-bold text-white bg-red-500 rounded-lg';
+        setatus.className = 'bg-red-500 text-white px-3 py-1 rounded-lg font-bold';
       }
 
       const ButtonDeleteEvent = document.getElementById('deleteEventTodoList');
@@ -398,8 +460,9 @@ const Kalendar = {
 
       if (modalEvent) {
         modalEvent.classList.toggle('hidden');
-        dahboard.classList.add('blacked-out');
-        modalBackdrop.classList.remove('hidden');
+        // dahboard.classList.add("blacked-out");
+        // modalBackdrop.classList.remove("hidden");
+        // kalendar.classList.remove("bg-white");
       }
 
       btnclose.addEventListener('click', () => {
@@ -417,21 +480,37 @@ const Kalendar = {
       });
 
       editEventBtn.addEventListener('click', () => {
-        modalEvent.classList.add('hidden');
-        dahboard.classList.remove('blacked-out');
-        modalBackdrop.classList.add('hidden');
-        const PutTodo = document.getElementById('PutTodo');
-        PutTodo.classList.remove('hidden');
-        dahboard.classList.add('blacked-out');
-        const closeTodo = document.getElementById('closeTodo');
-        closeTodo.addEventListener('click', () => {
+        if (info.event.extendedProps.idEvent) {
+          modalEvent.classList.add('hidden');
+          // dahboard.classList.remove("blacked-out");
+          modalBackdrop.classList.add('hidden');
           PutTodo.classList.add('hidden');
-          dahboard.classList.remove('blacked-out');
-        });
-
-        handleEditEvent(info);
+          PutActivity.classList.remove('hidden');
+          // dahboard.classList.add("blacked-out");
+          const closeActivity = document.getElementById('closeActivity');
+          closeActivity.addEventListener('click', () => {
+            PutActivity.classList.add('hidden');
+            // dahboard.classList.remove("blacked-out");
+          });
+          handleEditActivity(info);
+        } else {
+          PutActivity.classList.add('hidden');
+          modalEvent.classList.add('hidden');
+          // dahboard.classList.remove("blacked-out");
+          // modalBackdrop.classList.add("hidden");
+          PutTodo.classList.remove('hidden');
+          // dahboard.classList.add("blacked-out");
+          const closeTodo = document.getElementById('closeTodo');
+          closeTodo.addEventListener('click', () => {
+            PutTodo.classList.add('hidden');
+            // dahboard.classList.remove("blacked-out");
+          });
+          handleEditTodo(info);
+        }
       });
 
+      detailKegiatan.textContent = 'Detail Tugas';
+      bagianStatus.classList.remove('hidden');
       titleEvent.innerHTML = info.event.title;
       setatus.innerHTML = info.event.extendedProps.status;
       deskripsiEvent.innerHTML = info.event.extendedProps.description;
@@ -448,7 +527,7 @@ const Kalendar = {
 
       todate.innerHTML = info.event.start.toLocaleString();
 
-      if (info.event.extendedProps.category === 'event') {
+      if (info.event.extendedProps.idEvent) {
         detailKegiatan.textContent = 'Detail Acara';
         titleEvent.innerHTML = info.event.title;
         bagianStatus.classList.add('hidden');
@@ -456,80 +535,94 @@ const Kalendar = {
       }
     }
 
-    function handleEditEvent(info) {
+    function handleEditTodo(info) {
       const eventDateTime = new Date(info.event.start);
       const formattedDateTime = eventDateTime.toISOString().slice(0, 16);
       document.getElementById('judulPutTodo').value = info.event.title;
       document.getElementById('myTextareaPutTodo').value = info.event.extendedProps.description;
-      const putDeadline = (document.getElementById('customDatePutTodo').value = formattedDateTime);
+      document.getElementById('customDatePutTodo').value = formattedDateTime;
+
       const buttonSubmitPutTodo = document.getElementById(
         'buttonSubmitPutTodo',
       );
 
       buttonSubmitPutTodo.addEventListener('click', () => {
-        clickPut(info);
-        location.reload();
+        TodoAPI(info);
+        EfekPutTodo();
+        // location.reload();
       });
     }
-    function clickPut(info) {
-      if (info.event.extendedProps.category === 'event') {
-        console.log(info.event.title);
-        const newDataActivity = {
-          title: document.getElementById('judulPutTodo').value,
-          description: document.getElementById('myTextareaPutTodo').value,
-          category: 'event',
-          isNotificate: true,
-          deadline: document.getElementById('customDatePutTodo').value,
-        };
-        const jwt = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JlLmd1bnoubXkuaWQvYXV0aC9sb2dpbiIsImlhdCI6MTcwMTU4MjI5OCwibmJmIjoxNzAxNTgyMjk4LCJqdGkiOiJkWnpVMjZYTHU2b1RDd2VSIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.iY7UV-2ftKlSAN9KuycnwU_42cLyoGqAzRPWAiR_y4s';
 
-        const urlActivity = `https://be.gunz.my.id/activity/${info.event.extendedProps.idEvent}`;
-        console.log('idActivity', info.event.extendedProps.idEvent);
+    function handleEditActivity(info) {
+      const eventDateTime = new Date(info.event.start);
+      const formattedDateTime = eventDateTime.toISOString().slice(0, 16);
+      document.getElementById('judulPutActivity').value = info.event.title;
+      document.getElementById('myTextareaPutActivity').value = info.event.extendedProps.description;
+      document.getElementById('customDatePutActivity').value = formattedDateTime;
 
-        axios
-          .put(urlActivity, newDataActivity, {
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${jwt}`,
-            },
-          })
+      const buttonSubmitPutActivity = document.getElementById(
+        'buttonSubmitPutActivity',
+      );
 
-          .then((response) => {
-            // Handle the responses as needed
-            console.log('Response from Todo deletion:', response);
-            console.log(response.data);
-          })
-          .catch((error) => {
-            console.error('Error deleting data:', error);
-          });
-      } else if (info.event.extendedProps.category === undefined) {
-        const newData = {
-          title: document.getElementById('judulPutTodo').value,
-          description: document.getElementById('myTextareaPutTodo').value,
-          deadline: document.getElementById('customDatePutTodo').value,
-          status: info.event.extendedProps.status,
-        };
-        const jwt = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JlLmd1bnoubXkuaWQvYXV0aC9sb2dpbiIsImlhdCI6MTcwMTU4MjI5OCwibmJmIjoxNzAxNTgyMjk4LCJqdGkiOiJkWnpVMjZYTHU2b1RDd2VSIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.iY7UV-2ftKlSAN9KuycnwU_42cLyoGqAzRPWAiR_y4s';
+      buttonSubmitPutActivity.addEventListener('click', () => {
+        APIactivity(info);
+        EfekPutAcrivity();
+      });
+    }
+    function APIactivity(info) {
+      const newDataActivity = {
+        title: document.getElementById('judulPutActivity').value,
+        description: document.getElementById('myTextareaPutActivity').value,
+        category: 'event',
+        isNotificate: true,
+        deadline: document.getElementById('customDatePutActivity').value,
+      };
+      const urlActivity = `https://be.gunz.my.id/activity/${info.event.extendedProps.idEvent}`;
+      console.log('idActivity', info.event.extendedProps.idEvent);
 
-        const urlEvent = `https://be.gunz.my.id/todo/${info.event.extendedProps.id}`;
+      axios
+        .put(urlActivity, newDataActivity, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${jwt}`,
+          },
+        })
 
-        axios
-          .put(urlEvent, newData, {
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${jwt}`,
-            },
-          })
+        .then((response) => {
+          // Handle the responses as needed
+          console.log('Response from Todo deletion:', response);
+          console.log('sukses');
+        })
+        .catch((error) => {
+          console.error('Error deleting data:', error);
+        });
+    }
 
-          .then((response) => {
-            console.log(info.title);
-            // Handle the responses as needed
-            console.log('Response from Todo deletion:', response);
-          })
-          .catch((error) => {
-            console.error('Error deleting data:', error);
-          });
-      }
+    function TodoAPI(info) {
+      const newData = {
+        title: document.getElementById('judulPutTodo').value,
+        description: document.getElementById('myTextareaPutTodo').value,
+        deadline: document.getElementById('customDatePutTodo').value,
+        status: info.event.extendedProps.status,
+      };
+      const urlEvent = `https://be.gunz.my.id/todo/${info.event.extendedProps.id}`;
+
+      axios
+        .put(urlEvent, newData, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${jwt}`,
+          },
+        })
+
+        .then((response) => {
+          console.log(info.title);
+          // Handle the responses as needed
+          console.log('Response from Todo deletion:', response);
+        })
+        .catch((error) => {
+          console.error('Error deleting data:', error);
+        });
     }
 
     // Inisialisasi kalender
@@ -539,28 +632,24 @@ const Kalendar = {
     // End API Calendar
 
     // Event Toggle Notifikasi Btn
-    const toggle = document.getElementById('toggle');
-    const indicator = document.getElementById('indicator');
+    const toggle = document.querySelectorAll('#toggle');
+    const indicator = document.querySelectorAll('#indicator');
+    toggle.forEach((toggles) => {
+      toggles.addEventListener('change', () => {
+        const isChecked = toggles.checked;
+        indicator.forEach((e) => {
+          e.style.transform = isChecked ? 'translateX(100%)' : 'translateX(0)';
 
-    toggle.addEventListener('change', () => {
-      const isChecked = toggle.checked;
-      const label = isChecked ? 'On' : 'Off';
-
-      indicator.style.transform = isChecked
-        ? 'translateX(100%)'
-        : 'translateX(0)';
-
-      indicator.classList.toggle('on', isChecked);
+          e.classList.toggle('on', isChecked);
+        });
+      });
     });
     // End Togle Notofikasi Btn
 
     // Event Btn Category
-    const modal = document.getElementById('dateModal');
 
-    const btnEvent1 = document.getElementById('btnEventPertama');
     const btnTask1 = document.getElementById('btnTaskPertama');
     const btnEvent2 = document.getElementById('btnEventKedua');
-    const btnTask2 = document.getElementById('btnTaskKedua');
     const TodoTugas = document.getElementById('TodoTugas');
     const TodoEvent = document.getElementById('TodoEvent');
 
@@ -600,7 +689,6 @@ const Kalendar = {
         deadline,
         status: 'menunggu',
       };
-
       axios
         .post('https://be.gunz.my.id/todo', JSON.stringify(newData), {
           headers: {
@@ -628,7 +716,6 @@ const Kalendar = {
         isNotificate: 1,
         deadline: deadlineEvent,
       };
-
       axios
         .post('https://be.gunz.my.id/activity', JSON.stringify(newData), {
           headers: {
@@ -685,7 +772,7 @@ const Kalendar = {
       // Di sini kita menggunakan setTimeout sebagai contoh efek loading selama 2 detik
       setTimeout(() => {
         // Setelah 2 detik, reload halaman
-        location.reload();
+        window.location.reload();
       }, 2000);
     }
     function tambahDataEfekTask() {
@@ -696,7 +783,7 @@ const Kalendar = {
       // Di sini kita menggunakan setTimeout sebagai contoh efek loading selama 2 detik
       setTimeout(() => {
         // Setelah 2 detik, reload halaman
-        location.reload();
+        window.location.reload();
       }, 2000);
     }
     function tambahDataEfekEvent() {
@@ -707,7 +794,29 @@ const Kalendar = {
       // Di sini kita menggunakan setTimeout sebagai contoh efek loading selama 2 detik
       setTimeout(() => {
         // Setelah 2 detik, reload halaman
-        location.reload();
+        window.location.reload();
+      }, 2000);
+    }
+    function EfekPutAcrivity() {
+      // Mengganti teks button menjadi "Loading..."
+      document.getElementById('buttonSubmitPutActivity').innerHTML = 'Loading...';
+
+      // Menambahkan efek loading, bisa menggunakan spinner atau animasi lainnya
+      // Di sini kita menggunakan setTimeout sebagai contoh efek loading selama 2 detik
+      setTimeout(() => {
+        // Setelah 2 detik, reload halaman
+        window.location.reload();
+      }, 2000);
+    }
+    function EfekPutTodo() {
+      // Mengganti teks button menjadi "Loading..."
+      document.getElementById('buttonSubmitPutTodo').innerHTML = 'Loading...';
+
+      // Menambahkan efek loading, bisa menggunakan spinner atau animasi lainnya
+      // Di sini kita menggunakan setTimeout sebagai contoh efek loading selama 2 detik
+      setTimeout(() => {
+        // Setelah 2 detik, reload halaman
+        window.location.reload();
       }, 2000);
     }
   },
