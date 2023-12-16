@@ -88,7 +88,7 @@
   box-sizing: border-box;
 }
 #kalendar .fc-day-header {
-  @apply bg-white text-sky-900;
+  @apply bg-white text-sky-900 ;
 }
 
 #kalendar .fc-header-toolbar {
@@ -164,4 +164,7 @@
 /* Acriv for button Event or task */
 .active {
   @apply bg-sky-300;
+}
+.fc-daygrid-day-events{
+  @apply cursor-pointer
 }

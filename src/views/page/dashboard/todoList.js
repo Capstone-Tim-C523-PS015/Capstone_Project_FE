@@ -1563,7 +1563,7 @@ const TodoList = {
               const batalbtnkemarin = document.getElementById(`btnbataldelete-kemarin${todos.id}`);
               const messageinputdeletekemarin = document.getElementById(`messageinputdelete-kemarin${todos.id}`);
               const loadingkemarin = document.getElementById(`loadingdeletekemarin${todos.id}`);
-              const textdeletekemarin = document.getElementById(`textdelete-kemarin${todos.i}`);
+              const textdeletekemarin = document.getElementById(`textdelete-kemarin${todos.id}`);
 
               const optionsdeletekemarin = {
                 placement: 'center',

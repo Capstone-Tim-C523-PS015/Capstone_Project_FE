@@ -1,6 +1,5 @@
 /* eslint-disable no-return-assign */
 /* eslint-disable no-use-before-define */
-/* eslint-disable import/no-extraneous-dependencies */
 import { Calendar } from 'fullcalendar';
 import '../../../styles/index.css';
 import axios from 'axios';
@@ -8,7 +7,7 @@ import axios from 'axios';
 const Home = {
   async render() {
     return `
-    <div id="content" class="pb-32 animate-fade-in transition duration-1000 ease-in-out ">
+    <div id="content" class="pb-32 animate-fade-in transition duration-1000 ease-in-out relative">
       <div class=" lg:mx-6 pb-36 relative"> 
         <div class="lg:flex lg:flex-col lg:justify-around lg:items-center py-10 relative">
           <div class="right-0 top-0 absolute"><img class="lg:w-32 lg:h-20 w-22 h-10" src="./svg/awan.svg" alt="" /></div>
@@ -41,6 +40,8 @@ const Home = {
       </div>
 
 
+      
+
       <div id="event-true" class="target2 hidden w-full px-6  >
         <div class="flex justify-center w-full ">
           <div class="lg:w-[70%] mx-auto flex flex-col justify-center relative ">
@@ -50,7 +51,7 @@ const Home = {
             <div class="flex flex-col sm:flex-row w-full justify-center pt-8">
               <div class="w-full sm:w-1/2 flex flex-col text-center border-sky-950 sm:border-r-2 border-b-2 h-96 bg-sky-200 relative">
                 <h1 class="py-4 bg-sky-900 text-white text-2xl font-semibold">Mendesak</h1>
-                <div id="list-mendesak">
+                <div id="list-mendesak" >
                   
                 </div>
                 
@@ -58,7 +59,7 @@ const Home = {
               </div>
               <div class="w-full sm:w-1/2 flex flex-col text-center border-sky-950 border-b-2 h-96 bg-sky-200 relative">
                 <h1 class="py-4 bg-sky-900 text-white text-2xl font-semibold">Penting</h1>
-                <div id="list-penting" class="">
+                <div id="list-penting" >
                   
                 </div>
                 
@@ -67,13 +68,13 @@ const Home = {
             <div class="flex flex-col sm:flex-row w-full">
               <div class="w-full sm:w-1/2 flex flex-col text-center border-sky-950 sm:border-r-2 h-96 bg-sky-200 relative">
                 <h1 class="py-4 bg-sky-900 text-white text-2xl font-semibold">Menunggu</h1>
-                <div id="list-menunggu">
+                <div id="list-menunggu" >
                   
                 </div>
               </div>
               <div class="w-full sm:w-1/2 flex flex-col text-center border-sky-950 h-96 bg-sky-200 relative">
                 <h1 class="py-4 bg-sky-900 text-white text-2xl font-semibold">Selesai</h1>
-                <div id="list-slesai">
+                <div id="list-slesai" >
                   
                 </div>
               </div>
@@ -108,7 +109,7 @@ const Home = {
           <div class=" border-black border-b-2 md:w-96 w-72 text-center">
             <h1 class="text-3xl font-bold text-sky-900">KALENDER</h1>
           </div>
-          <div id='calendar' class="w-full border bg-white shadow-lg shadow-sky-400 mt-5 p-4 z-0"></div>
+          <div id='calendar' class="w-full border bg-white shadow-lg shadow-sky-400 mt-5 p-4 z-0" class="cursor-pointer hover:opacity-50"></div>
 
           <div class="modal w-[70%] z-20 fade bg-sky-50 border-sky-800 border md:w-[70%] lg:w-[40%] pb-12 rounded-2xl absolute hidden" id="modalEvent" tabindex="-1" role="dialog" aria-labelledby="dateModalLabel" aria-hidden="true">
             <span id="closeEventCalendarModal" class="material-symbols-outlined absolute right-[-5px] bg-red-500 rounded-full text-white cursor-pointer top-[-10px]">close</span>
@@ -202,18 +203,26 @@ const Home = {
   },
 
   async afterRender() {
-    const jwttoken = localStorage.getItem('token');
-    if (jwttoken === null) {
+    const jwt = localStorage.getItem('token');
+    if (jwt === null) {
       window.location.replace('./login.html#/masuk');
     }
-
     const url = 'https://be.gunz.my.id/todo';
     const url2 = 'https://be.gunz.my.id/activity';
-    const jwt = localStorage.getItem('token');
     axios
       .all([
-        axios.get(url, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${jwt}` } }),
-        axios.get(url2, { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${jwt}` } }),
+        axios.get(url, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${jwt}`,
+          },
+        }),
+        axios.get(url2, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${jwt}`,
+          },
+        }),
       ])
       .then(
         axios.spread((responseA, responseB) => {
@@ -281,7 +290,7 @@ const Home = {
             const listmenunggu = document.getElementById('list-menunggu');
             const listslesai = document.getElementById('list-slesai');
             const itemListPrioritas = document.createElement('p');
-            itemListPrioritas.className = 'font-bold text-sky-900 scrollButton';
+            itemListPrioritas.className = 'font-bold py-2 text-sky-900 scrollButton cursor-pointer hover:opacity-50';
             // Membuat objek Date dari string waktu API menampilkan waktu
             const deadlineApi = item.deadline;
             const deadlineDate = new Date(deadlineApi);
@@ -290,7 +299,8 @@ const Home = {
             });
             waktuDeadline = waktuDeadline.replace(/:00$/, '');
             console.log('Waktu deadline:', waktuDeadline);
-            itemListPrioritas.innerText = `${ConvertwaktuTime(item)} [${item.status
+            itemListPrioritas.innerText = `${ConvertwaktuTime(item)} [${
+              item.status
             }] ${item.title}`;
 
             itemListPrioritas.addEventListener('click', () => {
@@ -368,9 +378,10 @@ const Home = {
           // Mengelompokkan Todos berdasarkan tanggal
           Todos.forEach((event) => {
             console.log('deadline', event.deadline);
-            const tanggal = new Date(event.deadline).toLocaleDateString(
-              'id-ID',
-            );
+            const options = {
+              weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+            };
+            const tanggal = new Date(event.deadline).toLocaleDateString('id-ID', options);
             if (!groupedTodos[tanggal]) {
               groupedTodos[tanggal] = [];
             }
@@ -379,6 +390,7 @@ const Home = {
 
           // Todo List
           Todos.forEach((event) => {
+            console.log('event 1', event);
             if (event.length === 0) {
               document.getElementById('noEventList').classList.remove('hidden');
               document.getElementById('eventList').classList.add('hidden');
@@ -395,11 +407,11 @@ const Home = {
             console.log('Tanggal : ', tanggal);
             // Membuat elemen untuk setiap tanggal
             const tanggalContainer = document.createElement('div');
-            tanggalContainer.className = 'flex flex-wrap justify-center w-full gap-3 date-container';
+            tanggalContainer.className = 'date-container w-full flex flex-wrap gap-3 justify-center';
 
             // Membuat elemen h1 untuk menampilkan tanggal
             const h1Tanggal = document.createElement('h1');
-            h1Tanggal.className = 'w-full text-2xl font-bold border-b-2 border-black text-sky-900';
+            h1Tanggal.className = ' w-full text-base md:text-xl lg:text-2xl font-bold text-sky-900 border-black border-b-2';
             h1Tanggal.textContent = `Todo List - ${tanggal}`;
 
             tanggalContainer.appendChild(h1Tanggal);
@@ -435,7 +447,7 @@ const Home = {
 
             // ... (Kode untuk membuat elemen-elemen card)
             const titleElement = document.createElement('h1');
-            titleElement.className = 'w-full pb-3 text-lg font-bold text-center text-sky-900';
+            titleElement.className = 'text-lg font-bold w-full text-sky-900 text-center pb-3';
             titleElement.textContent = event.title;
 
             const detailsContainerStatus = document.createElement('div');
@@ -447,8 +459,8 @@ const Home = {
             BtnStatus.className = 'px-2 py-1 rounded-lg text-sky-900 items-center text-[12px] font-bold';
 
             const BtnStatusSelesai = document.createElement('button');
-            BtnStatusSelesai.innerText = 'Click Done';
-            BtnStatusSelesai.className = 'px-2 py-1 border-sky-900 border  rounded-lg text-sky-900  items-center text-[12px] font-bold';
+            BtnStatusSelesai.innerText = 'Selesai';
+            BtnStatusSelesai.className = 'px-2 py-1 border-sky-900 border  rounded-lg text-sky-900  items-center text-[12px] font-bold hover:bg-green-800 hover:text-sky-100';
 
             statusElement.textContent = 'Status :  ';
             statusDiv.appendChild(statusElement);
@@ -463,7 +475,7 @@ const Home = {
               BtnStatus.className = 'px-2 py-1 border-sky-900 border bg-green-300 rounded-lg text-sky-900 items-center text-[12px] font-bold';
               BtnStatusSelesai.classList.add('hidden');
               const constIcon = document.createElement('span');
-              constIcon.className = 'text-white rounded-full material-symbols-outlined bg-sky-900';
+              constIcon.className = 'material-symbols-outlined bg-sky-900 rounded-full text-white';
               constIcon.textContent = 'check_circle';
               statusDiv.appendChild(constIcon);
             } else if (event.status === 'telat') {
@@ -479,6 +491,10 @@ const Home = {
                 event.description,
               );
               BtnStatusSelesai.classList.add('bg-green-300');
+              setTimeout(time, 1000);
+              function time() {
+                window.location.reload();
+              }
             });
 
             const descriptionElement = document.createElement('div');
@@ -486,7 +502,7 @@ const Home = {
 
             const divDetail = document.createElement('div');
             const Pdeadline = document.createElement('p');
-            Pdeadline.className = 'border-b border-black';
+            Pdeadline.className = 'border-black border-b';
             Pdeadline.innerText = `${FormatDeadlineBaru(
               event,
             )} - ${ConvertwaktuTime(event)}`;
@@ -542,12 +558,15 @@ const Home = {
               deadline: date,
               description: deskripsi,
             };
+            console.log('testsss', updatedData.deadline);
 
             axios
-              .put(`https://be.gunz.my.id/activity/todo/${eventId}`, updatedData, { headers })
+              .put(`https://be.gunz.my.id/todo/${eventId}`, updatedData, {
+                headers,
+              })
               .then((response) => {
                 console.log(`Status updated successfully: ${response.data}`);
-                // Additional logic or UI updates if needed
+                // Tambahkan logika tambahan atau pembaruan UI jika diperlukan
               })
               .catch((error) => {
                 console.error(`Error updating status: ${error.message}`);
@@ -597,39 +616,39 @@ const Home = {
       console.log(btnclose);
 
       if (info.event.extendedProps.status === 'selesai') {
-        btnstatus.className = 'px-3 py-1 font-bold bg-green-300 rounded-lg';
+        btnstatus.className = 'bg-green-300 px-3 py-1 rounded-lg font-bold';
         console.log('selesai');
       }
       if (info.event.extendedProps.status === 'telat') {
-        btnstatus.className = 'px-3 py-1 font-bold text-white bg-red-500 rounded-lg';
+        btnstatus.className = 'bg-red-500 text-white px-3 py-1 rounded-lg font-bold';
         console.log('telat');
       }
       if (info.event.extendedProps.status === 'menunggu') {
-        btnstatus.className = 'px-3 py-1 font-bold rounded-lg bg-sky-300';
+        btnstatus.className = 'bg-sky-300 px-3 py-1 rounded-lg font-bold';
         console.log('menunggu');
       }
       if (modalEvent) {
         modalEvent.classList.toggle('hidden');
-
-        btnclose.addEventListener('click', () => {
-          modalEvent.classList.add('hidden');
-          dahboard.classList.remove('blacked-out');
-        });
-
-        titleEvent.innerText = info.event.title;
-        if (info.event.extendedProps.category === 'event') {
-          dateModalLabel.innerText = 'Detail Event';
-          divStatus.classList.remove('flex');
-          divStatus.classList.add('hidden');
-        } else {
-          dateModalLabel.innerText = 'Detail Tugas';
-          btnstatus.innerText = info.event.extendedProps.status;
-
-          divStatus.classList.add('flex');
-          divStatus.classList.remove('hidden');
-        }
-        deskripsi.innerText = info.event.extendedProps.description;
       }
+
+      btnclose.addEventListener('click', () => {
+        modalEvent.classList.add('hidden');
+        dahboard.classList.remove('blacked-out');
+      });
+
+      titleEvent.innerText = info.event.title;
+      if (info.event.extendedProps.category === 'event') {
+        dateModalLabel.innerText = 'Detail Event';
+        divStatus.classList.remove('flex');
+        divStatus.classList.add('hidden');
+      } else {
+        dateModalLabel.innerText = 'Detail Tugas';
+        btnstatus.innerText = info.event.extendedProps.status;
+
+        divStatus.classList.add('flex');
+        divStatus.classList.remove('hidden');
+      }
+      deskripsi.innerText = info.event.extendedProps.description;
     }
   },
 };
