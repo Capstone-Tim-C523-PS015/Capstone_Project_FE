@@ -139,8 +139,6 @@
         imageprofile.src = response.data.user.profileImage;
         nameuser.innerHTML = response.data.user.name;
         emailuser.innerHTML = response.data.user.email;
-      }).catch((error) => {
-        console.error(error.response.data.message);
       });
     }
   </script>
