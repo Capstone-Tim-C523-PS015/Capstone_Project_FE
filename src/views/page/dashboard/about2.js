@@ -1,4 +1,4 @@
-const About = {
+const About2 = {
   async render() {
     return `
           <div id="content" class="mx-auto animate-fade-in transition duration-1000 ease-in-out mt-12 ">
@@ -156,8 +156,8 @@ const About = {
 
   async afterRender() {
     const jwttoken = localStorage.getItem('token');
-    if (jwttoken != null) {
-      window.location.replace('./indexdash.html#/dashboard');
+    if (jwttoken === null) {
+      window.location.replace('./login.html#/masuk');
     }
 
     window.addEventListener('beforeunload', () => {
@@ -166,7 +166,6 @@ const About = {
       contentElement.classList.remove('animate-fade-in');
       contentElement.classList.add('animate-fade-out');
     });
-
     document
       .getElementById('scrollButton')
       .addEventListener('click', () => {
@@ -178,4 +177,4 @@ const About = {
   },
 };
 
-export default About;
+export default About2;
