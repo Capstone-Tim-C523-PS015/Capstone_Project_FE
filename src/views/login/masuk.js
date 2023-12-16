@@ -1,4 +1,4 @@
-/* eslint-disable  */ 
+/* eslint-disable  */
 
 import axios from 'axios';
 import Api from '../../scripts/global/api';
@@ -82,13 +82,13 @@ const masuk = {
     }
 
     const masukForm = document.getElementById('login-form');
-    if(localStorage !== null) {
+    if (localStorage !== null) {
       document.getElementById('email-address-icon').value = localStorage.getItem('email');
       document.getElementById('password').value = localStorage.getItem('password');
       localStorage.removeItem('email');
       localStorage.removeItem('password');
-    }    
-    
+    }
+
     seepassword();
     if (masukForm) {
       masukForm.addEventListener('submit', async function (e) {
@@ -119,7 +119,7 @@ const masuk = {
         errorMessage.classList.remove('text-rose-700');
 
         setTimeout(time, 1000);
-        function time(){
+        function time() {
           const loadinglogin = document.getElementById('loading-login');
           const textlogin = document.getElementById('Masukuser');
 
@@ -128,7 +128,7 @@ const masuk = {
           localStorage.setItem('token', response.data.token);
           window.location.replace('./indexdash.html#/dashboard');
         }
-        
+
       }).catch(function (error) {
         const errorMessage = document.getElementById('Error_input');
         errorMessage.innerHTML = error.response.data.message;
@@ -138,12 +138,12 @@ const masuk = {
         const textlogin = document.getElementById('Masukuser');
 
         loadinglogin.classList.add('hidden');
-        textlogin.classList.remove('hidden');    
+        textlogin.classList.remove('hidden');
       });
     }
 
 
-    async function seepassword(){
+    async function seepassword() {
       const seepasswordid = document.getElementById('seepassword');
       seepasswordid.addEventListener('click', function () {
         const password = document.getElementById('password');

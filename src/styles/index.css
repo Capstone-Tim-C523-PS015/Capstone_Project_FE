@@ -31,7 +31,7 @@
 }
 
 .active {
-  @apply bg-sky-300 text-sky-900 font-bold;
+  @apply bg-blue-500 text-sky-950 font-bold;
 }
 
 #calendar {
@@ -39,9 +39,9 @@
 }
 
 #calendar .fc-day {
-  border: 1px solid #000; /* Warna dan ketebalan border dapat disesuaikan */
-  padding: 5px; /* Tambahkan padding jika diperlukan */
-  box-sizing: border-box; /* Untuk memastikan padding tidak mempengaruhi ukuran total */
+  border: 1px solid #000;
+  padding: 5px;
+  box-sizing: border-box;
 }
 #calendar .fc-day-header {
   border: 1px solid #000;
@@ -83,14 +83,20 @@
 }
 
 #kalendar .fc-day {
-  border: 1px solid #000; /* Warna dan ketebalan border dapat disesuaikan */
-  padding: 5px; /* Tambahkan padding jika diperlukan */
-  box-sizing: border-box; /* Untuk memastikan padding tidak mempengaruhi ukuran total */
+  border: 1px solid #000;
+  padding: 5px;
+  box-sizing: border-box;
 }
 #kalendar .fc-day-header {
-  border: 1px solid #082f49;
+  @apply bg-white text-sky-900 ;
 }
 
+#kalendar .fc-header-toolbar {
+  @apply bg-sky-500 text-sky-50 font-bold lg:p-4 py-4 px-2;
+}
+#kalendar .fc-button {
+  @apply bg-sky-900 text-sky-50 font-bold;
+}
 @media screen and (min-width: 600px) {
   #kalendar {
     width: 90%;
@@ -153,4 +159,12 @@
     0.5
   ); /* 0.5 adalah nilai opasitas, sesuaikan sesuai keinginan Anda */
   transition: background-color 0.3s ease-in-out;
+}
+
+/* Acriv for button Event or task */
+.active {
+  @apply bg-sky-300;
+}
+.fc-daygrid-day-events{
+  @apply cursor-pointer
 }
