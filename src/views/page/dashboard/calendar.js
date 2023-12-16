@@ -339,11 +339,6 @@ const Kalendar = {
         .then(
           axios.spread((responseA, responseB) => {
             const Todos = responseA.data.todos;
-            console.log('impementasi', Todos);
-            Todos.forEach((item) => {
-              console.log('todods 1', item.id);
-            });
-
             const formattedData = Todos.map((item) => ({
               title: item.title,
               start: item.deadline,
@@ -355,7 +350,6 @@ const Kalendar = {
               },
             }));
             const Todos2 = responseB.data.activities;
-            console.log('todods 2', Todos2);
             const formattedData2 = Todos2.map((item) => ({
               title: item.title,
               start: item.deadline,
@@ -385,10 +379,7 @@ const Kalendar = {
 
             calendar.render();
           }),
-        )
-        .catch((error) => {
-          console.error('Error fetching data:', error);
-        });
+        );
     }
 
     function handleDateClick() {
@@ -439,13 +430,13 @@ const Kalendar = {
         (info.event.extendedProps.status === 'menunggu')
         || (info.event.extendedProps.status === 'dikerjakan')
       ) {
-        setatus.className = 'bg-sky-300 text-sky-900 px-3 py-1 rounded-lg font-bold';
+        setatus.className = 'px-3 py-1 font-bold rounded-lg bg-sky-300 text-sky-900';
       }
       if (
         (info.event.extendedProps.status === 'telat')
         || (info.event.extendedProps.status === 'dikerjakan')
       ) {
-        setatus.className = 'bg-red-500 text-white px-3 py-1 rounded-lg font-bold';
+        setatus.className = 'px-3 py-1 font-bold text-white bg-red-500 rounded-lg';
       }
 
       const ButtonDeleteEvent = document.getElementById('deleteEventTodoList');
@@ -578,7 +569,6 @@ const Kalendar = {
         deadline: document.getElementById('customDatePutActivity').value,
       };
       const urlActivity = `https://be.gunz.my.id/activity/${info.event.extendedProps.idEvent}`;
-      console.log('idActivity', info.event.extendedProps.idEvent);
 
       axios
         .put(urlActivity, newDataActivity, {
@@ -586,15 +576,6 @@ const Kalendar = {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${jwt}`,
           },
-        })
-
-        .then((response) => {
-          // Handle the responses as needed
-          console.log('Response from Todo deletion:', response);
-          console.log('sukses');
-        })
-        .catch((error) => {
-          console.error('Error deleting data:', error);
         });
     }
 
@@ -613,15 +594,6 @@ const Kalendar = {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${jwt}`,
           },
-        })
-
-        .then((response) => {
-          console.log(info.title);
-          // Handle the responses as needed
-          console.log('Response from Todo deletion:', response);
-        })
-        .catch((error) => {
-          console.error('Error deleting data:', error);
         });
     }
 
@@ -695,12 +667,6 @@ const Kalendar = {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${jwt}`,
           },
-        })
-        .then((response) => {
-          console.log(`Succes ${response.data}`);
-        })
-        .catch((error) => {
-          console.log(`Error ${error}`);
         });
     }
 
@@ -722,13 +688,6 @@ const Kalendar = {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${jwt}`,
           },
-        })
-        .then((response) => {
-          console.log(`Succes Event ${response.data}`);
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(`Error ${error}`);
         });
     }
 
@@ -750,18 +709,7 @@ const Kalendar = {
               Authorization: `Bearer ${jwt}`,
             },
           }),
-        ])
-
-        .then(
-          axios.spread((responseA, responseB) => {
-            // Handle the responses as needed
-            console.log('Response from Todo deletion:', responseA.status);
-            console.log('Response from Todo deletion:', responseB.status);
-          }),
-        )
-        .catch((error) => {
-          console.error('Error deleting data:', error);
-        });
+        ]);
     }
 
     function hapusDataEfek() {

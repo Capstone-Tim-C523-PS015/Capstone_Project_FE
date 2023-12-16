@@ -33,7 +33,13 @@ const TodoList = {
         
         <div class"" id="data-todo">
           <div class="flex justify-between border-sky-950 border-b-2 mb-10">
-            <h1 class="flex flex-grow py-3 text-2xl font-bold" >Kemarin</h1>
+            <h1 class="flex flex-wrap py-3 text-2xl font-bold gap-x-4" >
+              <p>Kemarin</p>
+              <div class="flex flex-col text-xs font-semibold">
+                <p>*Update status setiap pukul 07:00 WIB</p>
+                <p>*Update status setiap penambahan Tugas selama 1 menit</p>
+              </div>
+            </h1>
             <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="gap-2 flex justify-center items-center text-center text-sky-100 bg-sky-900 hover:bg-sky-800 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg text-base py-1 px-4 h-9 w-24" id="buttontambah"  type="button">
               <img src="./svg/plus.svg" class="w-5"/>
               Tugas
@@ -418,9 +424,13 @@ const TodoList = {
             if (todos.status === 'dikerjakan') {
               spanstatusdikerjakan.classList.add('bg-sky-300');
               spanstatusdikerjakan.classList.remove('bg-sky-100');
+              spanstatustelat.classList.add('hidden');
+              spanstatusrevisi.classList.add('hidden');
             } else if (todos.status === 'menunggu') {
               spanstatusmenunggu.classList.add('bg-sky-300');
               spanstatusmenunggu.classList.remove('bg-sky-100');
+              spanstatustelat.classList.add('hidden');
+              spanstatusrevisi.classList.add('hidden');
             } else if (todos.status === 'revisi') {
               spanstatusdikerjakan.classList.add('bg-sky-300');
               spanstatusdikerjakan.classList.remove('bg-sky-100');
@@ -428,11 +438,16 @@ const TodoList = {
               spanstatusrevisi.classList.remove('bg-sky-100');
               spanstatusrevisi.classList.add('text-sky-100');
               spanstatusrevisi.classList.remove('text-sky-900');
+              spanstatusmenunggu.classList.add('hidden');
+              spanstatustelat.classList.add('hidden');
             } else if (todos.status === 'selesai') {
+              spanstatusdikerjakan.classList.add('hidden');
+              spanstatusmenunggu.classList.add('hidden');
               spanstatusselesai.classList.add('bg-green-700');
               spanstatusselesai.classList.remove('bg-sky-100');
               spanstatusselesai.classList.add('text-sky-100');
               spanstatusselesai.classList.remove('text-sky-900');
+              spanstatustelat.classList.add('hidden');
             } else if (todos.status === 'telat') {
               spanstatusdikerjakan.classList.add('bg-sky-300');
               spanstatusdikerjakan.classList.remove('bg-sky-100');
@@ -440,6 +455,8 @@ const TodoList = {
               spanstatustelat.classList.remove('bg-sky-100');
               spanstatustelat.classList.add('text-sky-100');
               spanstatustelat.classList.remove('text-sky-900');
+              spanstatusrevisi.classList.add('hidden');
+              spanstatusmenunggu.classList.add('hidden');
             }
             setTimeout(modaldeleteall, 1000);
             function modaldeleteall() {
@@ -645,6 +662,7 @@ const TodoList = {
                     <span id="btn-menungguspan${todos.id}" data-todo-id="${todos.id}" class=" btn-selesai text-sky-900 bg-sky-100  border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-xs  px-2 py-1 text-center">Menunggu</span>
                     <span id="btn-selesaispan${todos.id}" data-todo-id="${todos.id}" class=" btn-selesai text-sky-900 bg-sky-100  border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-xs  px-2 py-1 text-center">Selesai</span>
                     <span id="btn-revisispan${todos.id}" data-todo-id="${todos.id}" class=" btn-selesai text-sky-900 bg-sky-100  border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-xs  px-2 py-1 text-center">Revisi</span>
+                    <span id="btn-telatspan${todos.id}" data-todo-id="${todos.id}" class=" btn-selesai text-sky-900 bg-sky-100  border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-xs  px-2 py-1 text-center">Telat</span>
                 </div>
                 <div class="flex flex-row gap-2 py-2 border-sky-950 border-b-2">
                   <h2 class="flex flex-grow text-sky-950 text font-semibold" id="deadline-tanggal" data-deadline="${deadline}">
@@ -727,6 +745,7 @@ const TodoList = {
                                 <button type="button" id="btn-menunggu-today${todos.id}" class=" btn-edit-status-today text-sky-900 bg-sky-100 hover:bg-sky-200 border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-xs  px-2 py-1 text-center">Menunggu</button>
                                 <button type="button" id="btn-selesai-today${todos.id}" class=" btn-edit-status-today text-sky-900 bg-sky-100 hover:bg-sky-200 border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-xs  px-2 py-1 text-center">Selesai</button>
                                 <button type="button" id="btn-revisi-today${todos.id}"  class=" btn-edit-status-today text-sky-900 bg-sky-100 hover:bg-sky-200 border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-xs  px-2 py-1 text-center">Revisi</button>
+                                <button type="button" id="btn-telat-today${todos.id}"  class=" btn-edit-status-today text-sky-900 bg-sky-100 hover:bg-sky-200 border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-xs  px-2 py-1 text-center">telat</button>
                               </div>
                               <div class="flex flex-col gap-6">
                                 <div class="flex flex-col gap-2 order-1 lg:order-2 ">
@@ -791,25 +810,39 @@ const TodoList = {
             const spanstatusmenunggu = document.getElementById(`btn-menungguspan${todos.id}`);
             const spanstatusselesai = document.getElementById(`btn-selesaispan${todos.id}`);
             const spanstatusrevisi = document.getElementById(`btn-revisispan${todos.id}`);
+            const spanstatustelat = document.getElementById(`btn-telatspan${todos.id}`);
             if (todos.status === 'dikerjakan') {
               spanstatusdikerjakan.classList.add('bg-sky-300');
               spanstatusdikerjakan.classList.remove('bg-sky-100');
+              spanstatusrevisi.classList.add('hidden');
+              spanstatustelat.classList.add('hidden');
             } else if (todos.status === 'menunggu') {
               spanstatusmenunggu.classList.add('bg-sky-300');
               spanstatusmenunggu.classList.remove('bg-sky-100');
+              spanstatusrevisi.classList.add('hidden');
+              spanstatustelat.classList.add('hidden');
             } else if (todos.status === 'revisi') {
               spanstatusdikerjakan.classList.add('bg-sky-300');
               spanstatusdikerjakan.classList.remove('bg-sky-100');
-              spanstatusrevisi.classList.add('bg-rose-800');
-              spanstatusrevisi.classList.remove('bg-sky-100');
-              spanstatusrevisi.classList.add('text-sky-100');
-              spanstatusrevisi.classList.remove('text-sky-900');
+              spanstatusrevisi.classList.add('bg-rose-800', 'text-sky-100');
+              spanstatusrevisi.classList.remove('bg-sky-100', 'text-sky-900');
+              spanstatusmenunggu.classList.add('hidden');
+              spanstatustelat.classList.add('hidden');
             } else if (todos.status === 'selesai') {
-              spanstatusselesai.classList.add('bg-green-700');
-              spanstatusselesai.classList.remove('bg-sky-100');
-              spanstatusselesai.classList.add('text-sky-100');
-              spanstatusselesai.classList.remove('text-sky-900');
+              spanstatusselesai.classList.add('bg-green-700', 'text-sky-100');
+              spanstatusselesai.classList.remove('bg-sky-100', 'text-sky-900');
+              spanstatustelat.classList.add('hidden');
+              spanstatusmenunggu.classList.add('hidden');
+              spanstatusdikerjakan.classList.add('hidden');
+            } else if (todos.status === 'telat') {
+              spanstatusdikerjakan.classList.add('bg-sky-300');
+              spanstatusdikerjakan.classList.remove('bg-sky-100');
+              spanstatustelat.classList.add('bg-rose-800', 'text-sky-100');
+              spanstatustelat.classList.remove('bg-sky-100', 'text-sky-900');
+              spanstatusmenunggu.classList.add('hidden');
+              spanstatusrevisi.classList.add('hidden');
             }
+
             setTimeout(times, 1000);
             function times() {
               const btndeletetoday = document.getElementById(`deletebtnhariini${todos.id}`);
@@ -858,6 +891,7 @@ const TodoList = {
               const btnstatusmenunggutoday = document.getElementById(`btn-menunggu-today${todos.id}`);
               const btnstatusrevisitoday = document.getElementById(`btn-revisi-today${todos.id}`);
               const btnstatusselesaitoday = document.getElementById(`btn-selesai-today${todos.id}`);
+              const btnstatustelattoday = document.getElementById(`btn-telat-today${todos.id}`);
               let editstatus = '';
 
               const judultugasdikerjakan = document.getElementById(`judultugashariini${todos.id}`);
@@ -872,23 +906,37 @@ const TodoList = {
               if (todos.status === 'dikerjakan') {
                 btnstatusdikerjakantoday.classList.add('bg-sky-300');
                 btnstatusdikerjakantoday.classList.remove('bg-sky-100');
+                btnstatustelattoday.classList.add('hidden');
+                btnstatusrevisitoday.classList.add('hidden');
                 editstatus = 'dikerjakan';
               } else if (todos.status === 'menunggu') {
                 btnstatusmenunggutoday.classList.add('bg-sky-300');
                 btnstatusmenunggutoday.classList.remove('bg-sky-100');
+                btnstatustelattoday.classList.add('hidden');
+                btnstatusrevisitoday.classList.add('hidden');
                 editstatus = 'menunggu';
               } else if (todos.status === 'revisi') {
                 btnstatusrevisitoday.classList.add('bg-sky-300');
                 btnstatusrevisitoday.classList.remove('bg-sky-100');
                 btnstatusdikerjakantoday.classList.add('hidden');
                 btnstatusmenunggutoday.classList.add('hidden');
+                btnstatustelattoday.classList.add('hidden');
                 editstatus = 'revisi';
               } else if (todos.status === 'selesai') {
                 btnstatusselesaitoday.classList.add('bg-sky-300');
                 btnstatusselesaitoday.classList.remove('bg-sky-100');
                 btnstatusdikerjakantoday.classList.add('hidden');
                 btnstatusmenunggutoday.classList.add('hidden');
+                btnstatustelattoday.classList.add('hidden');
                 editstatus = 'selesai';
+              } else if (todos.status === 'telat') {
+                btnstatustelattoday.classList.add('bg-sky-300');
+                btnstatustelattoday.classList.remove('bg-sky-100');
+                btnstatusdikerjakantoday.classList.add('hidden');
+                btnstatusmenunggutoday.classList.add('hidden');
+                btnstatusrevisitoday.classList.add('hidden');
+                btnstatustelattoday.setAttribute('disabled', true);
+                editstatus = 'telat';
               }
               const optionsedit = {
                 placement: 'center',
@@ -1144,9 +1192,11 @@ const TodoList = {
             if (todos.status === 'dikerjakan') {
               spanstatusdikerjakanbesok.classList.add('bg-sky-300');
               spanstatusdikerjakanbesok.classList.remove('bg-sky-100');
+              spanstatusrevisibesok.classList.add('hidden');
             } else if (todos.status === 'menunggu') {
               spanstatusmenunggubesok.classList.add('bg-sky-300');
               spanstatusmenunggubesok.classList.remove('bg-sky-100');
+              spanstatusrevisibesok.classList.add('hidden');
             } else if (todos.status === 'revisi') {
               spanstatusdikerjakanbesok.classList.add('bg-sky-300');
               spanstatusdikerjakanbesok.classList.remove('bg-sky-100');
@@ -1154,11 +1204,14 @@ const TodoList = {
               spanstatusrevisibesok.classList.remove('bg-sky-100');
               spanstatusrevisibesok.classList.add('text-sky-100');
               spanstatusrevisibesok.classList.remove('text-sky-900');
+              spanstatusmenunggubesok.classList.add('hidden');
             } else if (todos.status === 'selesai') {
               spanstatusselesaibesok.classList.add('bg-green-700');
               spanstatusselesaibesok.classList.remove('bg-sky-100');
               spanstatusselesaibesok.classList.add('text-sky-100');
               spanstatusselesaibesok.classList.remove('text-sky-900');
+              spanstatusdikerjakanbesok.classList.add('hidden');
+              spanstatusmenunggubesok.classList.add('hidden');
             }
             setTimeout(times, 1000);
             function times() {
@@ -1223,10 +1276,12 @@ const TodoList = {
               if (todos.status === 'dikerjakan') {
                 btnstatusdikerjakanbesok.classList.add('bg-sky-300');
                 btnstatusdikerjakanbesok.classList.remove('bg-sky-100');
+                btnstatusrevisibesok.classList.add('hidden');
                 editstatus = 'dikerjakan';
               } else if (todos.status === 'menunggu') {
                 btnstatusmenunggubesok.classList.add('bg-sky-300');
                 btnstatusmenunggubesok.classList.remove('bg-sky-100');
+                btnstatusrevisibesok.classList.add('hidden');
                 editstatus = 'menunggu';
               } else if (todos.status === 'revisi') {
                 btnstatusrevisibesok.classList.add('bg-sky-300');
@@ -1528,31 +1583,27 @@ const TodoList = {
             const spanstatusselesaikemarin = document.getElementById(`span-selesai-kemarin${todos.id}`);
             const spanstatusrevisikemarin = document.getElementById(`span-revisi-kemarin${todos.id}`);
             const spanstatustelatkemarin = document.getElementById(`span-telat-kemarin${todos.id}`);
-            if (todos.status === 'dikerjakan') {
+            if (todos.status === 'telat') {
               spanstatusdikerjakankemarin.classList.add('bg-sky-300');
               spanstatusdikerjakankemarin.classList.remove('bg-sky-100');
-            } else if (todos.status === 'menunggu') {
-              spanstatusmenunggukemarin.classList.add('bg-sky-300');
-              spanstatusmenunggukemarin.classList.remove('bg-sky-100');
+              spanstatustelatkemarin.classList.add('bg-rose-800', 'text-sky-100');
+              spanstatustelatkemarin.classList.remove('bg-sky-100', 'text-sky-900');
+              spanstatusmenunggukemarin.classList.add('hidden');
+              spanstatusrevisikemarin.classList.add('hidden');
+            } else if (todos.status === 'selesai') {
+              spanstatusselesaikemarin.classList.add('bg-green-700', 'text-sky-100');
+              spanstatusselesaikemarin.classList.remove('bg-sky-100', 'text-sky-900');
+              spanstatusdikerjakankemarin.classList.add('hidden');
+              spanstatusmenunggukemarin.classList.add('hidden');
+              spanstatustelatkemarin.classList.add('hidden');
             } else if (todos.status === 'revisi') {
               spanstatusdikerjakankemarin.classList.add('bg-sky-300');
               spanstatusdikerjakankemarin.classList.remove('bg-sky-100');
-              spanstatusrevisikemarin.classList.add('bg-rose-800');
-              spanstatusrevisikemarin.classList.remove('bg-sky-100');
-              spanstatusrevisikemarin.classList.add('text-sky-100');
-              spanstatusrevisikemarin.classList.remove('text-sky-900');
-            } else if (todos.status === 'selesai') {
-              spanstatusselesaikemarin.classList.add('bg-green-700');
-              spanstatusselesaikemarin.classList.remove('bg-sky-100');
-              spanstatusselesaikemarin.classList.add('text-sky-100');
-              spanstatusselesaikemarin.classList.remove('text-sky-900');
-            } else if (todos.status === 'telat') {
-              spanstatusdikerjakankemarin.classList.add('bg-sky-300');
-              spanstatusdikerjakankemarin.classList.remove('bg-sky-100');
-              spanstatustelatkemarin.classList.add('bg-rose-800');
-              spanstatustelatkemarin.classList.remove('bg-sky-100');
-              spanstatustelatkemarin.classList.add('text-sky-100');
-              spanstatustelatkemarin.classList.remove('text-sky-900');
+              spanstatusrevisikemarin.classList.add('bg-rose-800', 'text-sky-100');
+              spanstatusrevisikemarin.classList.remove('bg-sky-100', 'text-sky-900');
+              spanstatusdikerjakankemarin.classList.add('hidden');
+              spanstatusmenunggukemarin.classList.add('hidden');
+              spanstatustelatkemarin.classList.add('hidden');
             }
             setTimeout(times, 1000);
             function times() {
@@ -1615,15 +1666,7 @@ const TodoList = {
               const deskripsitodokemarin = document.getElementById(`deskripsitodo-kemarin${todos.id}`);
               deskripsitodokemarin.value = `${todos.description}`;
 
-              if (todos.status === 'dikerjakan') {
-                btnstatusdikerjakankemarin.classList.add('bg-sky-300');
-                btnstatusdikerjakankemarin.classList.remove('bg-sky-100');
-                editstatuskemarin = 'dikerjakan';
-              } else if (todos.status === 'menunggu') {
-                btnstatusmenunggukemarin.classList.add('bg-sky-300');
-                btnstatusmenunggukemarin.classList.remove('bg-sky-100');
-                editstatuskemarin = 'menunggu';
-              } else if (todos.status === 'revisi') {
+              if (todos.status === 'revisi') {
                 btnstatusrevisikemarin.classList.add('bg-sky-300');
                 btnstatusrevisikemarin.classList.remove('bg-sky-100');
                 btnstatusdikerjakankemarin.classList.add('hidden');

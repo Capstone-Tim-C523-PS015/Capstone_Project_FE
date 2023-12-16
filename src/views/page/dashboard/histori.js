@@ -136,6 +136,7 @@ const Histori = {
                   </div>
                   <div class="flex py-4 gap-3">
                     <h3 class="text-sky-950 text-md font-bold">Status:</h3>
+                    <span  id="btn-dikerjakan" data-todo-id="${todos.id}" class=" btn-selesai text-sky-900 bg-sky-300 hover:bg-sky-200 border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-xs  px-2 py-1 text-center">Dikerjakan</span>
                     <span  id="btn-selesai" data-todo-id="${todos.id}" class=" btn-selesai text-sky-900 bg-sky-100 hover:bg-sky-200 border-2 border-sky-950/40 focus:ring-4 focus:ring-sky-300 font-bold rounded-lg text-xs  px-2 py-1 text-center">Selesai</span>
                     <span id="btn-revisi" data-todo-id="${todos.id}" class=" btn-revisi text-white bg-rose-700 hover:bg-rose-800 border-2 border-sky-950/40 focus:ring-4 focus:ring-red-300 font-bold rounded-lg text-xs  px-2 py-1 text-center ">Revisi</span>
                   </div>

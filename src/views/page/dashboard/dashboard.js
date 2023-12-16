@@ -228,8 +228,6 @@ const Home = {
         axios.spread((responseA, responseB) => {
           const TodosEvent = responseB.data.activities;
           const Todos = responseA.data.todos;
-          console.log('Api Event', TodosEvent);
-          console.log('Api todos', Todos);
           // Fungsi untuk konfigurasi dengan API Fullcalendar
           const formattedData = Todos.map((item) => ({
             title: item.title,
@@ -253,8 +251,6 @@ const Home = {
             },
           }));
 
-          console.log(formattedData);
-          // API Calendar
           const calendarEl = document.getElementById('calendar');
           const calendar = new Calendar(calendarEl, {
             headerToolbar: {
@@ -284,21 +280,13 @@ const Home = {
           }
 
           function eventListPrioritasTodos(item) {
-            console.log('lihat status', item.status);
             const listMendesak = document.getElementById('list-mendesak');
             const listPrioritas = document.getElementById('list-penting');
             const listmenunggu = document.getElementById('list-menunggu');
             const listslesai = document.getElementById('list-slesai');
             const itemListPrioritas = document.createElement('p');
-            itemListPrioritas.className = 'font-bold py-2 text-sky-900 scrollButton cursor-pointer hover:opacity-50';
+            itemListPrioritas.className = 'py-2 font-bold cursor-pointer text-sky-900 scrollButton hover:opacity-50';
             // Membuat objek Date dari string waktu API menampilkan waktu
-            const deadlineApi = item.deadline;
-            const deadlineDate = new Date(deadlineApi);
-            let waktuDeadline = deadlineDate.toLocaleTimeString('en-US', {
-              hour12: false,
-            });
-            waktuDeadline = waktuDeadline.replace(/:00$/, '');
-            console.log('Waktu deadline:', waktuDeadline);
             itemListPrioritas.innerText = `${ConvertwaktuTime(item)} [${
               item.status
             }] ${item.title}`;
@@ -374,10 +362,8 @@ const Home = {
           }
 
           const groupedTodos = {};
-          console.log(Todos);
           // Mengelompokkan Todos berdasarkan tanggal
           Todos.forEach((event) => {
-            console.log('deadline', event.deadline);
             const options = {
               weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
             };
@@ -390,7 +376,6 @@ const Home = {
 
           // Todo List
           Todos.forEach((event) => {
-            console.log('event 1', event);
             if (event.length === 0) {
               document.getElementById('noEventList').classList.remove('hidden');
               document.getElementById('eventList').classList.add('hidden');
@@ -404,21 +389,19 @@ const Home = {
           const cardHistori = document.getElementById('cardHistori');
 
           Object.keys(groupedTodos).forEach((tanggal) => {
-            console.log('Tanggal : ', tanggal);
             // Membuat elemen untuk setiap tanggal
             const tanggalContainer = document.createElement('div');
-            tanggalContainer.className = 'date-container w-full flex flex-wrap gap-3 justify-center';
+            tanggalContainer.className = 'flex flex-wrap justify-center w-full gap-3 date-container';
 
             // Membuat elemen h1 untuk menampilkan tanggal
             const h1Tanggal = document.createElement('h1');
-            h1Tanggal.className = ' w-full text-base md:text-xl lg:text-2xl font-bold text-sky-900 border-black border-b-2';
+            h1Tanggal.className = 'w-full text-base font-bold border-b-2 border-black md:text-xl lg:text-2xl text-sky-900';
             h1Tanggal.textContent = `Todo List - ${tanggal}`;
 
             tanggalContainer.appendChild(h1Tanggal);
 
             // Iterasi melalui Todos pada tanggal tertentu
             groupedTodos[tanggal].forEach((event) => {
-              console.log('event: ', event.deadline);
               CreateCardTodo(event, tanggalContainer);
               if (event.status === 'selesai') {
                 h1Tanggal.classList.add('hidden');
@@ -447,7 +430,7 @@ const Home = {
 
             // ... (Kode untuk membuat elemen-elemen card)
             const titleElement = document.createElement('h1');
-            titleElement.className = 'text-lg font-bold w-full text-sky-900 text-center pb-3';
+            titleElement.className = 'w-full pb-3 text-lg font-bold text-center text-sky-900';
             titleElement.textContent = event.title;
 
             const detailsContainerStatus = document.createElement('div');
@@ -456,7 +439,7 @@ const Home = {
             const statusElement = document.createElement('p');
             const BtnStatus = document.createElement('button');
             BtnStatus.textContent = event.status;
-            BtnStatus.className = 'px-2 py-1 rounded-lg text-sky-900 items-center text-[12px] font-bold';
+            BtnStatus.className = 'px-2 py-1 rounded-lg text-sky-100 items-center text-[12px] font-bold bg-rose-700 border-sky-900 border';
 
             const BtnStatusSelesai = document.createElement('button');
             BtnStatusSelesai.innerText = 'Selesai';
@@ -472,14 +455,14 @@ const Home = {
             if (event.status === 'dikerjakan' || event.status === 'menunggu') {
               BtnStatus.className = 'px-2 py-1 border-sky-900 border rounded-lg text-sky-900 items-center text-[12px] font-bold bg-sky-300';
             } else if (event.status === 'selesai') {
-              BtnStatus.className = 'px-2 py-1 border-sky-900 border bg-green-300 rounded-lg text-sky-900 items-center text-[12px] font-bold';
+              BtnStatus.className = 'px-2 py-1 border-sky-900 border bg-green-800 rounded-lg text-sky-100 items-center text-[12px] font-bold';
               BtnStatusSelesai.classList.add('hidden');
               const constIcon = document.createElement('span');
-              constIcon.className = 'material-symbols-outlined bg-sky-900 rounded-full text-white';
+              constIcon.className = 'text-white rounded-full material-symbols-outlined bg-sky-900';
               constIcon.textContent = 'check_circle';
               statusDiv.appendChild(constIcon);
             } else if (event.status === 'telat') {
-              BtnStatus.className = 'px-3 py-1  bg-red-500 rounded-lg text-white items-center text-[12px] font-bold';
+              BtnStatus.className = 'px-3 py-1  bg-rose-800 rounded-lg text-sky-100 items-center text-[12px] font-bold';
             }
 
             BtnStatusSelesai.addEventListener('click', () => {
@@ -502,7 +485,7 @@ const Home = {
 
             const divDetail = document.createElement('div');
             const Pdeadline = document.createElement('p');
-            Pdeadline.className = 'border-black border-b';
+            Pdeadline.className = 'border-b border-black';
             Pdeadline.innerText = `${FormatDeadlineBaru(
               event,
             )} - ${ConvertwaktuTime(event)}`;
@@ -558,18 +541,10 @@ const Home = {
               deadline: date,
               description: deskripsi,
             };
-            console.log('testsss', updatedData.deadline);
 
             axios
               .put(`https://be.gunz.my.id/todo/${eventId}`, updatedData, {
                 headers,
-              })
-              .then((response) => {
-                console.log(`Status updated successfully: ${response.data}`);
-                // Tambahkan logika tambahan atau pembaruan UI jika diperlukan
-              })
-              .catch((error) => {
-                console.error(`Error updating status: ${error.message}`);
               });
           }
 
@@ -604,7 +579,6 @@ const Home = {
       );
 
     function handleEventClick(info) {
-      console.log('info', info.event.extendedProps.category);
       const modalEvent = document.getElementById('modalEvent');
       const dahboard = document.getElementById('dashboard');
       const btnclose = document.getElementById('closeEventCalendarModal');
@@ -613,19 +587,15 @@ const Home = {
       const btnstatus = document.getElementById('btnstatus');
       const divStatus = document.getElementById('divStatus');
       const deskripsi = document.getElementById('deskripsi');
-      console.log(btnclose);
 
       if (info.event.extendedProps.status === 'selesai') {
-        btnstatus.className = 'bg-green-300 px-3 py-1 rounded-lg font-bold';
-        console.log('selesai');
+        btnstatus.className = 'px-3 py-1 font-bold bg-green-300 rounded-lg';
       }
       if (info.event.extendedProps.status === 'telat') {
-        btnstatus.className = 'bg-red-500 text-white px-3 py-1 rounded-lg font-bold';
-        console.log('telat');
+        btnstatus.className = 'px-3 py-1 font-bold text-white bg-red-500 rounded-lg';
       }
       if (info.event.extendedProps.status === 'menunggu') {
-        btnstatus.className = 'bg-sky-300 px-3 py-1 rounded-lg font-bold';
-        console.log('menunggu');
+        btnstatus.className = 'px-3 py-1 font-bold rounded-lg bg-sky-300';
       }
       if (modalEvent) {
         modalEvent.classList.toggle('hidden');
