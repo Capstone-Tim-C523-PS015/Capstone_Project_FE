@@ -1,3 +1,4 @@
+/* eslint-disable new-cap */
 /* eslint-disable no-use-before-define */
 import { Calendar } from 'fullcalendar';
 import '../../../styles/index.css';
@@ -382,34 +383,76 @@ const Kalendar = {
         );
     }
 
-    function handleDateClick() {
+    // Menutup modal sebelumnya jika sudah ada yang aktif
+    function closeActiveModal() {
+      const activeModal = document.querySelector('.modal:not(.hidden)');
       const modal = document.getElementById('dateModal');
       const dahboard = document.getElementById('dashboard');
-      const btnclose = document.getElementById('close');
       const kalendar = document.getElementById('kalendar');
+      if (activeModal && activeModal !== modal) {
+        activeModal.classList.add('hidden');
+        dahboard.classList.remove('blacked-out');
+        kalendar.classList.add('bg-white');
+        activeModal.classList.remove('bottom-3');
+      }
+    }
 
+    function handleDateClick() {
+      const modal = document.getElementById('dateModal');
       document.querySelector('.target').scrollIntoView({ behavior: 'smooth' });
+
+      closeActiveModal();
 
       if (modal) {
         modal.classList.toggle('hidden');
         modal.classList.remove('bottom-3');
-        // dahboard.classList.toggle("blacked-out");
-
-        // kalendar.classList.remove("bg-white");
+        const modalEvent = document.getElementById('modalEvent');
+        const todomodal = document.getElementById('PutTodo');
+        modalEvent.classList.add('hidden');
+        todomodal.classList.add('hidden');
       }
+    }
 
-      btnclose.addEventListener('click', () => {
+    const btnclose = document.getElementById('closeEvent');
+    const btncloseevent = document.getElementById('close');
+
+    btncloseevent.addEventListener('click', () => {
+      const modal = document.getElementById('dateModal');
+      const dahboard = document.getElementById('dashboard');
+      const kalendar = document.getElementById('kalendar');
+      modal.classList.add('hidden');
+      dahboard.classList.remove('blacked-out');
+      kalendar.classList.add('bg-white');
+      modal.classList.add('bottom-3');
+    });
+    btnclose.addEventListener('click', () => {
+      const modal = document.getElementById('dateModal');
+      const dahboard = document.getElementById('dashboard');
+      const kalendar = document.getElementById('kalendar');
+      modal.classList.add('hidden');
+      dahboard.classList.remove('blacked-out');
+      kalendar.classList.add('bg-white');
+      modal.classList.add('bottom-3');
+    });
+
+    // Menambahkan event listener untuk menutup modal jika klik di luar modal
+    document.addEventListener('click', (event) => {
+      const modal = document.getElementById('dateModal');
+      const dahboard = document.getElementById('dashboard');
+      const kalendar = document.getElementById('kalendar');
+      const targetElement = event.target;
+
+      if (modal && !modal.contains(targetElement)) {
         modal.classList.add('hidden');
         dahboard.classList.remove('blacked-out');
         kalendar.classList.add('bg-white');
         modal.classList.add('bottom-3');
-      });
-    }
+      }
+    });
 
     function handleEventClick(info) {
       const modalEvent = document.getElementById('modalEvent');
       const dahboard = document.getElementById('dashboard');
-      const btnclose = document.getElementById('closeEvent');
       const iconDelete = document.getElementById('deleteEvent');
       const editEventBtn = document.getElementById('editEvent');
       const todate = document.getElementById('todate');
