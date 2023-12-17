@@ -36,7 +36,7 @@ const TodoList = {
             <h1 class="flex flex-wrap py-3 text-2xl font-bold gap-x-4" >
               <p>Kemarin</p>
               <div class="flex flex-col text-xs font-semibold">
-                <p>*Update status setiap pukul 07:00 WIB</p>
+                <p>*Update status setiap pukul 00:00 WIB</p>
                 <p>*Update status setiap penambahan Tugas selama 1 menit</p>
               </div>
             </h1>
