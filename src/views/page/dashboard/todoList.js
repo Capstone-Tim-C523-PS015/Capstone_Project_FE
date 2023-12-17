@@ -1604,6 +1604,11 @@ const TodoList = {
               spanstatusdikerjakankemarin.classList.add('hidden');
               spanstatusmenunggukemarin.classList.add('hidden');
               spanstatustelatkemarin.classList.add('hidden');
+            } else if (todos.status === 'menunggu') {
+              spanstatusmenunggukemarin.classList.add('bg-sky-300');
+              spanstatusmenunggukemarin.classList.remove('bg-sky-100');
+              spanstatusrevisikemarin.classList.add('hidden');
+              spanstatustelatkemarin.classList.add('hidden');
             }
             setTimeout(times, 1000);
             function times() {
