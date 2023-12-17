@@ -53,7 +53,7 @@ const Histori = {
     if (token === null) {
       window.location.replace('./login.html#/masuk');
     }
-    const baseurl = 'https://be.gunz.my.id';
+    const baseurl = 'https://be-2.gunz.my.id';
     getalltodohistory();
 
     const emptyContainer = document.getElementById('empty-container');

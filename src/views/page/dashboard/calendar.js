@@ -319,8 +319,8 @@ const Kalendar = {
     // API Calendar
 
     function initializeCalendar(todo, activity) {
-      const url = `https://be.gunz.my.id/${todo}`;
-      const url2 = `https://be.gunz.my.id/${activity}`;
+      const url = `https://be-2.gunz.my.id/${todo}`;
+      const url2 = `https://be-2.gunz.my.id/${activity}`;
 
       axios
         .all([
@@ -611,7 +611,7 @@ const Kalendar = {
         isNotificate: true,
         deadline: document.getElementById('customDatePutActivity').value,
       };
-      const urlActivity = `https://be.gunz.my.id/activity/${info.event.extendedProps.idEvent}`;
+      const urlActivity = `https://be-2.gunz.my.id/activity/${info.event.extendedProps.idEvent}`;
 
       axios
         .put(urlActivity, newDataActivity, {
@@ -629,7 +629,7 @@ const Kalendar = {
         deadline: document.getElementById('customDatePutTodo').value,
         status: info.event.extendedProps.status,
       };
-      const urlEvent = `https://be.gunz.my.id/todo/${info.event.extendedProps.id}`;
+      const urlEvent = `https://be-2.gunz.my.id/todo/${info.event.extendedProps.id}`;
 
       axios
         .put(urlEvent, newData, {
@@ -705,7 +705,7 @@ const Kalendar = {
         status: 'menunggu',
       };
       axios
-        .post('https://be.gunz.my.id/todo', JSON.stringify(newData), {
+        .post('https://be-2.gunz.my.id/todo', JSON.stringify(newData), {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${jwt}`,
@@ -726,7 +726,7 @@ const Kalendar = {
         deadline: deadlineEvent,
       };
       axios
-        .post('https://be.gunz.my.id/activity', JSON.stringify(newData), {
+        .post('https://be-2.gunz.my.id/activity', JSON.stringify(newData), {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${jwt}`,
@@ -735,8 +735,8 @@ const Kalendar = {
     }
 
     function deleteEvent(urlTodo, urlEvent) {
-      const url = `https://be.gunz.my.id/todo/${urlTodo}`;
-      const url2 = `https://be.gunz.my.id/activity/${urlEvent}`;
+      const url = `https://be-2.gunz.my.id/todo/${urlTodo}`;
+      const url2 = `https://be-2.gunz.my.id/activity/${urlEvent}`;
 
       axios
         .all([

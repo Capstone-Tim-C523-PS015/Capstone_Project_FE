@@ -344,7 +344,7 @@
         new_password: passwordnew,
         new_password_confirmation: confirmpasswordnew,
       };
-      const Urlupdatepass = 'https://be.gunz.my.id/user/password';
+      const Urlupdatepass = 'https://be-2.gunz.my.id/user/password';
 
       axios.put(Urlupdatepass, bodypassword, {
         headers: {
@@ -392,7 +392,7 @@
       const emailuser = document.getElementById('emailuser');
       const deskripsi = document.getElementById('deksripsiuser');
       const token = localStorage.getItem('token');
-      const urlgetuser = 'https://be.gunz.my.id/user';
+      const urlgetuser = 'https://be-2.gunz.my.id/user';
 
       axios.get(urlgetuser, {
         headers: {
@@ -424,7 +424,7 @@
       }
       
       
-      const urlupdateuser = 'https://be.gunz.my.id/user';
+      const urlupdateuser = 'https://be-2.gunz.my.id/user';
       const tokenjwt = localStorage.getItem('token');
       axios.post(urlupdateuser, formdata, {
         headers: {
@@ -467,7 +467,7 @@
     }
 
     async function deleteuser() {
-      const urldelete = 'https://be.gunz.my.id/user';
+      const urldelete = 'https://be-2.gunz.my.id/user';
       const tokenjwt = localStorage.getItem('token');
       console.log(tokenjwt);
       axios.delete(urldelete, {

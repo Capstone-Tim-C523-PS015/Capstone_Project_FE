@@ -207,8 +207,8 @@ const Home = {
     if (jwt === null) {
       window.location.replace('./login.html#/masuk');
     }
-    const url = 'https://be.gunz.my.id/todo';
-    const url2 = 'https://be.gunz.my.id/activity';
+    const url = 'https://be-2.gunz.my.id/todo';
+    const url2 = 'https://be-2.gunz.my.id/activity';
     axios
       .all([
         axios.get(url, {
@@ -543,7 +543,7 @@ const Home = {
             };
 
             axios
-              .put(`https://be.gunz.my.id/todo/${eventId}`, updatedData, {
+              .put(`https://be-2.gunz.my.id/todo/${eventId}`, updatedData, {
                 headers,
               });
           }

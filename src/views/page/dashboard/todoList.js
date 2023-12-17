@@ -166,7 +166,7 @@ const TodoList = {
   },
 
   async afterRender() {
-    const baseUrl = 'https://be.gunz.my.id';
+    const baseUrl = 'https://be-2.gunz.my.id';
     const token = localStorage.getItem('token');
     if (token === null) {
       window.location.replace('./login.html#/masuk');
