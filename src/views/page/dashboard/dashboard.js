@@ -183,8 +183,8 @@ const Home = {
           <div class="py-12 w-full flex flex-col justify-center gap-4 items-center">
             <img src="./svg/kosong.svg" class="w-96"/>
             <div class="text-center">
-              <h2 class="text-sky-900 text-xl">Tidak Ada Tugas atau Task yang perlu dikerjakan!</h2>
-              <p class="text-sky-900 font-bold">Silakan isi Todo-List Terlebih dahulu!</p>
+              <h2 class="text-sky-900 text-xl">Tidak Ada Tugas atau Task yang sudah dikerjakan!</h2>
+              <p class="text-sky-900 font-bold">Silakan kerjakan Todo-List Terlebih dahulu!</p>
             </div>
           </div>
         </div>
