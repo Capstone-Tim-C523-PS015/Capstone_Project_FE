@@ -18,18 +18,21 @@
 
         const veriftoken = `https://be-2.gunz.my.id/reset/verifyToken?token=${token}`;
         axios.get(veriftoken)
-            .then((response) => { }).catch((error) => {
+            .then(() => { }).catch((error) => {
                 const message = document.getElementById('Error_input');
                 message.innerHTML = error.response.data.message;
                 Message.classList.remove('text-green-800');
                 Message.classList.add('text-rose-700');
+                loadingrecovery.classList.add('hidden');
+                textubahsandi.classList.remove('hidden');
                 setTimeout(time, 1000);
                 function time() {
                     const loadingrecovery = document.getElementById('loading-recovery');
                     const textubahsandi = document.getElementById('ubahsandi');
 
-                    loadingrecovery.classList.add('hidden');
-                    textubahsandi.classList.remove('hidden');
+                    
+                    
+                    window.location.replace('./login.html#/masuk');
                 }
             });
     </script>
@@ -168,32 +171,32 @@
                     'Content-Type': 'application/json',
                 },
             }).then((response) => {
-                const message = document.getElementById('Error_input');
-                message.innerHTML = response.data.message;
-                Message.classList.remove('text-rose-700');
-                Message.classList.add('text-green-800');
-                setTimeout(time, 1000);
+                const bisamessage = document.getElementById('Error_input');
+                bisamessage.innerHTML = response.data.message;
+                bisamessage.classList.remove('text-rose-700');
+                bisamessage.classList.add('text-green-800');
                 function time() {
                     const loadingrecovery = document.getElementById('loading-recovery');
                     const textubahsandi = document.getElementById('ubahsandi');
 
                     loadingrecovery.classList.add('hidden');
                     textubahsandi.classList.remove('hidden');
-                    window.location.replace('./login.html#/masuk')
+                    window.location.replace('./login.html#/masuk');
                 }
+                time()
             }).catch((error) => {
-                const message = document.getElementById('Error_input');
-                message.innerHTML = error.response.data.message;
-                message.classList.remove('text-green-800');
-                message.classList.add('text-rose-700');
+                const Errormessage = document.getElementById('Error_input');
+                Errormessage.innerHTML = error.response.data.message;
+                Errormessage.classList.remove('text-rose-700');
+                Errormessage.classList.add('text-green-800');
+                
                 setTimeout(time, 1000);
-
                 function time() {
                     const loadingrecovery = document.getElementById('loading-recovery');
                     const textubahsandi = document.getElementById('ubahsandi');
-
                     loadingrecovery.classList.add('hidden');
                     textubahsandi.classList.remove('hidden');
+                    window.location.replace('./login.html#/masuk');
                 }
             });
         }

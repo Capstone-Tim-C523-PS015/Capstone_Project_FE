@@ -110,22 +110,8 @@
     document.addEventListener("DOMContentLoaded", function () {
       const logoutdiv = document.getElementById('logout');
       logoutdiv.addEventListener('click', () => {
-        const Bearer = localStorage.getItem('token');
-        console.log('Token from localStorage:', Bearer); // Tambahkan log ini
-        axios.post('https://be-2.gunz.my.id/auth/logout', null, {
-          headers: {
-            Authorization: `Bearer ${Bearer}`,
-          },
-        }).then((response) => {
-          if (response.status === 200) {
-            localStorage.removeItem('token');
-            window.location.replace('/#/beranda');
-          } else {
-            console.error(response.data.message);
-          }
-        }).catch((error) => {
-          console.error(error.response.data.message);
-        });
+          localStorage.removeItem('token');
+          window.location.replace('/#/beranda');
       });
       detailuser();
     });
