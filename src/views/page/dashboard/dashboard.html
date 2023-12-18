@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="dicoding:email" content="ilhammaulana05303005@students.unnes.ac.id">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -111,7 +112,7 @@
       logoutdiv.addEventListener('click', () => {
         const Bearer = localStorage.getItem('token');
         console.log('Token from localStorage:', Bearer); // Tambahkan log ini
-        axios.post('https://be.gunz.my.id/auth/logout', null, {
+        axios.post('https://be-2.gunz.my.id/auth/logout', null, {
           headers: {
             Authorization: `Bearer ${Bearer}`,
           },
@@ -134,7 +135,7 @@
       const nameuser = document.getElementById('NameUser');
       const emailuser = document.getElementById('EmailUser');
       const token = localStorage.getItem('token');
-      const urlgetuser = 'https://be.gunz.my.id/user';
+      const urlgetuser = 'https://be-2.gunz.my.id/user';
 
       axios.get(urlgetuser, {
         headers: {

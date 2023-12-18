@@ -98,7 +98,7 @@ const masuk = {
 
         loadinglogin.classList.remove('hidden');
         textlogin.classList.add('hidden');
-        setTimeout(login, 3000);
+        setTimeout(login, 1000);
       });
     }
 
@@ -129,7 +129,7 @@ const masuk = {
           window.location.replace('./indexdash.html#/dashboard');
         }
 
-      }).catch(function (error) {
+      }).catch((error) => {
         const errorMessage = document.getElementById('Error_input');
         errorMessage.innerHTML = error.response.data.message;
         errorMessage.classList.remove('text-green-800');

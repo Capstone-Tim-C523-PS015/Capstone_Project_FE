@@ -1,3 +1,4 @@
+/* eslint-disable new-cap */
 /* eslint-disable no-use-before-define */
 import { Calendar } from 'fullcalendar';
 import '../../../styles/index.css';
@@ -318,8 +319,8 @@ const Kalendar = {
     // API Calendar
 
     function initializeCalendar(todo, activity) {
-      const url = `https://be.gunz.my.id/${todo}`;
-      const url2 = `https://be.gunz.my.id/${activity}`;
+      const url = `https://be-2.gunz.my.id/${todo}`;
+      const url2 = `https://be-2.gunz.my.id/${activity}`;
 
       axios
         .all([
@@ -339,11 +340,6 @@ const Kalendar = {
         .then(
           axios.spread((responseA, responseB) => {
             const Todos = responseA.data.todos;
-            console.log('impementasi', Todos);
-            Todos.forEach((item) => {
-              console.log('todods 1', item.id);
-            });
-
             const formattedData = Todos.map((item) => ({
               title: item.title,
               start: item.deadline,
@@ -355,7 +351,6 @@ const Kalendar = {
               },
             }));
             const Todos2 = responseB.data.activities;
-            console.log('todods 2', Todos2);
             const formattedData2 = Todos2.map((item) => ({
               title: item.title,
               start: item.deadline,
@@ -385,40 +380,79 @@ const Kalendar = {
 
             calendar.render();
           }),
-        )
-        .catch((error) => {
-          console.error('Error fetching data:', error);
-        });
+        );
+    }
+
+    // Menutup modal sebelumnya jika sudah ada yang aktif
+    function closeActiveModal() {
+      const activeModal = document.querySelector('.modal:not(.hidden)');
+      const modal = document.getElementById('dateModal');
+      const dahboard = document.getElementById('dashboard');
+      const kalendar = document.getElementById('kalendar');
+      if (activeModal && activeModal !== modal) {
+        activeModal.classList.add('hidden');
+        dahboard.classList.remove('blacked-out');
+        kalendar.classList.add('bg-white');
+        activeModal.classList.remove('bottom-3');
+      }
     }
 
     function handleDateClick() {
       const modal = document.getElementById('dateModal');
-      const dahboard = document.getElementById('dashboard');
-      const btnclose = document.getElementById('close');
-      const kalendar = document.getElementById('kalendar');
-
       document.querySelector('.target').scrollIntoView({ behavior: 'smooth' });
+
+      closeActiveModal();
 
       if (modal) {
         modal.classList.toggle('hidden');
         modal.classList.remove('bottom-3');
-        // dahboard.classList.toggle("blacked-out");
-
-        // kalendar.classList.remove("bg-white");
+        const modalEvent = document.getElementById('modalEvent');
+        const todomodal = document.getElementById('PutTodo');
+        modalEvent.classList.add('hidden');
+        todomodal.classList.add('hidden');
       }
+    }
 
-      btnclose.addEventListener('click', () => {
+    const btnclose = document.getElementById('closeEvent');
+    const btncloseevent = document.getElementById('close');
+
+    btncloseevent.addEventListener('click', () => {
+      const modal = document.getElementById('dateModal');
+      const dahboard = document.getElementById('dashboard');
+      const kalendar = document.getElementById('kalendar');
+      modal.classList.add('hidden');
+      dahboard.classList.remove('blacked-out');
+      kalendar.classList.add('bg-white');
+      modal.classList.add('bottom-3');
+    });
+    btnclose.addEventListener('click', () => {
+      const modal = document.getElementById('dateModal');
+      const dahboard = document.getElementById('dashboard');
+      const kalendar = document.getElementById('kalendar');
+      modal.classList.add('hidden');
+      dahboard.classList.remove('blacked-out');
+      kalendar.classList.add('bg-white');
+      modal.classList.add('bottom-3');
+    });
+
+    // Menambahkan event listener untuk menutup modal jika klik di luar modal
+    document.addEventListener('click', (event) => {
+      const modal = document.getElementById('dateModal');
+      const dahboard = document.getElementById('dashboard');
+      const kalendar = document.getElementById('kalendar');
+      const targetElement = event.target;
+
+      if (modal && !modal.contains(targetElement)) {
         modal.classList.add('hidden');
         dahboard.classList.remove('blacked-out');
         kalendar.classList.add('bg-white');
         modal.classList.add('bottom-3');
-      });
-    }
+      }
+    });
 
     function handleEventClick(info) {
       const modalEvent = document.getElementById('modalEvent');
       const dahboard = document.getElementById('dashboard');
-      const btnclose = document.getElementById('closeEvent');
       const iconDelete = document.getElementById('deleteEvent');
       const editEventBtn = document.getElementById('editEvent');
       const todate = document.getElementById('todate');
@@ -439,13 +473,13 @@ const Kalendar = {
         (info.event.extendedProps.status === 'menunggu')
         || (info.event.extendedProps.status === 'dikerjakan')
       ) {
-        setatus.className = 'bg-sky-300 text-sky-900 px-3 py-1 rounded-lg font-bold';
+        setatus.className = 'px-3 py-1 font-bold rounded-lg bg-sky-300 text-sky-900';
       }
       if (
         (info.event.extendedProps.status === 'telat')
         || (info.event.extendedProps.status === 'dikerjakan')
       ) {
-        setatus.className = 'bg-red-500 text-white px-3 py-1 rounded-lg font-bold';
+        setatus.className = 'px-3 py-1 font-bold text-white bg-red-500 rounded-lg';
       }
 
       const ButtonDeleteEvent = document.getElementById('deleteEventTodoList');
@@ -577,8 +611,7 @@ const Kalendar = {
         isNotificate: true,
         deadline: document.getElementById('customDatePutActivity').value,
       };
-      const urlActivity = `https://be.gunz.my.id/activity/${info.event.extendedProps.idEvent}`;
-      console.log('idActivity', info.event.extendedProps.idEvent);
+      const urlActivity = `https://be-2.gunz.my.id/activity/${info.event.extendedProps.idEvent}`;
 
       axios
         .put(urlActivity, newDataActivity, {
@@ -586,15 +619,6 @@ const Kalendar = {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${jwt}`,
           },
-        })
-
-        .then((response) => {
-          // Handle the responses as needed
-          console.log('Response from Todo deletion:', response);
-          console.log('sukses');
-        })
-        .catch((error) => {
-          console.error('Error deleting data:', error);
         });
     }
 
@@ -605,7 +629,7 @@ const Kalendar = {
         deadline: document.getElementById('customDatePutTodo').value,
         status: info.event.extendedProps.status,
       };
-      const urlEvent = `https://be.gunz.my.id/todo/${info.event.extendedProps.id}`;
+      const urlEvent = `https://be-2.gunz.my.id/todo/${info.event.extendedProps.id}`;
 
       axios
         .put(urlEvent, newData, {
@@ -613,15 +637,6 @@ const Kalendar = {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${jwt}`,
           },
-        })
-
-        .then((response) => {
-          console.log(info.title);
-          // Handle the responses as needed
-          console.log('Response from Todo deletion:', response);
-        })
-        .catch((error) => {
-          console.error('Error deleting data:', error);
         });
     }
 
@@ -690,17 +705,11 @@ const Kalendar = {
         status: 'menunggu',
       };
       axios
-        .post('https://be.gunz.my.id/todo', JSON.stringify(newData), {
+        .post('https://be-2.gunz.my.id/todo', JSON.stringify(newData), {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${jwt}`,
           },
-        })
-        .then((response) => {
-          console.log(`Succes ${response.data}`);
-        })
-        .catch((error) => {
-          console.log(`Error ${error}`);
         });
     }
 
@@ -717,24 +726,17 @@ const Kalendar = {
         deadline: deadlineEvent,
       };
       axios
-        .post('https://be.gunz.my.id/activity', JSON.stringify(newData), {
+        .post('https://be-2.gunz.my.id/activity', JSON.stringify(newData), {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${jwt}`,
           },
-        })
-        .then((response) => {
-          console.log(`Succes Event ${response.data}`);
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(`Error ${error}`);
         });
     }
 
     function deleteEvent(urlTodo, urlEvent) {
-      const url = `https://be.gunz.my.id/todo/${urlTodo}`;
-      const url2 = `https://be.gunz.my.id/activity/${urlEvent}`;
+      const url = `https://be-2.gunz.my.id/todo/${urlTodo}`;
+      const url2 = `https://be-2.gunz.my.id/activity/${urlEvent}`;
 
       axios
         .all([
@@ -750,18 +752,7 @@ const Kalendar = {
               Authorization: `Bearer ${jwt}`,
             },
           }),
-        ])
-
-        .then(
-          axios.spread((responseA, responseB) => {
-            // Handle the responses as needed
-            console.log('Response from Todo deletion:', responseA.status);
-            console.log('Response from Todo deletion:', responseB.status);
-          }),
-        )
-        .catch((error) => {
-          console.error('Error deleting data:', error);
-        });
+        ]);
     }
 
     function hapusDataEfek() {

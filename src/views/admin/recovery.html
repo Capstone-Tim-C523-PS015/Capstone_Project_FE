@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="dicoding:email" content="ilhammaulana05303005@students.unnes.ac.id">
     <title>Recovery password</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
@@ -15,7 +16,7 @@
             localStorage.setItem('message', 'token tidak ditemukan silakan meminta terlebih dahulu');
         }
 
-        const veriftoken = `https://be.gunz.my.id/reset/verifyToken?token=${token}`;
+        const veriftoken = `https://be-2.gunz.my.id/reset/verifyToken?token=${token}`;
         axios.get(veriftoken)
             .then((response) => { }).catch((error) => {
                 const message = document.getElementById('Error_input');
@@ -152,7 +153,7 @@
         })
 
         async function Recovery() {
-            const changepass = 'https://be.gunz.my.id/reset/updatePassword';
+            const changepass = 'https://be-2.gunz.my.id/reset/updatePassword';
             const newpassword = document.getElementById('newpassword').value;
             const konfimpassword = document.getElementById('konfirmpassword').value;
 

@@ -1,0 +1,4 @@
+CREATE DATABASE capstone;
+CREATE USER 'gunz'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON capstone.* TO 'root'@'localhost';
+FLUSH PRIVILEGES;

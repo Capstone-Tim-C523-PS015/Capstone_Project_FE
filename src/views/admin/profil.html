@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="dicoding:email" content="ilhammaulana05303005@students.unnes.ac.id">
   <!-- Icon -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
@@ -98,7 +99,7 @@
             <img id="imageprofile" src="" alt="" class="p-1 rounded-full shadow-xl w-36 h-36 md:w-48 md:h-48"
               style="box-shadow: 4px 4px 6px -6px #000000">
             <label for="file" class="flex gap-1 text-xs font-medium text-center">
-              <p>Format: </p> jpg / png, max 2mb
+              <p>Format: </p> jpg / png, size max 1mb
             </label>
 
             <button id="uploadimage"
@@ -344,7 +345,7 @@
         new_password: passwordnew,
         new_password_confirmation: confirmpasswordnew,
       };
-      const Urlupdatepass = 'https://be.gunz.my.id/user/password';
+      const Urlupdatepass = 'https://be-2.gunz.my.id/user/password';
 
       axios.put(Urlupdatepass, bodypassword, {
         headers: {
@@ -392,7 +393,7 @@
       const emailuser = document.getElementById('emailuser');
       const deskripsi = document.getElementById('deksripsiuser');
       const token = localStorage.getItem('token');
-      const urlgetuser = 'https://be.gunz.my.id/user';
+      const urlgetuser = 'https://be-2.gunz.my.id/user';
 
       axios.get(urlgetuser, {
         headers: {
@@ -424,7 +425,7 @@
       }
       
       
-      const urlupdateuser = 'https://be.gunz.my.id/user';
+      const urlupdateuser = 'https://be-2.gunz.my.id/user';
       const tokenjwt = localStorage.getItem('token');
       axios.post(urlupdateuser, formdata, {
         headers: {
@@ -467,7 +468,7 @@
     }
 
     async function deleteuser() {
-      const urldelete = 'https://be.gunz.my.id/user';
+      const urldelete = 'https://be-2.gunz.my.id/user';
       const tokenjwt = localStorage.getItem('token');
       console.log(tokenjwt);
       axios.delete(urldelete, {
